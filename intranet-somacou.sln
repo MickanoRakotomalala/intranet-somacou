@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "intranet-somacou", "intranet-somacou\intranet-somacou.csproj", "{FE05BB24-E469-424A-AC2E-6187AC46457B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "intranet-somacou.Tests", "intranet-somacou.Tests\intranet-somacou.Tests.csproj", "{83717011-942A-4A88-94E3-1375718AC5AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE05BB24-E469-424A-AC2E-6187AC46457B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE05BB24-E469-424A-AC2E-6187AC46457B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE05BB24-E469-424A-AC2E-6187AC46457B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE05BB24-E469-424A-AC2E-6187AC46457B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83717011-942A-4A88-94E3-1375718AC5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83717011-942A-4A88-94E3-1375718AC5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83717011-942A-4A88-94E3-1375718AC5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83717011-942A-4A88-94E3-1375718AC5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A376922-AA39-4C76-B47A-4777DD2FADF7}
+	EndGlobalSection
+EndGlobal
