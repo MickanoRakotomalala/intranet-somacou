@@ -3,6 +3,15 @@
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
+    flex:1;
+}
+
+.body {
+    margin:0;
+    padding:0;
+    height:100%;
+    display:grid;
+    grid-template-rows:1fr auto;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -17,4 +26,11 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+footer {
+    background-color: #555555;
+    color:white;
+    padding:12px;
+    height:100%;
 }
