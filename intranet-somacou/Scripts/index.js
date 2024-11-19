@@ -10,7 +10,7 @@
 
 let typedtwo = new Typed(".typing_two", {
     strings: [
-        "Un large Choix <br> &nbsp; &nbsp; &nbsp; &nbsp; de Couvertures",
+        "Un large Choix <br> &nbsp; &nbsp; &nbsp; &nbsp; de Couvertures : <br> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Acrylor, Martine ...",
     ],
     typeSpeed: 100,
     BackSpeed: 60,
@@ -20,7 +20,7 @@ let typedtwo = new Typed(".typing_two", {
 
 let typedthree = new Typed(".typing_three", {
     strings: [
-        "Divers articles <br> &nbsp; &nbsp; &nbsp; &nbsp; de Soins",
+        "Divers articles <br> &nbsp; &nbsp; &nbsp; &nbsp; de Soins : <br> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Coton Hydrophile, Compresse ...",
     ],
     typeSpeed: 100,
     BackSpeed: 60,
@@ -30,7 +30,7 @@ let typedthree = new Typed(".typing_three", {
 
 let typedfour = new Typed(".typing_four", {
     strings: [
-        "Une large Collection <br> &nbsp; &nbsp; &nbsp; &nbsp; pour le Bain",
+        "Une large Collection <br> &nbsp; &nbsp; &nbsp; &nbsp; pour le Bain : <br> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Serviette de Bain, Tapis de Bain ...",
     ],
     typeSpeed: 100,
     BackSpeed: 60,
