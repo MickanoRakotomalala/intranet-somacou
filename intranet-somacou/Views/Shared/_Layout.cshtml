@@ -17,7 +17,7 @@
     </script>
 </head>
 <body class="body">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-danger fixed-top">
         <div class="container">
             @Html.ActionLink("SOMACOU", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Activer/désactiver la navigation" aria-controls="navbarSupportedContent"
@@ -33,10 +33,10 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content mb-3">
+    <div class="container body-content">
         @RenderBody()
     </div>
-    <footer class="container-fluid mt-md-5">
+    <footer class="container-fluid fixed">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
