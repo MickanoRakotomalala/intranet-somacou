@@ -1,4 +1,8 @@
-﻿/* Set padding to keep content from hitting the edges */
+﻿.navbar-brand{
+    font-weight:700;
+}
+
+/* Set padding to keep content from hitting the edges */
 .body-content {
     margin-top: 15px;
     padding-left: 15px;
@@ -28,9 +32,64 @@ textarea {
     max-width: 280px;
 }
 
+
+/*footer*/
 footer {
     background-color: #555555;
     color:white;
     padding:12px;
-    height:100%;
+    height:200px;
+}
+
+/*index*/
+
+.carousel-inner .carousel-item img{
+    position:relative;
+}
+
+.carousel-inner .carousel-item p {
+    position: absolute;
+    left: 40%;
+    top: 45%;
+    font-weight:700;
+    color: #F15858;
+    font-size:32px;
+    font-style:oblique;
+}
+
+/*Responsive*/
+@media(max-width:992px){
+    .carousel-inner .carousel-item p {
+        position: absolute;
+        left: 40%;
+        top: 45%;
+        font-weight: 600;
+        color: #F15858;
+        font-size: 20px;
+        font-style: oblique;
+    }
+}
+
+@media (max-width:768px){
+    .carousel-inner .carousel-item p {
+        position: absolute;
+        left:40%;
+        top: 45%;
+        font-weight: 600;
+        color: #F15858;
+        font-size: 16px;
+        font-style: oblique;
+    }
+}
+
+@media (max-width:576px){
+    .carousel-inner .carousel-item p {
+        position: absolute;
+        left: 40%;
+        top: 45%;
+        font-weight: 600;
+        color: #F15858;
+        font-size: 10px;
+        font-style: oblique;
+    }
 }

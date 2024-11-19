@@ -138,11 +138,12 @@
   <ItemGroup>
     <Content Include="Assets\chicago.jpg" />
     <Content Include="Assets\la.jpg" />
+    <Content Include="Assets\lit.png" />
+    <Content Include="Assets\litbeige.png" />
     <Content Include="Assets\logo-somacou.png" />
     <Content Include="Assets\ny.jpg" />
-    <Content Include="Assets\smc.JPG" />
-    <Content Include="Assets\smc1.JPG" />
-    <Content Include="Assets\smc2.JPG" />
+    <Content Include="Assets\salledebain.png" />
+    <Content Include="Assets\salledesoins.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -173,6 +174,7 @@
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
