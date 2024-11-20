@@ -43,6 +43,39 @@ footer {
     height:100%;
 }
 
+.col-md-6{
+    margin-bottom:20px;
+}
+
+.col-md-6 label{
+    font-size:24px;
+    font-weight:700;
+}
+
+.col-md-6 ul,
+.col-md-6 label{
+    display: flex;
+    justify-content: center;
+}
+.col-md-6 ul li {
+    list-style-type:none;
+    font-size:28px;
+}
+
+.col-md-6 ul li a {
+    text-decoration:none;
+    color:white;
+}
+
+.Developer {
+    display:flex;
+    justify-content:center;
+}
+
+.col-8 p{
+    font-size:18px;
+}
+
 /*index*/
 
 .carousel-inner .carousel-item img{
@@ -70,6 +103,23 @@ footer {
         font-size: 20px;
         font-style: oblique;
     }
+
+    .col-4 img{
+        width:60px;
+        height:80px;
+    }
+
+    .col-8 p {
+        font-size: 10px;
+    }
+
+    .col-md-6 label {
+        font-size: 20px;
+    }
+
+    .col-md-6 ul li {
+        font-size: 18px;
+    }
 }
 
 @media (max-width:768px){
@@ -81,6 +131,10 @@ footer {
         color: #F15858;
         font-size: 16px;
         font-style: oblique;
+    }
+
+    .Developer p {
+        font-size:12px;
     }
 }
 
