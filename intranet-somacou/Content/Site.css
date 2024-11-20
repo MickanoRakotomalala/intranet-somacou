@@ -1,5 +1,15 @@
-﻿.navbar-brand{
+﻿/*navbar*/
+.active-item {
+    color:yellow;
+    font-weight:800;
+}
+
+.navbar-brand{
     font-weight:700;
+}
+
+.nav-link{
+    color:yellow;
 }
 
 /* Set padding to keep content from hitting the edges */
