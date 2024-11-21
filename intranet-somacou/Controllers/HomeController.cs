@@ -13,7 +13,7 @@ namespace intranet_somacou.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Rh()
         {
             ViewBag.Message = "Your application description page.";
 

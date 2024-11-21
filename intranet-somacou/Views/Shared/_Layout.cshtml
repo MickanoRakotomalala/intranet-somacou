@@ -12,6 +12,7 @@
     <link href="~/Scripts/bootstrap.min.js" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="~/Scripts/index.js" defer></script>
+    <script src="~/Scripts/active.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"
             referrerpolicy="no-referrer">
     </script>
@@ -26,9 +27,15 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-active">@Html.ActionLink("ACCUEIL", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-active">@Html.ActionLink("RH", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-active">@Html.ActionLink("BOÎTE À SUGGESTIONS", "Help", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">
+                        @Html.ActionLink("ACCUEIL", "Index", "Home", new { area = "" }, new { @id = "link-home", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("RH", "Rh", "Home", new { area = "" }, new { @id = "link-about", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("BOÎTE À SUGGESTIONS", "Help", "Home", new { area = "" }, new { @id = "link-help", @class = "nav-link" })
+                    </li>
                 </ul>
             </div>
         </div>
