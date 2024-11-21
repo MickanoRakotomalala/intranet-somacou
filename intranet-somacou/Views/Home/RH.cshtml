@@ -1,9 +1,16 @@
 ﻿@{
     ViewBag.Title = "Intranet";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-
-    <p>About Somacou</p>
+<main>
+    <div class="container-fluid">
+        <h3>@ViewBag.Message</h3>    
+        <div class="row">
+            <div class="col-md-2 bg-dark">
+                Option
+            </div>
+            <div class="col-md-9 bg-success">
+                Details et Action
+            </div>
+        </div>
+    </div>
 </main>

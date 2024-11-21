@@ -15,7 +15,7 @@ namespace intranet_somacou.Controllers
 
         public ActionResult Rh()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Service de Ressources Humaines";
 
             return View();
         }

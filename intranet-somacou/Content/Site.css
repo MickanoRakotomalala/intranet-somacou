@@ -12,7 +12,7 @@
 }
 
 .navbar-nav li .nav-link:hover {
-    color: #8CA0A0;
+    color: #407C79;
 }
 
 .navbar-nav li .account-log {
@@ -132,12 +132,76 @@ footer {
     font-style:oblique;
 }
 
+.info {
+    background-color: #F9F6F6;
+    border: 1px solid #B7B3B3;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.info .info-g, .dashboard, .quality, .security, .service, .actuality {
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.info .info-g p span,
+.info .dashboard p span,
+.info .quality p span,
+.info .security p span,
+.info .service p span,
+.info .actuality p span{
+    font-weight: 700;
+    color: #8D8888;
+    font-size:16px;
+}
+
+.info .info-g p i, 
+.info .dashboard p i,
+.info .quality p i,
+.info .security p i,
+.info .service p i,
+.info .actuality p i {
+    font-weight: 600;
+    color: #8D8888;
+    font-size: 26px;
+}
+
+.info .info-g, .dashboard, .quality, .security, .service {
+    border-right: 1px solid #B7B3B3;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 /*Responsive*/
 @media(max-width:1200px){
     /*navbar*/
     .navbar-nav .log {
         margin-top:10px;
         margin-bottom: 10px;
+    }
+
+    /*index*/
+    .info .info-g p span,
+    .info .dashboard p span,
+    .info .quality p span,
+    .info .security p span,
+    .info .service p span,
+    .info .actuality p span {
+        font-weight: 700;
+        color: #8D8888;
+        font-size: 10px;
+    }
+
+    .info .info-g p i,
+    .info .dashboard p i,
+    .info .quality p i,
+    .info .security p i,
+    .info .service p i,
+    .info .actuality p i {
+        font-weight: 600;
+        color: #8D8888;
+        font-size: 12px;
     }
 }
 
