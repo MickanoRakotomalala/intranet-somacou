@@ -20,7 +20,7 @@ namespace intranet_somacou.Controllers
             return View();
         }
 
-        public ActionResult Help()
+        public ActionResult Dsi()
         {
             ViewBag.Message = "Your contact page.";
 
