@@ -18,23 +18,52 @@
     </script>
 </head>
 <body class="body">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-danger fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-xl navbar-toggleable-xl navbar-dark bg-danger fixed-top">
+        <div class="container-fluid">
             @Html.ActionLink("SOMACOU", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Activer/désactiver la navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            <div class="collapse navbar-collapse d-xl-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         @Html.ActionLink("ACCUEIL", "Index", "Home", new { area = "" }, new { @id = "link-home", @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("RH", "Rh", "Home", new { area = "" }, new { @id = "link-about", @class = "nav-link" })
+                        @Html.ActionLink("RH", "Rh", "Home", new { area = "" }, new { @id = "link-rh", @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("DSI", "Dsi", "Home", new { area = "" }, new { @id = "link-help", @class = "nav-link" })
+                        @Html.ActionLink("DSI", "Dsi", "Home", new { area = "" }, new { @id = "link-dsi", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("COMMERCIAL", "Commercial", "Home", new { area = "" }, new { @id = "link-commercial", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("MAGASIN", "Magasin", "Home", new { area = "" }, new { @id = "link-magasin", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("TEINTURE", "Teinture", "Home", new { area = "" }, new { @id = "link-teinture", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("FFF", "Fff", "Home", new { area = "" }, new { @id = "link-fff", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("TISSAGE", "Tissage", "Home", new { area = "" }, new { @id = "link-tissage", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("MP", "Mp", "Home", new { area = "" }, new { @id = "link-mp", @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("FINITION", "Finition", "Home", new { area = "" }, new { @id = "link-finition", @class = "nav-link" })
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="log">
+                        <a class="account-log me-2" href="#">S'inscrire &nbsp;<i class="bi bi-person"></i></a>
+                    </li>
+                    <li class="log">
+                        <a class="account-log me-2" href="#">Se Connecter &nbsp;<i class="bi bi-box-arrow-in-right"></i></a>
                     </li>
                 </ul>
             </div>

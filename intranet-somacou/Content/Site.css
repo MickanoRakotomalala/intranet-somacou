@@ -6,18 +6,39 @@
     border-radius:10px;
 }
 
-.navbar-nav li a{
+.navbar-nav li .nav-link{
     color:white;
     font-weight:500;
 }
 
-.navbar-nav li a:hover {
+.navbar-nav li .nav-link:hover {
     color: #8CA0A0;
 }
 
-.navbar-brand {
-    font-size:32px;
+.navbar-nav li .account-log {
+    border:1px solid white;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    padding:10px;
+}
+
+.navbar-nav li .account-log:hover {
+    background-color: #407C79;
     font-weight:700;
+}
+
+.navbar-nav .log{
+    display:flex;
+}
+
+.navbar-nav li{
+    margin-left:10px;
+}
+
+.navbar .container-fluid .navbar-brand{
+    font-size:26px;
+    font-weight:800;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -68,6 +89,7 @@ footer {
 .col-md-6 label{
     font-size:24px;
     font-weight:700;
+    margin-bottom:16px;
 }
 
 .col-md-6 ul,
@@ -111,6 +133,14 @@ footer {
 }
 
 /*Responsive*/
+@media(max-width:1200px){
+    /*navbar*/
+    .navbar-nav .log {
+        margin-top:10px;
+        margin-bottom: 10px;
+    }
+}
+
 @media(max-width:992px){
     .carousel-inner .carousel-item p {
         position: absolute;
