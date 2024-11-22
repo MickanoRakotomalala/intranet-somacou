@@ -153,7 +153,8 @@ footer {
 .info .actuality p span{
     font-weight: 700;
     color: #8D8888;
-    font-size:16px;
+    font-size:14px;
+    margin-top:20px;
 }
 
 .info .info-g p i, 
@@ -164,13 +165,37 @@ footer {
 .info .actuality p i {
     font-weight: 600;
     color: #8D8888;
-    font-size: 26px;
+    font-size: 22px;
 }
 
 .info .info-g, .dashboard, .quality, .security, .service {
     border-right: 1px solid #B7B3B3;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+.info .info-g p i{
+    color:blueviolet;
+} 
+
+.info .dashboard p i{
+    color:dodgerblue;
+}
+
+.info .quality p i{
+    color:forestgreen;
+}
+
+.info .security p i{
+    color:red;
+}
+
+.info .service p i{
+    color:darkslategray;
+}
+
+.info .actuality p i{
+    color:lightslategrey;
 }
 
 /*Responsive*/
@@ -188,9 +213,7 @@ footer {
     .info .security p span,
     .info .service p span,
     .info .actuality p span {
-        font-weight: 700;
-        color: #8D8888;
-        font-size: 10px;
+        font-size: 8px;
     }
 
     .info .info-g p i,
@@ -199,9 +222,7 @@ footer {
     .info .security p i,
     .info .service p i,
     .info .actuality p i {
-        font-weight: 600;
-        color: #8D8888;
-        font-size: 12px;
+        font-size: 10px;
     }
 }
 
@@ -259,5 +280,24 @@ footer {
         color: #F15858;
         font-size: 10px;
         font-style: oblique;
+    }
+
+    /*index*/
+    .info .info-g p span,
+    .info .dashboard p span,
+    .info .quality p span,
+    .info .security p span,
+    .info .service p span,
+    .info .actuality p span{
+        font-size: 6px;
+    }
+
+    .info .info-g p i,
+    .info .dashboard p i,
+    .info .quality p i,
+    .info .security p i,
+    .info .service p i,
+    .info .actuality p i{
+        font-size: 8px;
     }
 }
