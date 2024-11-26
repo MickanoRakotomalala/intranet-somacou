@@ -7,29 +7,74 @@
         <div class="row">
             <div class="col-md-2">
                 <div>
-                    <h5 class="menuactive" id="menudescri"><i class="bi bi-envelope me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#descri" aria-expanded="false" aria-controls="descri">Déscription</span></h5>
+                    <h5 class="menuactive" id="menudescri"><i class="bi bi-journal-text me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#descri" aria-expanded="false" aria-controls="descri">Déscription</span></h5>
                     <ul class="collapse" id="descri">
-                        <li class="active">Définition</li>
-                        <li>Responsable</li>
+                        <li class="listactive"><i class="bi bi-textarea-t me-2"></i><a href="#Definition" onclick="Definition()">Définition</a></li>
+                        <li><i class="bi bi-blockquote-left me-2"></i><a href="#Responsability">Responsabilité</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 id="menudroit"><i class="bi bi-check me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#droit" aria-expanded="false" aria-controls="droit">Droit de travail</span></h5>                
-                    <ul class="collapse" id="droit">
-                        <li>Salarié</li>
-                        <li>Employeur</li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 id="menusuggestion"><i class="bi bi-chat me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#suggestion" aria-expanded="false" aria-controls="suggestion"></span>Suggestion</h5>
-                    <ul class="collapse" id="suggestion">
-                        <li>Contact</li>
-                        <li>Aide</li>
+                    <h5 id="menucode"><i class="bi bi-card-checklist me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#code" aria-expanded="false" aria-controls="code">Code de travail</span></h5>                
+                    <ul class="collapse" id="code">
+                        <li><i class="bi bi-person-badge me-2"></i>Employeur</li>
+                        <li><i class="bi bi-person-vcard me-2"></i>Salarié</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-9 bg-success">
-                Details et Action
+            <div class="col-md-9" id="Definition" hidden>
+                <h5>C'est quoi les Ressoures Humaines ?</h5>
+                <p>
+                    Les ressources humaines regroupent les fonctions de gestion du capital humain,
+                    qui sont essentielles pour le bon fonctionnement et la performance d'une organisation. 
+                    Elles incluent un ensemble d'activités visant à attirer, développer, motiver et retenir les employés dans l'entreprise. 
+               </p>
+                <p>
+                    Les RH ont évolué au fil des années, en passant d'une fonction purement administrative à un rôle stratégique. 
+                    Aujourd'hui, la gestion des ressources humaines est perçue comme un levier essentiel pour la performance de l'entreprise, 
+                    intégrant des aspects tels que la gestion du changement, l'innovation, la gestion de la diversité, l'impact du numérique, 
+                    et le bien-être au travail.
+
+                    Les entreprises modernes sont de plus en plus axées sur l’humain, cherchant à attirer et à retenir des talents, 
+                    tout en veillant à instaurer une culture d’entreprise forte et positive. Les RH jouent un rôle crucial dans la transformation 
+                    digitale des organisations, la gestion de la diversité et l'adaptation aux nouvelles attentes des générations de travailleurs.
+                </p>
+                <p>
+                    Conclusion :
+                    Les ressources humaines sont donc un domaine clé pour toute organisation, combinant à la fois des compétences techniques, 
+                    stratégiques et humaines pour gérer le capital humain de manière optimale. L'objectif ultime étant de contribuer à la performance
+                    globale de l'entreprise tout en assurant un environnement de travail respectueux et propice au développement des individus.
+                </p>
+            </div>
+            <div id="Responsability" hidden>
+                <h5>Responsabilité</h5>
+                <p>
+                    <h6>Recrutement et gestion des talents</h6>
+                    <ul>
+                        <li>Attraction des talents : Rechercher, sélectionner et attirer des candidats qualifiés pour les postes vacants.</li>
+                        <li>Processus de recrutement : Gérer le processus de sélection des candidats, qui inclut la rédaction d'annonces, les entretiens, les tests de sélection, et l'intégration des nouvelles recrues.</li>
+                        <li>Gestion des carrières : Aider les employés à développer leurs compétences et à évoluer dans leur carrière.</li>
+                    </ul>
+
+                    <h6>Formation et développement des compétences</h6>
+                    <ul>
+                        <li>Formation continue : Mettre en place des programmes de développement professionnel pour améliorer les compétences des employés et répondre aux besoins de l'entreprise.</li>
+                        <li>Gestion des performances : Évaluer les performances des employés, fixer des objectifs, et mettre en place des plans de développement individuels.</li>
+                        <li>Plan de succession : Identifier et préparer des talents internes pour occuper des postes clés dans le futur.</li>
+                    </ul>
+
+                    <h6>Rémunération et avantages sociaux</h6>
+                    <ul>
+                        <li>Gestion des salaires et primes : Déterminer les salaires, les primes, les avantages sociaux (assurance santé, retraite, etc.), et veiller à leur conformité avec la législation et les conventions collectives.</li>
+                        <li>Politiques de rémunération : Créer des politiques qui assurent l'équité salariale et la compétitivité par rapport au marché.</li>
+                    </ul>
+
+                    <h6>Gestion des relations sociales et du climat social</h6>
+                    <ul>
+                        <li>Dialogue social : Gérer les relations avec les syndicats, les représentants du personnel, et organiser les négociations collectives.</li>
+                        <li>Médiation des conflits : Résoudre les conflits au sein de l'entreprise (entre employés, entre employés et management).</li>
+                        <li>Climat social : Surveiller et améliorer l'ambiance de travail, en favorisant le bien-être des employés.</li>
+                    </ul>
+                </p>
             </div>
         </div>
     </div>
