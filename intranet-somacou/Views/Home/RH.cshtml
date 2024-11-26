@@ -5,8 +5,28 @@
     <div class="container-fluid">
         <h3>@ViewBag.Message</h3>    
         <div class="row">
-            <div class="col-md-2 bg-dark">
-                Option
+            <div class="col-md-2">
+                <div>
+                    <h5 class="menuactive" id="menudescri"><i class="bi bi-envelope me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#descri" aria-expanded="false" aria-controls="descri">Déscription</span></h5>
+                    <ul class="collapse" id="descri">
+                        <li class="active">Définition</li>
+                        <li>Responsable</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 id="menudroit"><i class="bi bi-check me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#droit" aria-expanded="false" aria-controls="droit">Droit de travail</span></h5>                
+                    <ul class="collapse" id="droit">
+                        <li>Salarié</li>
+                        <li>Employeur</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 id="menusuggestion"><i class="bi bi-chat me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#suggestion" aria-expanded="false" aria-controls="suggestion"></span>Suggestion</h5>
+                    <ul class="collapse" id="suggestion">
+                        <li>Contact</li>
+                        <li>Aide</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-9 bg-success">
                 Details et Action

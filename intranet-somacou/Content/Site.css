@@ -198,6 +198,24 @@ footer {
     color:lightslategrey;
 }
 
+/*Rh*/
+.row .col-md-2 {
+    background-color: #F16476;
+    box-shadow: 2px 2px 2px #E3D2D2;
+    margin:5px;
+    border-radius:10px;
+    color:white;
+    padding:5px;
+}
+
+.row .col-md-9{
+    box-shadow: 2px 2px 2px #E3D2D2;
+    margin: 5px;
+    border-radius: 10px;
+    color:white;
+    padding:5px;
+}
+
 /*Responsive*/
 @media(max-width:1200px){
     /*navbar*/
