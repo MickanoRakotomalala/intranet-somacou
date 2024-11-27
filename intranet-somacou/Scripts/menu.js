@@ -1,10 +1,19 @@
-﻿const Definition = document.getElementById('Definition');
-const Responsability = document.getElementById('Responsability');
+﻿const Definition = document.getElementById("Def");
+const Responsability = document.getElementById("Resp");
 
-function Definition() {
-    Responsability.classList.remove('col-md-9');
-    Responsability.hidden = true;
-
-    Definition.classList.add('col-md-9');
+function Def() {
     Definition.hidden = false;
+
+    Responsability.hidden = true;
+    //Responsability.ClassList.remove("col-md-9");
+    console.log('Def');
+}
+
+function Responsability() {
+    Responsability.hidden = false;
+    //Responsability.ClassList.add("col-md-9");
+
+    Definition.hidden = true;
+    //Definition.ClassList.remove("col-md-9");
+    console.log('Resp');
 }
