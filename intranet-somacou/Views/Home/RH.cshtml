@@ -9,8 +9,8 @@
                 <div>
                     <h5 class="menuactive" id="menudescri"><i class="bi bi-journal-text me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#descri" aria-expanded="false" aria-controls="descri">Déscription</span></h5>
                     <ul class="collapse" id="descri">
-                        <li class="listactive"><i class="bi bi-textarea-t me-2"></i><a href="#Def" onclick="Def()">Definition</a></li>
-                        <li><i class="bi bi-blockquote-left me-2"></i><a href="#Resp" onclick="Responsability()">Responsabilite</a></li>
+                        <li class="listactive"><i class="bi bi-textarea-t me-2"></i><a href="#Def" onclick="showDef()">Définition</a></li>
+                        <li><i class="bi bi-blockquote-left me-2"></i><a href="#Resp" onclick="showResponsability()">Responsabilité</a></li>
                     </ul>
                 </div>
                 <div>
@@ -21,7 +21,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-9" id="Def" hidden>
+            <div class="col-md-9" id="Def">
                 <h5>C'est quoi les Ressoures Humaines ?</h5>
                 <p>
                     Les ressources humaines regroupent les fonctions de gestion du capital humain,
@@ -45,7 +45,7 @@
                     globale de l'entreprise tout en assurant un environnement de travail respectueux et propice au développement des individus.
                 </p>
             </div>
-            <div class="col-md-9" id="Resp">
+            <div class="col-md-9" id="Resp" hidden>
                 <h5>Responsabilité</h5>
                 <p>
                     <h6>Recrutement et gestion des talents</h6>
