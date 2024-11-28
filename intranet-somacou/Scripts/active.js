@@ -1,4 +1,4 @@
-﻿// Active
+﻿// Active Navbar
 document.addEventListener("DOMContentLoaded", function () {
     // Récupérer le chemin de l'URL actuelle
     const currentPath = window.location.pathname;

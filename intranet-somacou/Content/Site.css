@@ -199,7 +199,7 @@ footer {
 }
 
 /*Rh*/
-.row .col-md-2 {
+.row .col-md-2{
     background-color: #F16476;
     box-shadow: 2px 2px 2px #E3D2D2;
     margin:10px;
@@ -215,6 +215,33 @@ footer {
     border-radius: 10px;
     color: white;
     padding: 20px;
+}
+
+.row .col-md-2 ul li a{
+    text-decoration:none;
+    color:white;
+}
+
+.row .col-md-2 ul li i{
+    font-size:20px;
+}
+
+.row .col-md-2 ul li a:hover,
+.row .col-md-2 ul li:hover{
+    color: #8CA0A0;
+    font-weight: 600;
+}
+
+.row .col-md-2 h5 i {
+    font-size: 24px;
+}
+
+/*menuactive*/
+.menuactive,
+.listactive,
+.listactive a {
+    color: #B8BEB6;
+    font-weight: 800;
 }
 
 /*Title*/
