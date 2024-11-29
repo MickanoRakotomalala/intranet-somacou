@@ -1,4 +1,5 @@
-﻿const DefinitionElement = document.getElementById("Def");
+﻿//RH
+const DefinitionElement = document.getElementById("Def");
 const ResponsabilityElement = document.getElementById("Resp");
 const cEmployeur = document.getElementById("cEmployeur");
 const cSalary = document.getElementById("cSalary");
@@ -69,4 +70,31 @@ function showSalary() {
 
     menuDescri.classList.remove("menuactive");
     console.log('Salary');
+}
+
+//DSI
+const menuDsi = document.getElementById("menudsi");
+const Idsi = document.getElementById("idsi");
+const Rdsi = document.getElementById("rdsi");
+const Sidsi = document.getElementById("sidsi");
+const Srdsi = document.getElementById("srdsi");
+
+function showIdsi() {
+    Idsi.hidden = false;
+    menuDsi.classList.add("menuactive");
+    Sidsi.classList.add("listactive");
+
+
+    Srdsi.classList.remove("listactive");
+    Rdsi.hidden = true;
+    console.log("Info DSI");
+}
+
+function showRdsi() {
+    Rdsi.hidden = false;
+    Srdsi.classList.add("listactive");
+
+    Sidsi.classList.remove("listactive");
+    Idsi.hidden = true;
+    console.log("Rôle DSI");
 }

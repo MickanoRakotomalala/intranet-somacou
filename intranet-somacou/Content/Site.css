@@ -241,7 +241,7 @@ footer .col-md-6 ul li a {
 /*menuactive*/
 .menuactive,
 .listactive,
-.listactive a {
+.listactive a{
     color: #B8BEB6;
     font-weight: 800;
 }
