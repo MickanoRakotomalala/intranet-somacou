@@ -137,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\chicago.jpg" />
+    <Content Include="Assets\DSI.png" />
+    <Content Include="Assets\HRM.png" />
     <Content Include="Assets\la.jpg" />
     <Content Include="Assets\lit.png" />
     <Content Include="Assets\litbeige.png" />

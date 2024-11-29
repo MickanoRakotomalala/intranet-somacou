@@ -22,7 +22,7 @@ namespace intranet_somacou.Controllers
 
         public ActionResult Dsi()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Département Système d'Information";
 
             return View();
         }
