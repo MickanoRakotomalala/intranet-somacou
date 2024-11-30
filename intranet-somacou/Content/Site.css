@@ -116,6 +116,11 @@ footer .col-md-6 ul li a {
     font-size:18px;
 }
 
+.col-4 img {
+    width: 100px;
+    height: 140px;
+}
+
 /*index*/
 
 .carousel-inner .carousel-item img{
@@ -203,11 +208,11 @@ footer .col-md-6 ul li a {
     background-color: #F16476;
     box-shadow: 2px 2px 2px #E3D2D2;
     margin-left:20px;
-    margin-right:120px;
+    margin-right:80px;
     margin-top:20px;
     border-radius:10px;
     color:white;
-    padding:20px;
+    padding:10px;
 }
 
 .row .col-md-9 {
@@ -222,10 +227,11 @@ footer .col-md-6 ul li a {
 .row .col-md-2 ul li a{
     text-decoration:none;
     color:white;
+    font-size:12px;
 }
 
 .row .col-md-2 ul li i{
-    font-size:20px;
+    font-size:14px;
 }
 
 .row .col-md-2 ul li a:hover,
@@ -235,8 +241,23 @@ footer .col-md-6 ul li a {
 }
 
 .row .col-md-2 h5 i {
-    font-size: 24px;
+    font-size: 20px;
 }
+
+.row .col-md-2 h5 {
+    font-size: 14px;
+}
+
+.col-md-9 ul li,
+.col-md-9 p,
+.col-md-9 span{
+    font-size:12px;
+}
+
+.col-md-9 span{
+    margin-left:10px;
+}
+
 
 /*menuactive*/
 .menuactive,
@@ -263,6 +284,23 @@ footer .col-md-6 ul li a {
 .container-fluid img {
     width:100%;
     border-radius:10px;
+}
+
+
+/*CreateUser*/
+.createUser {
+    display: flex;
+    justify-content: center;
+    background-color: #F6EFEF;
+    border-radius:20px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.createUser input,
+.createUser select {
+    margin-bottom:20px;
+    width:300px;
 }
 
 /*Responsive*/

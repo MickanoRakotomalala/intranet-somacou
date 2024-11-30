@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "CreateUser";
+}
+@model intranet_somacou.Models.CreateUser 
+
+<main>
+    <div class="container-fluid">
+        <div class="createUser">
+            <form action="/" method="post">
+            <h3>Créer un compte</h3>
+                <input type="text" name="name" placeholder="Nom" class="form-control" value="@Model.Name" />
+                <input type="text" name="Email" placeholder="Email" class="form-control" value="@Model.Email"/>
+                <input type="text" name="phone" placeholder="Phone" class="form-control" value="@Model.Phone"/>
+                <input type="text" name="Address" placeholder="Adresse" class="form-control" value="@Model.Address"/>
+                <select class="form-control">
+                    <option value="Admin">Admin</option>
+                    <option value="Chef">Chef</option>
+                    <option value="User">User</option>
+                </select>
+                <input type="password" name="password" placeholder="Password" class="form-control" value="@Model.Password"/>
+                <input type="password" name="cpassword" placeholder="Confirmation password" class="form-control" value="@Model.Password"/>
+
+                <Button type="submit" class="btn btn-sm btn-outline-success">S'inscrire</Button>
+            </form>
+        </div>
+
+    </div>
+</main>
+
+
