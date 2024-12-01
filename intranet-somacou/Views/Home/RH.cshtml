@@ -3,11 +3,11 @@
 }
 <main>
     <div class="container-fluid">
+        @*<h3>@ViewBag.Message</h3>*@
+        <div class="row">
         <div class="container-fluid">
             <img src="~/Assets/HRM.png" alt="HRM" />
         </div>
-        @*<h3>@ViewBag.Message</h3>*@    
-        <div class="row">
             <div class="col-md-2">
                 <div>
                     <h5 class="menuactive" id="menudescri"><i class="bi bi-journal-text me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#descri" aria-expanded="false" aria-controls="descri">Déscription</span></h5>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 id="menucode"><i class="bi bi-card-checklist me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#code" aria-expanded="false" aria-controls="code">Code du travail</span></h5>                
+                    <h5 id="menucode"><i class="bi bi-card-checklist me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#code" aria-expanded="false" aria-controls="code">Code du travail</span></h5>
                     <ul class="collapse" id="code">
                         <li id="listEmployeur"><i class="bi bi-person-badge me-2"></i><a href="#cEmployeur" onclick="showEmployeur()">Employeur</a></li>
                         <li id="listSalary"><i class="bi bi-person-vcard me-2"></i><a href="#cSalary" onclick="showSalary()">Salarié</a></li>
@@ -28,22 +28,22 @@
                 <h5><i class="bi bi-textarea-t me-2"></i>C'est quoi les Ressoures Humaines ?</h5>
                 <p>
                     Les ressources humaines regroupent les fonctions de gestion du capital humain,
-                    qui sont essentielles pour le bon fonctionnement et la performance d'une organisation. 
-                    Elles incluent un ensemble d'activités visant à attirer, développer, motiver et retenir les employés dans l'entreprise. 
-               </p>
+                    qui sont essentielles pour le bon fonctionnement et la performance d'une organisation.
+                    Elles incluent un ensemble d'activités visant à attirer, développer, motiver et retenir les employés dans l'entreprise.
+                </p>
                 <p>
-                    Les RH ont évolué au fil des années, en passant d'une fonction purement administrative à un rôle stratégique. 
-                    Aujourd'hui, la gestion des ressources humaines est perçue comme un levier essentiel pour la performance de l'entreprise, 
-                    intégrant des aspects tels que la gestion du changement, l'innovation, la gestion de la diversité, l'impact du numérique, 
+                    Les RH ont évolué au fil des années, en passant d'une fonction purement administrative à un rôle stratégique.
+                    Aujourd'hui, la gestion des ressources humaines est perçue comme un levier essentiel pour la performance de l'entreprise,
+                    intégrant des aspects tels que la gestion du changement, l'innovation, la gestion de la diversité, l'impact du numérique,
                     et le bien-être au travail.
 
-                    Les entreprises modernes sont de plus en plus axées sur l’humain, cherchant à attirer et à retenir des talents, 
-                    tout en veillant à instaurer une culture d’entreprise forte et positive. Les RH jouent un rôle crucial dans la transformation 
+                    Les entreprises modernes sont de plus en plus axées sur l’humain, cherchant à attirer et à retenir des talents,
+                    tout en veillant à instaurer une culture d’entreprise forte et positive. Les RH jouent un rôle crucial dans la transformation
                     digitale des organisations, la gestion de la diversité et l'adaptation aux nouvelles attentes des générations de travailleurs.
                 </p>
                 <p>
                     Conclusion :
-                    Les ressources humaines sont donc un domaine clé pour toute organisation, combinant à la fois des compétences techniques, 
+                    Les ressources humaines sont donc un domaine clé pour toute organisation, combinant à la fois des compétences techniques,
                     stratégiques et humaines pour gérer le capital humain de manière optimale. L'objectif ultime étant de contribuer à la performance
                     globale de l'entreprise tout en assurant un environnement de travail respectueux et propice au développement des individus.
                 </p>

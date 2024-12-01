@@ -208,7 +208,6 @@ footer .col-md-6 ul li a {
     background-color: #F16476;
     box-shadow: 2px 2px 2px #E3D2D2;
     margin-left:20px;
-    margin-right:80px;
     margin-top:20px;
     border-radius:10px;
     color:white;
@@ -219,6 +218,7 @@ footer .col-md-6 ul li a {
     background-color: #479943;
     box-shadow: 2px 2px 2px #E3D2D2;
     margin-top:20px;
+    margin-left:20px;
     border-radius: 10px;
     color: white;
     padding: 20px;
