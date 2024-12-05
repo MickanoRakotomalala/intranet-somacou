@@ -29,6 +29,7 @@ function showDef() {
 function showResponsability() {
     ResponsabilityElement.hidden = false;
     listResp.classList.add("listactive");
+    menuDescri.classList.add("menuactive");
 
     DefinitionElement.hidden = true;
     listDef.classList.remove("listactive");
@@ -60,6 +61,7 @@ function showEmployeur() {
 function showSalary() {
     cSalary.hidden = false;
     listSalary.classList.add("listactive");
+    menuCode.classList.add("menuactive");
 
     DefinitionElement.hidden = true;
     listDef.classList.remove("listactive");
@@ -92,6 +94,7 @@ function showIdsi() {
 
 function showRdsi() {
     Rdsi.hidden = false;
+    menuDsi.classList.add("menuactive");
     Srdsi.classList.add("listactive");
 
     Sidsi.classList.remove("listactive");
