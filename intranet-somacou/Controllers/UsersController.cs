@@ -25,6 +25,7 @@ namespace intranet_somacou.Controllers
             createuser.Address = "Lot 63 AK";
             createuser.Password = "1234";
             createuser.Role = "Chef";
+            createuser.CreatedAt = DateTime.Now;
 
             @ViewBag.Message = "Création compte avec succés";
             return View(createuser);

@@ -288,7 +288,8 @@ footer .col-md-6 ul li a {
 
 
 /*CreateUser*/
-.createUser {
+.createUser,
+.login {
     display: flex;
     justify-content: center;
     background-color: #F6EFEF;
@@ -298,7 +299,8 @@ footer .col-md-6 ul li a {
 }
 
 .createUser input,
-.createUser select {
+.createUser select,
+.login input {
     margin-bottom:20px;
     width:300px;
 }
