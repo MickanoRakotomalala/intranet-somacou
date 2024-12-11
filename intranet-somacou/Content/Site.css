@@ -305,7 +305,7 @@ footer .col-md-6 ul li a {
     width:500px;
 }
 
-.container-fluid h5{
+.container-fluid h3 {
     display: flex;
     justify-content: center;
     color: #F15858;
