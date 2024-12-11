@@ -17,18 +17,26 @@ namespace intranet_somacou.Controllers
 
         public ActionResult Create()
         {
-            CreateUser createuser = new CreateUser();
-            createuser.Id = 1;
-            createuser.Name = "MICKANO RAKOTOMALALA";
-            createuser.Email = "rakotomalala@gmail.com";
-            createuser.Phone = "0341029531";
-            createuser.Address = "Lot 63 AK";
-            createuser.Password = "1234";
-            createuser.Role = "Chef";
-            createuser.CreatedAt = DateTime.Now;
+            return View();
+        }
 
-            @ViewBag.Message = "Création compte avec succés";
-            return View(createuser);
+        [HttpPost]
+        public ActionResult Create(CreateUser createUser)
+        {
+            if (ModelState.IsValid) 
+            {
+                using (var context = new AppDbContext())
+                {
+                    createUser.CreatedAt = DateTime.Now;
+                    context.Users.Add(createUser);
+                    context.SaveChanges();  
+                }
+
+                ViewBag.Message = "Inscription avec succés";
+                return View(createUser);
+            }
+            ViewBag.Message = "Model invalid";
+            return View(createUser); //si le modèle est invalide
         }
 
         public ActionResult Login()

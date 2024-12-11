@@ -7,14 +7,18 @@
 <main>
     <div class="container-fluid">
         <div class="offset-lg-3 col-lg-6 offset-lg-3 createUser">
-            <form action="/" method="post">
-            @*<span>@ViewBag.Message</span>*@
+            <form action="/Users/Create" method="post">
+             @if(!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-info">@ViewBag.Message</div>
+            }
             <h3>Créer un compte</h3>
-                <input type="text" name="name" placeholder="Nom" class="form-control" value="@Model.Name" />
-                <input type="text" name="Email" placeholder="Email" class="form-control" value="@Model.Email"/>
-                <input type="text" name="phone" placeholder="Phone" class="form-control" value="@Model.Phone"/>
-                <input type="text" name="Address" placeholder="Adresse" class="form-control" value="@Model.Address"/>
-                <select class="form-control">
+                <input type="text" name="name" id="Name" placeholder="Nom" class="form-control" required />
+                <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" required />
+                <input type="text" name="phone" id="Phone" placeholder="Phone" class="form-control" required />
+                <input type="text" name="Address" id="Address" placeholder="Adresse" class="form-control" required />
+                <select name="Poste" class="form-control">
+                    <option value="">Sélectionnez un rôle<option/>    
                     <option value="DRH">DRH</option>
                     <option value="RH">RH</option>
                     <option value="Developer">Developer</option>
@@ -23,16 +27,16 @@
                     <option value="Gérant Magasin">Gérant Magasin</option>
                     <option value="Transit">Transit</option>
                 </select>
-                <select class="form-control">
+                <select name="Role" class="form-control">
+                    <option value="">Sélectionnez un niveau d'accès</option>  
                     <option value="Admin">Admin</option>
                     <option value="Chef">Chef</option>
                     <option value="User">User</option>
                 </select>
-                <input type="password" name="password" placeholder="Password" class="form-control" value="@Model.Password"/>
-                <input type="password" name="cpassword" placeholder="Confirmation password" class="form-control" value="@Model.Password"/>
-                <input type="datetime" class="form-control" value="@Model.CreatedAt" />
+                <input type="password" id="Password" name="Password" placeholder="Password" class="form-control" required/>
+                <input type="password" id="cPassword" name="cpassword" placeholder="Confirmation password" class="form-control" required/>
 
-                <Button type="submit" class="btn btn-sm btn-outline-success">S'inscrire</Button>
+                <Button type="submit" class="btn btn-sm btn-outline-success" onclick="Validate()">S'inscrire</Button>
             </form>
         </div>
 
