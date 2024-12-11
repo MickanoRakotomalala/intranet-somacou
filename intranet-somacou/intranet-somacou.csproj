@@ -142,6 +142,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412111303235_CreateUser.cs" />
+    <Compile Include="Migrations\202412111303235_CreateUser.Designer.cs">
+      <DependentUpon>202412111303235_CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\CreateUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,8 +222,8 @@
     <Content Include="Views\About\Commercial.cshtml" />
     <Content Include="Views\About\Magasin.cshtml" />
     <Content Include="Views\About\Usine.cshtml" />
-    <Content Include="Views\Users\Users.cshtml" />
-    <Content Include="Views\Users\CreateUser.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +255,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202412111303235_CreateUser.resx">
+      <DependentUpon>202412111303235_CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

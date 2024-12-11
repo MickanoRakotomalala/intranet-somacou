@@ -300,9 +300,16 @@ footer .col-md-6 ul li a {
 
 .createUser input,
 .createUser select,
-.login input{
+.login input {
     margin-bottom:20px;
-    /*width:300px;*/
+    width:500px;
+}
+
+.container-fluid h5{
+    display: flex;
+    justify-content: center;
+    color: #F15858;
+    font-weight: 900;
 }
 
 /*Responsive*/

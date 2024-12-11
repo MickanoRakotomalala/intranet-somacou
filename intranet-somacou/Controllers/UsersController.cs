@@ -10,12 +10,12 @@ namespace intranet_somacou.Controllers
     public class UsersController : Controller
     {
         // GET: User
-        public ActionResult Users()
+        public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult CreateUser()
+        public ActionResult Create()
         {
             CreateUser createuser = new CreateUser();
             createuser.Id = 1;
