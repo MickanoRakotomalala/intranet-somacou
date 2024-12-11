@@ -38,7 +38,7 @@ namespace intranet_somacou.Models
         public string Role {  get; set; }
 
         [Required(ErrorMessage = "Le mot de passe est obligatoire.")]
-        [StringLength(20,ErrorMessage = "Le mot de passe ne peut pas dépasser de 20 caractères.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public DateTime CreatedAt { get; set; }
     }

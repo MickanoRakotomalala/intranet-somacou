@@ -146,6 +146,10 @@
     <Compile Include="Migrations\202412111303235_CreateUser.Designer.cs">
       <DependentUpon>202412111303235_CreateUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412111313178_CreateUser-2.cs" />
+    <Compile Include="Migrations\202412111313178_CreateUser-2.Designer.cs">
+      <DependentUpon>202412111313178_CreateUser-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\CreateUser.cs" />
@@ -259,6 +263,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202412111303235_CreateUser.resx">
       <DependentUpon>202412111303235_CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412111313178_CreateUser-2.resx">
+      <DependentUpon>202412111313178_CreateUser-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
