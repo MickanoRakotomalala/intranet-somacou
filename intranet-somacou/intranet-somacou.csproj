@@ -156,6 +156,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="App_Data\intranet-somacou.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <Content Include="App_Data\intranet-somacou_log.ldf">
+      <DependentUpon>intranet-somacou.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\chicago.jpg" />
     <Content Include="Assets\DSI.png" />
     <Content Include="Assets\HRM.png" />
@@ -231,9 +238,7 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
