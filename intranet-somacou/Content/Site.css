@@ -207,7 +207,6 @@ footer .col-md-6 ul li a {
 .row .col-md-2{
     background-color: #F16476;
     box-shadow: 2px 2px 2px #E3D2D2;
-/*    margin-left:20px;*/
     margin-top:20px;
     border-radius:10px;
     color:white;
@@ -218,7 +217,6 @@ footer .col-md-6 ul li a {
     background-color: #479943;
     box-shadow: 2px 2px 2px #E3D2D2;
     margin-top:20px;
-/*    margin-left:20px;*/
     border-radius: 10px;
     color: white;
     padding: 20px;
@@ -240,11 +238,11 @@ footer .col-md-6 ul li a {
     font-weight: 600;
 }
 
-.row .col-md-2 h5 i {
+.row .col-md-2 h5 i{
     font-size: 20px;
 }
 
-.row .col-md-2 h5 {
+.row .col-md-2 h5{
     font-size: 14px;
 }
 
@@ -305,7 +303,8 @@ footer .col-md-6 ul li a {
     width:500px;
 }
 
-.container-fluid h3 {
+.createUser h3,
+.login h3 {
     display: flex;
     justify-content: center;
     color: #F15858;
