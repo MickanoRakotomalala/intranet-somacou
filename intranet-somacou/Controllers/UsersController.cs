@@ -32,10 +32,10 @@ namespace intranet_somacou.Controllers
                     context.SaveChanges();  
                 }
 
-                ViewBag.Message = "Inscription avec succés";
+                TempData["SuccessMessage"] = "Inscription avec succés";
                 return View(createUser);
             }
-            ViewBag.Message = "Model invalid";
+            TempData["ErrorMessage"] = "Model invalid";
             return View(createUser); //si le modèle est invalide
         }
 
