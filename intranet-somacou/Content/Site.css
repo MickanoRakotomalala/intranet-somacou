@@ -311,6 +311,19 @@ footer .col-md-6 ul li a {
     font-weight: 900;
 }
 
+/*Users*/
+.container h2{
+    display: flex;
+    justify-content: center;
+    color: #F15858;
+    font-weight: 900;
+}
+.User{
+    background-color: #F6EFEF;
+    padding:10px;
+    border-radius:10px;
+}
+
 /*Responsive*/
 @media(max-width:1200px){
     /*navbar*/
