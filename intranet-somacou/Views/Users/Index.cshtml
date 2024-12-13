@@ -38,7 +38,28 @@
                         <td>@user.Phone</td>
                         <td>@user.Address</td>
                         <td>@user.Poste</td>
-                        <td>@user.Role</td>
+                        <td>
+                            @{ 
+                                var roles = user.Role;
+                                var rolesStr = string.Join(",", roles);
+
+                                string color = "bg-secondary";
+                                if (roles.Contains("Admin"))
+                                {
+                                    color = "bg-danger";
+                                    ;                               }
+                                else if(roles.Contains("Chef"))
+                                {
+                                    color = "bg-primary";
+                                }
+                                else if(roles.Contains("User"))
+                                {
+                                    color = "bg-warning text-dark";
+                                }
+
+                                <span class="badge rounded-pill @color">@rolesStr</span>
+                            }
+                        </td>
                         <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
                         <td>
                             <a href="#"><i class="bi bi-pencil-square"></i></a>
