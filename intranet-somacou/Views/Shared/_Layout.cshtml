@@ -49,12 +49,39 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="log">
-                        <a class="account-log me-2" href="~/Account/Create">S'inscrire &nbsp;<i class="bi bi-person"></i></a>
-                    </li>
-                    <li class="log">
-                        <a class="account-log me-2" href="~/Account/Login">Se Connecter &nbsp;<i class="bi bi-box-arrow-in-right"></i></a>
-                    </li>
+                    @if (Session["UserId"] != null)
+                    {
+                        if (Session["Role"].ToString() == "Admin")
+                        {
+                            <li class="log">
+                                <span class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @(Session["FullName"] + " " + "(Admin)")
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/Users/Index">Users</a></li>  
+                                </ul>
+                    
+                            </li>
+                        }
+                        else if (Session["Role"].ToString() == "Chef")
+                        {
+
+                            <li class="log">@(Session["FullName"] + " " + "(Chef)")</li>
+                        }
+                        else if (Session["Role"].ToString() == "User")
+                        {
+                            <li class="log">@(Session["FullName"] + " " + "(User)")</li>
+                        }
+                    }
+                    else
+                    {
+                        <li class="log">
+                            <a class="account-log me-2" href="~/Account/Create">S'inscrire &nbsp;<i class="bi bi-person"></i></a>
+                        </li>
+                        <li class="log">
+                            <a class="account-log me-2" href="~/Account/Login">Se Connecter &nbsp;<i class="bi bi-box-arrow-in-right"></i></a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
