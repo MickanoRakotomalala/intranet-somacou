@@ -84,7 +84,21 @@ namespace intranet_somacou.Controllers
 
         public ActionResult Logout()
         {
+            Session.Clear();
+            Session.Abandon();
             Session.Remove("UserId");
+
+            // Supprimer les cookies
+            if (Request.Cookies["ASP.NET_SessionId"] != null)
+            {
+                var sessionCookie = new HttpCookie("ASP.NET_SessionId")
+                {
+                    Expires = DateTime.Now.AddHours(-1),
+                    HttpOnly = true
+                };
+                Response.Cookies.Add(sessionCookie);
+            }
+
             return RedirectToAction("Login", "Account");
         }
     }
