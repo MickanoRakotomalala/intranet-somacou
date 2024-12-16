@@ -81,5 +81,11 @@ namespace intranet_somacou.Controllers
             }
                 return View(loginDto);
         }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("UserId");
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

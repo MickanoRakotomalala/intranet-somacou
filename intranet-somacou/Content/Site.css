@@ -33,7 +33,13 @@
     color:white;
 }
 
-.navbar-nav li{
+.navbar-nav .Session {
+    display: flex;
+    justify-content:flex-end;
+    color: white;
+}
+
+.navbar-nav .nav-item {
     margin-left:10px;
 }
 
