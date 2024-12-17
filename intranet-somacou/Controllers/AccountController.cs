@@ -34,10 +34,10 @@ namespace intranet_somacou.Controllers
                     context.SaveChanges();
                 }
 
-                TempData["SuccessMessage"] = "Inscription avec succés";
+                TempData["SuccessMessage"] = "Inscription avec succès";
                 return RedirectToAction("Register", "Account");
             }
-            TempData["ErrorMessage"] = "Model invalid";
+            TempData["ErrorMessage"] = "Formulaire invalide";
             return View(registerDto); //si le modèle est invalide
         }
 
@@ -99,6 +99,12 @@ namespace intranet_somacou.Controllers
             }
 
             return RedirectToAction("Login", "Account");
+        }
+
+        [Authorize]
+        public ActionResult Profile(ProfileDto profileDto)
+        {
+            return View(profileDto);
         }
     }
 }
