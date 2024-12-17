@@ -61,27 +61,45 @@
                                     @(Session["FullName"] + " " + "(Admin)")
                                 </span>
                                 <ul class="dropdown-menu dropdown-menu-end mt-4">
-                                    <li><a class="dropdown-item" href="/Users/Index"><i class="bi bi-people me-2"></i>Users</a></li>  
+                                    <li><a class="dropdown-item" href="/Users/Index"><i class="bi bi-people me-2"></i>Users</a></li>
                                     <li><a class="dropdown-item" href="/Users/Index"><i class="bi bi-person-circle me-2"></i>Profile</a></li>
-                                    <li><hr class="dropdown-divider"/></li>
-                                    <li><a class="dropdown-item" href="/Account/Login"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/Account/Logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                                 </ul>
                             </li>
                         }
                         else if (Session["Role"].ToString() == "Chef")
                         {
 
-                            <li class="log">@(Session["FullName"] + " " + "(Chef)")</li>
+                            <li class="Session dropdown">
+                                <span class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    @(Session["FullName"] + " " + "(Chef)")
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-end mt-4">
+                                    <li><a class="dropdown-item" href="/Users/Index"><i class="bi bi-person-circle me-2"></i>Profile</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/Account/Logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                                </ul>
+                            </li>
                         }
                         else if (Session["Role"].ToString() == "User")
                         {
-                            <li class="log">@(Session["FullName"] + " " + "(User)")</li>
+                            <li class="Session dropdown">
+                                <span class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    @(Session["FullName"] + " " + "(Admin)")
+                                </span>
+                                <ul class="dropdown-menu dropdown-menu-end mt-4">
+                                    <li><a class="dropdown-item" href="/Users/Index"><i class="bi bi-person-circle me-2"></i>Profile</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/Account/Logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                                </ul>
+                            </li>
                         }
                     }
                     else
                     {
                         <li class="log">
-                            <a class="account-log me-2" href="~/Account/Create">S'inscrire &nbsp;<i class="bi bi-person"></i></a>
+                            <a class="account-log me-2" href="~/Account/Register">S'inscrire &nbsp;<i class="bi bi-person"></i></a>
                         </li>
                         <li class="log">
                             <a class="account-log me-2" href="~/Account/Login">Se Connecter &nbsp;<i class="bi bi-box-arrow-in-right"></i></a>

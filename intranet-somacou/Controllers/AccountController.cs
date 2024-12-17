@@ -17,28 +17,28 @@ namespace intranet_somacou.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(CreateUser createUser)
+        public ActionResult Register(RegisterDto registerDto)
         {
             if (ModelState.IsValid)
             {
                 using (var context = new AppDbContext())
                 {
-                    createUser.CreatedAt = DateTime.Now;
-                    context.Users.Add(createUser);
+                    registerDto.CreatedAt = DateTime.Now;
+                    context.Users.Add(registerDto);
                     context.SaveChanges();
                 }
 
                 TempData["SuccessMessage"] = "Inscription avec succés";
-                return RedirectToAction("Index", "Users");
+                return RedirectToAction("Register", "Account");
             }
             TempData["ErrorMessage"] = "Model invalid";
-            return View(createUser); //si le modèle est invalide
+            return View(registerDto); //si le modèle est invalide
         }
 
         private AppDbContext db = new AppDbContext();
@@ -86,14 +86,13 @@ namespace intranet_somacou.Controllers
         {
             Session.Clear();
             Session.Abandon();
-            Session.Remove("UserId");
 
-            // Supprimer les cookies
+            // 2. Supprimer le cookie ASP.NET_SessionId
             if (Request.Cookies["ASP.NET_SessionId"] != null)
             {
                 var sessionCookie = new HttpCookie("ASP.NET_SessionId")
                 {
-                    Expires = DateTime.Now.AddHours(-1),
+                    Expires = DateTime.Now.AddDays(-1), // Expire immédiatement
                     HttpOnly = true
                 };
                 Response.Cookies.Add(sessionCookie);

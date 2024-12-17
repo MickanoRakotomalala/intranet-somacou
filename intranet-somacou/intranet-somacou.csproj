@@ -151,9 +151,13 @@
     <Compile Include="Migrations\202412111313178_CreateUser-2.Designer.cs">
       <DependentUpon>202412111313178_CreateUser-2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202412170851412_RegisterDto.cs" />
+    <Compile Include="Migrations\202412170851412_RegisterDto.Designer.cs">
+      <DependentUpon>202412170851412_RegisterDto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
-    <Compile Include="Models\CreateUser.cs" />
+    <Compile Include="Models\RegisterDto.cs" />
     <Compile Include="Models\LoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,7 +238,7 @@
     <Content Include="Views\About\Magasin.cshtml" />
     <Content Include="Views\About\Usine.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
@@ -271,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202412111313178_CreateUser-2.resx">
       <DependentUpon>202412111313178_CreateUser-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412170851412_RegisterDto.resx">
+      <DependentUpon>202412170851412_RegisterDto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

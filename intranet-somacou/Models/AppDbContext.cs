@@ -10,6 +10,6 @@ namespace intranet_somacou.Models
     public class AppDbContext:DbContext
     {
         public AppDbContext() : base("DefaultConnection") { }
-        public DbSet <CreateUser> Users { get;set; }
+        public DbSet <RegisterDto> Users { get;set; }
     }
 }

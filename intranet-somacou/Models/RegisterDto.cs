@@ -6,7 +6,7 @@ using System.Web;
 
 namespace intranet_somacou.Models
 {
-    public class CreateUser
+    public class RegisterDto
     {
         public int  Id { get; set; }
 
