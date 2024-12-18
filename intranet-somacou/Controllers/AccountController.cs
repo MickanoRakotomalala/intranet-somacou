@@ -1,6 +1,7 @@
 ﻿using intranet_somacou.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -101,10 +102,20 @@ namespace intranet_somacou.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        [Authorize]
-        public ActionResult Profile(ProfileDto profileDto)
+        [HttpGet]
+        public ActionResult Profile()
         {
-            return View(profileDto);
+            if (Session["UserId"] != null) 
+            { 
+                int userId = (int)Session["UserId"];
+                var user = db.Users.Find(userId);
+
+                if(user != null)
+                {
+                    return View(user);
+                }
+            }
+            return RedirectToAction("Login", "Account");
         }
     }
 }

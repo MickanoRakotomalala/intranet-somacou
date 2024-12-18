@@ -157,7 +157,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
-    <Compile Include="Models\ProfileDto.cs" />
     <Compile Include="Models\RegisterDto.cs" />
     <Compile Include="Models\LoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
