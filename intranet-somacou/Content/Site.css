@@ -335,6 +335,21 @@ footer .col-md-6 ul li a {
     border-radius:10px;
 }
 
+/*Profile*/
+.container .Profile {
+    background-color: #F16476;
+    color:white;
+    border-radius:10px;
+}
+
+.container .Profile .col-sm-3{
+    font-weight:700;
+    font-size:18px;
+}
+.container .Profile h2{
+    color:white;
+}
+
 /*Responsive*/
 @media(max-width:1200px){
     /*navbar*/
