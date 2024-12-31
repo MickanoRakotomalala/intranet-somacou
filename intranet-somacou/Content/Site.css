@@ -277,7 +277,7 @@ footer .col-md-6 ul li a {
     display:flex;
     justify-content:center;
     color: #F15858;
-    font-weight:900;
+    font-weight:900;x²
 }
 
 /*menu form each title*/
@@ -335,11 +335,15 @@ footer .col-md-6 ul li a {
     border-radius:10px;
 }
 
+.paginationUsers {
+    margin-top:10px;
+}
+
 /*Profile*/
 .container .Profile {
     background-color: #F16476;
-    color:white;
-    border-radius:10px;
+    color: white;
+    border-radius: 10px;
 }
 
 .container .Profile .col-sm-3{

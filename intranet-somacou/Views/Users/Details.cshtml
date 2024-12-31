@@ -1,0 +1,127 @@
+﻿@model intranet_somacou.Models.RegisterDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row UsersDetails">
+    <div class="col-lg-6 mx-auto rounded border p-4">
+        <h2 class="text-center mb-3">Détails Utilisateurs</h2>
+        <hr />
+
+        @*@if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>@TempData["ErrorMessage"]</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            else if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@TempData["SuccessMessage"]</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }*@
+
+        <input type="hidden" name="Id" value="1">
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Name :</div>
+            <div class="col-sm-8" name="Name" id="Name">@Model.Name</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Email :</div>
+            <div class="col-sm-8" name="Email" id="Email">@Model.Email</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Phone :</div>
+            <div class="col-sm-8" name="Phone" id="Phone">@Model.Phone</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Address :</div>
+            <div class="col-sm-8" name="Address" id="Address">@Model.Address</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Poste :</div>
+            <div class="col-sm-8" name="Poste" id="Poste">@Model.Poste</div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Role :</div>
+            <div class="col-sm-8" name="Role" id="Role">
+                @{
+                    var roles = Model.Role;
+                    var rolesStr = string.Join(",", roles);
+
+                    string color = "bg-secondary";
+                    if (roles.Contains("Admin"))
+                    {
+                        color = "bg-danger";
+                        ;
+                    }
+                    else if (roles.Contains("Chef"))
+                    {
+                        color = "bg-primary";
+                    }
+                    else if (roles.Contains("User"))
+                    {
+                        color = "bg-warning text-dark";
+                    }
+
+                    <span class="badge rounded-pill @color">@rolesStr</span>
+
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#EditRolemodal">
+                        <img src="~/Assets/edit.png" style="width:22px; height:22px">
+                    </button>
+                }
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-sm-4" style="font-weight:bold">Created At</div>
+            <div class="col-sm-8">@Model.CreatedAt</div>
+        </div>
+
+        <hr />
+
+        <div>
+            <a class="btn btn-primary" href="/Users/Index">Back</a>
+
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal-->
+<div class="modal fade" id="EditRolemodal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fs-5">Editer le Rôle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form method="get" action="/Users/Details">
+                    <input type="hidden" value="@Model.Id" name="id" />
+                    <label style="font-weight:bold; color:darkcyan">Sélectionner un Rôle :</label>
+                    <select class="form-select mb-2" name="Role" id="Role">
+                        @foreach (var role in ViewBag.Roles as List<string>)
+                            {
+                                <option value="@role" @(role == Model.Role ? "selected" : "")>@role</option>
+                            }
+                    </select>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

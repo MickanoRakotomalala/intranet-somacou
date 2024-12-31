@@ -168,6 +168,7 @@
     </Content>
     <Content Include="Assets\chicago.jpg" />
     <Content Include="Assets\DSI.png" />
+    <Content Include="Assets\edit.png" />
     <Content Include="Assets\HRM.png" />
     <Content Include="Assets\la.jpg" />
     <Content Include="Assets\lit.png" />
@@ -241,6 +242,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

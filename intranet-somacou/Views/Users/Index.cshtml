@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<intranet_somacou.Models.RegisterDto>
+
 @{
     ViewBag.Title = "Users";
 }
@@ -29,7 +30,7 @@
             </thead>
 
             <tbody>
-                @foreach(var user in Model)
+                @foreach (var user in Model)
                 {
                     <tr>
                         <td>@user.Name</td>
@@ -39,7 +40,7 @@
                         <td>@user.Address</td>
                         <td>@user.Poste</td>
                         <td>
-                            @{ 
+                            @{
                                 var roles = user.Role;
                                 var rolesStr = string.Join(",", roles);
 
@@ -47,12 +48,13 @@
                                 if (roles.Contains("Admin"))
                                 {
                                     color = "bg-danger";
-                                    ;                               }
-                                else if(roles.Contains("Chef"))
+                                    ;
+                                }
+                                else if (roles.Contains("Chef"))
                                 {
                                     color = "bg-primary";
                                 }
-                                else if(roles.Contains("User"))
+                                else if (roles.Contains("User"))
                                 {
                                     color = "bg-warning text-dark";
                                 }
@@ -62,12 +64,54 @@
                         </td>
                         <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
                         <td>
-                            <a href="#"><i class="bi bi-pencil-square"></i></a>
+                            <a href="/Users/Details/@user.Id"><i class="bi bi-pencil-square"></i></a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+
+
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+       <p>Page @ViewBag.CurrentPage de @ViewBag.TotalPages</p>
     </div>
 </div>
+
+        <nav aria-label="Page navigation" class="container paginationUsers">
+            <ul class="pagination">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })">Précédent</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">Précédent</span>
+                    </li>
+                }
+
+                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                {
+                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    </li>
+                }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })">Suivant</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">Suivant</span>
+                    </li>
+                }
+            </ul>
+        </nav>
 
