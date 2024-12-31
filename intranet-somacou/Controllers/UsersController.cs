@@ -40,12 +40,34 @@ namespace intranet_somacou.Controllers
             var user = _context.Users.FirstOrDefault(u => u.Id == id.Value);
             if (user == null)
             {
-                TempData["ErrorMessage"] = "L'utilisateur demandé n'existe pas.";
+                TempData["ErrorUser"] = "L'utilisateur demandé n'existe pas.";
                 return RedirectToAction("Index");
             }
 
             ViewBag.Roles = new List<string> { "Admin", "Chef", "User" };
             return View(user);  
+        }
+
+        public ActionResult UpdateRole(int? id, string newRole)
+        {
+            if (!id.HasValue || string.IsNullOrWhiteSpace(newRole))
+            {
+                TempData["ErrorMessage"] = "ID utilisateur ou rôle manquant.";
+                return RedirectToAction("Index");
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == id.Value);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "Utilisateur introuvable.";
+                return RedirectToAction("Index");
+            }
+
+            user.Role = newRole;
+            _context.SaveChanges();
+
+            TempData["SuccessMessage"] = "Le rôle a été mis à jour avec succès.";
+            return RedirectToAction("Details", new {id = user.Id});
         }
     }
 }
