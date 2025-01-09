@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -37,7 +38,10 @@ namespace intranet_somacou.Controllers
                 }
 
                 TempData["SuccessMessage"] = "Inscription avec succès";
-                return RedirectToAction("Register", "Account");
+                Session["UserId"] = registerDto.Id;
+                Session["FullName"] = registerDto.Name;
+                Session["Role"] = registerDto.Role;
+                return RedirectToAction("Index", "Home");
             }
             TempData["ErrorMessage"] = "Formulaire invalide";
             return View(registerDto); //si le modèle est invalide
