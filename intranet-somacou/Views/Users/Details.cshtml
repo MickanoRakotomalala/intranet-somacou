@@ -9,24 +9,24 @@
         <hr />
 
         @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>@TempData["ErrorMessage"]</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            }
-            else if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>@TempData["SuccessMessage"]</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            }
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>@TempData["ErrorMessage"]</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        else if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@TempData["SuccessMessage"]</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
 
         <input type="hidden" name="Id" value="1">
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Name :</div>
+            <div class="col-sm-4" style="font-weight:bold">Nom :</div>
             <div class="col-sm-8" name="Name" id="Name">@Model.Name</div>
         </div>
 
@@ -36,12 +36,12 @@
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Phone :</div>
+            <div class="col-sm-4" style="font-weight:bold">Téléphone :</div>
             <div class="col-sm-8" name="Phone" id="Phone">@Model.Phone</div>
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Address :</div>
+            <div class="col-sm-4" style="font-weight:bold">Adresse :</div>
             <div class="col-sm-8" name="Address" id="Address">@Model.Address</div>
         </div>
 
@@ -51,7 +51,7 @@
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Role :</div>
+            <div class="col-sm-4" style="font-weight:bold">Rôle :</div>
             <div class="col-sm-8" name="Role" id="Role">
                 @{
                     var roles = Model.Role;
@@ -82,17 +82,17 @@
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Created At</div>
+            <div class="col-sm-4" style="font-weight:bold">Date :</div>
             <div class="col-sm-8">@Model.CreatedAt</div>
         </div>
 
         <hr />
 
         <div>
-            <a class="btn btn-primary" href="/Users/Index">Back</a>
+            <a class="btn btn-primary" href="/Users/Index">Retour</a>
 
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal">
-                Delete
+                Supprimer
             </button>
         </div>
     </div>
@@ -114,12 +114,35 @@
                     <label style="font-weight:bold; color:darkcyan">Sélectionner un Rôle :</label>
                     <select class="form-select mb-2" name="newRole" id="newRole">
                         @foreach (var role in ViewBag.Roles as List<string>)
-                            {
-                                <option value="@role" @(role == Model.Role ? "selected" : "")>@role</option>
-                            }
+                        {
+                            <option value="@role" @(role == Model.Role ? "selected" : "")>@role</option>
+                        }
                     </select>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Appliquer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="deletemodal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fs-5">Supprimer un Utilisateur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/Users/DeleteAccount" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <p>Vous êtes sûre de supprimer cet Utilisateur ?</p>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Supprimer</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
                 </form>
             </div>
         </div>

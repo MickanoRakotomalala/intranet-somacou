@@ -48,6 +48,8 @@ namespace intranet_somacou.Controllers
             return View(user);  
         }
 
+
+        [HttpPost]
         public ActionResult UpdateRole(int? id, string newRole)
         {
             if (!id.HasValue || string.IsNullOrWhiteSpace(newRole))
@@ -68,6 +70,24 @@ namespace intranet_somacou.Controllers
 
             TempData["SuccessMessage"] = "Le rôle a été mis à jour avec succès.";
             return RedirectToAction("Details", new {id = user.Id});
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAccount(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "ID utilisateur manquant");
+            }
+            var user = _context.Users.Find(id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+            }
+
+            TempData["SuccessMessage"] = "Utilisateur supprimé avec succès";
+            return RedirectToAction("Index","Users");
         }
     }
 }
