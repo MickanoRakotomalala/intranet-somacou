@@ -33,8 +33,6 @@ namespace intranet_somacou.Models
         [StringLength(50,ErrorMessage = "Le poste ne peut pas dépasser de 50 caractères.")]
         public string Poste {  get; set; }
 
-        [Required(ErrorMessage = "Le Rôle est obligatoire.")]
-        [StringLength(30,ErrorMessage = "Le rôle ne peut pas dépasser de 30 caractères.")]
         public string Role {  get; set; }
 
         [Required(ErrorMessage = "Le mot de passe est obligatoire.")]

@@ -30,6 +30,7 @@ namespace intranet_somacou.Controllers
             {
                 using (var context = new AppDbContext())
                 {
+                    registerDto.Role = "User";
                     registerDto.CreatedAt = DateTime.Now;
                     context.Users.Add(registerDto);
                     context.SaveChanges();
