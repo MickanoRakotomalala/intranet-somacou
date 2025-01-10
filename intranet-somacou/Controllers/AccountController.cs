@@ -122,5 +122,31 @@ namespace intranet_somacou.Controllers
             }
             return RedirectToAction("Login", "Account");
         }
+
+        [HttpPost]
+        public ActionResult EditProfile(int id, RegisterDto registerDto)
+        {
+            if (Session["UserId"] != null)
+            {
+                int userId = (int)Session["UserId"];
+                var user = db.Users.Find(userId);
+
+                if (user != null)
+                {
+                    registerDto.Name = user.Name;
+                    registerDto.Matricule = user.Matricule;
+                    registerDto.Email = user.Email;
+                    registerDto.Address = user.Address;
+                    registerDto.Poste = user.Poste;
+                    registerDto.Phone = user.Phone;
+                    db.SaveChanges();
+                }
+                TempData["SuccessMessage"] = "La modification s'est réalisé avec succès";
+                return RedirectToAction("Profile", "Account");
+            }
+
+            TempData["ErrorMessage"] = "Erreur de modification";
+            return RedirectToAction("Profile", "Account");
+        }
     }
 }
