@@ -1,4 +1,6 @@
-﻿using intranet_somacou.Models;
+﻿using intranet_somacou.Migrations;
+using intranet_somacou.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,6 +10,7 @@ using System.Web;
 using System.Web.ModelBinding;
 using System.Web.Mvc;
 using System.Web.Security;
+using RegisterDto = intranet_somacou.Models.RegisterDto;
 
 namespace intranet_somacou.Controllers
 {
@@ -124,7 +127,7 @@ namespace intranet_somacou.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProfile(int id, RegisterDto registerDto)
+        public ActionResult EditProfile(RegisterDto registerDto)
         {
             if (Session["UserId"] != null)
             {

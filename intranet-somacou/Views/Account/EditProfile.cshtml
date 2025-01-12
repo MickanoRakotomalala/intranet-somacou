@@ -2,12 +2,11 @@
 @{
     ViewBag.Title = "EditProfile";
 }
-
-<main>
     <div class="container-fluid">
         <div class="offset-lg-3 col-lg-6 offset-lg-3 createUser">
             <form action="/Account/EditProfile" method="post">
                 <h3>Mettre à jour mon Profil</h3>
+                <input type="hidden" name="Id" value="@Model.Id" />
                 <input type="text" name="name" id="Name" placeholder="Nom" class="form-control" value="@Model.Name" required />
                 <input type="number" name="Matricule" id="Matricule" placeholder="Matricule" class="form-control" value="@Model.Matricule" required />
                 <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" value="@Model.Email" required />
@@ -27,6 +26,4 @@
                 <Button type="submit" class="btn btn-sm btn-outline-success">Sauvegarder</Button>
             </form>
         </div>
-
     </div>
-</main>
