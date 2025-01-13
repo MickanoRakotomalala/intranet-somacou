@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.ModelBinding;
 using System.Web.Mvc;
 using System.Web.Security;
+using PasswordDto = intranet_somacou.Models.PasswordDto;
 using RegisterDto = intranet_somacou.Models.RegisterDto;
 
 namespace intranet_somacou.Controllers
@@ -153,7 +154,13 @@ namespace intranet_somacou.Controllers
             return RedirectToAction("Profile", "Account");
         }
 
-        public ActionResult Password(RegisterDto registerDto)
+        public ActionResult Password()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Password(int id,PasswordDto passwordDto)
         {
             if (Session["UserId"] != null)
             { 
@@ -162,7 +169,10 @@ namespace intranet_somacou.Controllers
 
                 if (user != null)
                 {
-                        user.Password = registerDto.Password;
+                    if (user.Password == passwordDto.CurrentPassword && passwordDto.NewPassword == passwordDto.ConfirmPassword)
+                    { 
+                        user.Password = passwordDto.NewPassword;
+                    }
                 }
                 TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
                 return RedirectToAction("Profile", "Account");

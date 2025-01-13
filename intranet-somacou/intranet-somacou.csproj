@@ -159,8 +159,17 @@
     <Compile Include="Migrations\202501091243329_UpdateRegisterDto.Designer.cs">
       <DependentUpon>202501091243329_UpdateRegisterDto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501131409034_PasswordDto.cs" />
+    <Compile Include="Migrations\202501131409034_PasswordDto.Designer.cs">
+      <DependentUpon>202501131409034_PasswordDto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202501131437180_pwd.cs" />
+    <Compile Include="Migrations\202501131437180_pwd.Designer.cs">
+      <DependentUpon>202501131437180_pwd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\PasswordDto.cs" />
     <Compile Include="Models\RegisterDto.cs" />
     <Compile Include="Models\LoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +256,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Account\Password.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -288,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501091243329_UpdateRegisterDto.resx">
       <DependentUpon>202501091243329_UpdateRegisterDto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501131409034_PasswordDto.resx">
+      <DependentUpon>202501131409034_PasswordDto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501131437180_pwd.resx">
+      <DependentUpon>202501131437180_pwd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

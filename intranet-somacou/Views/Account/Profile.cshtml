@@ -59,9 +59,12 @@
             <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditProfileModal">
                 Editer Profil
             </button>
-            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#EditMotdePasse">
+            @*<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#EditMotdePasse">
                 Editer Mot de passe
-            </button>
+            </button>*@
+            <a class="btn btn-outline-warning" href="/Account/Password/@Model.Id">
+                Editer Mot de passe
+            </a>
         </div>
     </div>
 </div>
