@@ -160,7 +160,7 @@ namespace intranet_somacou.Controllers
         }
 
         [HttpPost]
-        public ActionResult Password(int id,PasswordDto passwordDto)
+        public ActionResult Password(PasswordDto passwordDto)
         {
             if (Session["UserId"] != null)
             { 
@@ -169,15 +169,20 @@ namespace intranet_somacou.Controllers
 
                 if (user != null)
                 {
-                    if (user.Password == passwordDto.CurrentPassword && passwordDto.NewPassword == passwordDto.ConfirmPassword)
+                    if (user.Password == passwordDto.CurrentPassword)
                     { 
-                        user.Password = passwordDto.NewPassword;
+                        if(passwordDto.NewPassword == passwordDto.ConfirmPassword)
+                        {
+                            user.Password = passwordDto.NewPassword;
+                            db.SaveChanges();
+                        }
+                    TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
+                    return RedirectToAction("Password", "Account");
                     }
+                TempData["ErrorMessage"] = "Erreur de modification";
+                return RedirectToAction("Password", "Account");
                 }
-                TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
-                return RedirectToAction("Profile", "Account");
             }
-            TempData["ErrorMessage"] = "Erreur de modification";
             return RedirectToAction("Profile", "Account");
         }
     }
