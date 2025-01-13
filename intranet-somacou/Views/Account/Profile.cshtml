@@ -47,7 +47,7 @@
             <div class="col-sm-9" name="Poste">@Model.Poste</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Role :</div>
+            <div class="col-sm-3">Rôle :</div>
             <div class="col-sm-9" name="Role">@Model.Role</div>
         </div>
         <div class="row mb-2">
@@ -56,9 +56,109 @@
         </div>
         <hr />
         <div>
-            <a class="btn btn-outline-light" href="/Account/EditProfile">Editer Profil</a>
-            <a class="btn btn-outline-warning" href="#">Editer Mot de passe</a>
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditProfileModal">
+                Editer Profil
+            </button>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#EditMotdePasse">
+                Editer Mot de passe
+            </button>
         </div>
     </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="EditProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-white" style="background-color:#F16476;">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5">Editer mon Profil</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ProfilUpdate">
+                <form action="/Account/Profile" method="post">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Nom :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name" id="Name" placeholder="Nom" class="form-control" value="@Model.Name" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Matricule :</label>
+                        <div class="col-sm-8">
+                            <input type="number" name="Matricule" id="Matricule" placeholder="Matricule" class="form-control" value="@Model.Matricule" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Email :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" value="@Model.Email" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Téléphone :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="phone" id="Phone" placeholder="Phone" class="form-control" value="@Model.Phone" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Adresse :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="Address" id="Address" placeholder="Adresse" class="form-control" value="@Model.Address" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Poste :</label>
+                        <div class="col-sm-8">
+                            <select name="Poste" class="form-control" id="Poste">
+                                @{ foreach (var poste in ViewBag.Poste)
+                                    {
+                                        <option value="@poste" @(poste == Model.Poste ? "selected" : "")>@poste</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary">Sauvegarder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="EditMotdePasse" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content text-white" style="background-color:#F16476;">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5">Modifier le Mot de passe</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ProfilUpdate">
+                <form action="/Account/Password" method="post">
+                    <input type="hidden" name="Id" value="@Model.Id" />
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Ancien :</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="Password" id="Password" class="form-control" value="@Model.Password" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Nouveau :</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="NewPwd" id="NewPwd" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Confirmation :</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="ConfirmPwd" id="ConfirmPwd" class="form-control" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary">Appliquer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

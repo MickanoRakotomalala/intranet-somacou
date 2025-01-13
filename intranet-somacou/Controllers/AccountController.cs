@@ -16,6 +16,8 @@ namespace intranet_somacou.Controllers
 {
     public class AccountController : Controller
     {
+        private AppDbContext db = new AppDbContext();
+
         // GET: Account
         public ActionResult Index()
         {
@@ -50,7 +52,6 @@ namespace intranet_somacou.Controllers
             return View(registerDto); //si le modèle est invalide
         }
 
-        private AppDbContext db = new AppDbContext();
 
         [HttpGet]
         public ActionResult Login()
@@ -120,6 +121,7 @@ namespace intranet_somacou.Controllers
 
                 if(user != null)
                 {
+                    ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
                     return View(user);
                 }
             }
@@ -127,7 +129,7 @@ namespace intranet_somacou.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProfile(RegisterDto registerDto)
+        public ActionResult Profile(RegisterDto registerDto)
         {
             if (Session["UserId"] != null)
             {
@@ -136,18 +138,35 @@ namespace intranet_somacou.Controllers
 
                 if (user != null)
                 {
-                    registerDto.Name = user.Name;
-                    registerDto.Matricule = user.Matricule;
-                    registerDto.Email = user.Email;
-                    registerDto.Address = user.Address;
-                    registerDto.Poste = user.Poste;
-                    registerDto.Phone = user.Phone;
-                    db.SaveChanges();
+                        user.Name = registerDto.Name;
+                        user.Matricule = registerDto.Matricule;
+                        user.Email = registerDto.Email;
+                        user.Address = registerDto.Address;
+                        user.Poste = registerDto.Poste;
+                        user.Phone = registerDto.Phone;
+                        db.SaveChanges();
                 }
                 TempData["SuccessMessage"] = "La modification s'est réalisé avec succès";
                 return RedirectToAction("Profile", "Account");
             }
+            TempData["ErrorMessage"] = "Erreur de modification";
+            return RedirectToAction("Profile", "Account");
+        }
 
+        public ActionResult Password(RegisterDto registerDto)
+        {
+            if (Session["UserId"] != null)
+            { 
+                int userId = (int)Session["UserId"];
+                var user = db.Users.Find(userId);
+
+                if (user != null)
+                {
+                        user.Password = registerDto.Password;
+                }
+                TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
+                return RedirectToAction("Profile", "Account");
+            }
             TempData["ErrorMessage"] = "Erreur de modification";
             return RedirectToAction("Profile", "Account");
         }
