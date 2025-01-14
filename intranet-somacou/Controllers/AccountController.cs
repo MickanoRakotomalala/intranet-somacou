@@ -154,14 +154,26 @@ namespace intranet_somacou.Controllers
             return RedirectToAction("Profile", "Account");
         }
 
+        [HttpGet]
         public ActionResult Password()
         {
+            if (Session["UserId"] != null)
+            {
+                int userId = (int)Session["UserId"];
+                var user = db.Users.Find(userId);
+
+                if (user != null)
+                {
+                    return View();
+                }
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult Password(PasswordDto passwordDto)
         {
+
             if (Session["UserId"] != null)
             { 
                 int userId = (int)Session["UserId"];
@@ -169,18 +181,18 @@ namespace intranet_somacou.Controllers
 
                 if (user != null)
                 {
-                    if (user.Password == passwordDto.CurrentPassword)
+                    if (user.Password == passwordDto.CurrentPassword && passwordDto.NewPassword == passwordDto.ConfirmPassword)
                     { 
-                        if(passwordDto.NewPassword == passwordDto.ConfirmPassword)
-                        {
-                            user.Password = passwordDto.NewPassword;
-                            db.SaveChanges();
-                        }
-                    TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
-                    return RedirectToAction("Password", "Account");
+                         user.Password = passwordDto.NewPassword;
+                         db.SaveChanges();
+                         TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
+                         return RedirectToAction("Profile", "Account");
                     }
-                TempData["ErrorMessage"] = "Erreur de modification";
-                return RedirectToAction("Password", "Account");
+                    else if (!ModelState.IsValid) 
+                    {
+                        TempData["ErrorMessage"] = "Erreur de modification";
+                        return View(passwordDto);    
+                    }
                 }
             }
             return RedirectToAction("Profile", "Account");
