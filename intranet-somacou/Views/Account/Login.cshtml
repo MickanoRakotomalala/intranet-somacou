@@ -15,8 +15,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             }
-            <input class="form-control" type="email" placeholder="Entrer votre Email" name="Email" />
-            <input class="form-control" type="password" placeholder="Entrer votre Mot de passe" name="Password" />
+            <input class="form-control" type="email" placeholder="Entrer votre Email" name="Email" id="Email" value="@Request.Form["Email"]"/>
+            <input class="form-control" type="password" placeholder="Entrer votre Mot de passe" name="Password" id="Password" value="@Request.Form["Password"]"/>
 
             <button type="submit" class="btn btn-outline-primary mt-3">Se connecter</button>
         </form>

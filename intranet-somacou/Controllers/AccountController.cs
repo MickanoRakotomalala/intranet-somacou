@@ -49,8 +49,11 @@ namespace intranet_somacou.Controllers
                 Session["Role"] = registerDto.Role;
                 return RedirectToAction("Index", "Home");
             }
-            TempData["ErrorMessage"] = "Formulaire invalide";
-            return View(registerDto); //si le modèle est invalide
+            else
+            {
+                TempData["ErrorMessage"] = "Formulaire invalide";
+                return View(registerDto); //si le modèle est invalide
+            }
         }
 
 
@@ -89,6 +92,7 @@ namespace intranet_somacou.Controllers
             else
             {
                     ViewBag.ErrorMessage = "Les formulaires ne doivent pas être vide.";
+                    return View(loginDto);
             }
                 return View(loginDto);
         }

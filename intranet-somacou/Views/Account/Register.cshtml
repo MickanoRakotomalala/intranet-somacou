@@ -22,9 +22,9 @@
                 </div>
             }
             <h3>Créer un compte</h3>
-                <input type="text" name="name" id="Name" placeholder="Nom" class="form-control" required />
-                <input type="number" name="Matricule" id="Matricule" placeholder="Matricule" class="form-control" required />
-                <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" required />
+                <input type="text" name="Name" id="Name" placeholder="Nom" class="form-control" value="@Request.Form["Name"]" required />
+                <input type="number" name="Matricule" id="Matricule" placeholder="Matricule" class="form-control" value="@Request.Form["Matricule"]" required />
+                <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" value="" required />
                 <input type="text" name="phone" id="Phone" placeholder="Phone" class="form-control" required />
                 <input type="text" name="Address" id="Address" placeholder="Adresse" class="form-control" required />
                 <select name="Poste" class="form-control">
