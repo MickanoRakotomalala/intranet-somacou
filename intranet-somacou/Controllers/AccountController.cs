@@ -54,6 +54,14 @@ namespace intranet_somacou.Controllers
             }
             else
             {
+                foreach(var key in ModelState.Keys)
+                {
+                    var errors = ModelState[key].Errors;
+                    if(errors.Count > 0)
+                    {
+                        ViewData[$"{key}Error"] = errors[0].ErrorMessage;
+                    }
+                }
                 TempData["ErrorMessage"] = "Formulaire invalide";
                 return View(registerDto); //si le modèle est invalide
             }

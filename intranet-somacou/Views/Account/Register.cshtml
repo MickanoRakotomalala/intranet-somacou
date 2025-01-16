@@ -7,37 +7,101 @@
     <div class="container-fluid">
         <div class="offset-lg-3 col-lg-6 offset-lg-3 createUser">
             <form action="/Account/Register" method="post">
-            @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>@TempData["ErrorMessage"]</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>@TempData["ErrorMessage"]</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                <h3>Créer un compte</h3>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Nom</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="Name" id="Name" class="form-control" value="@Request.Form["Name"]" />
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Name")
+                            ? ViewData.ModelState["Name"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
                 </div>
-            }
-            else if (TempData["SuccessMessage"] != null)
-            {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>@TempData["SuccessMessage"]</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Matricule</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="Matricule" id="Matricule" class="form-control" value="@Request.Form["Matricule"]" />
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Matricule")
+                            ? ViewData.ModelState["Matricule"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
                 </div>
-            }
-            <h3>Créer un compte</h3>
-                <input type="text" name="Name" id="Name" placeholder="Nom" class="form-control" value="@Request.Form["Name"]"/>
-                <input type="number" name="Matricule" id="Matricule" placeholder="Matricule" class="form-control" value="@Request.Form["Matricule"]"/>
-                <input type="email" name="Email" id="Email" placeholder="Email" class="form-control" value="@Request.Form["Email"]"/>
-                <input type="text" name="phone" id="Phone" placeholder="Phone" class="form-control" value="@Request.Form["Phone"]"/>
-                <input type="text" name="Address" id="Address" placeholder="Adresse" class="form-control" value="@Request.Form["Address"]"/>
-                <select name="Poste" id="Poste" class="form-control">
-                    <option value="@Request.Form["Poste"]" selected>@Request.Form["Poste"]<option/>     
-                    <option value="DRH">DRH</option>
-                    <option value="RH">RH</option>
-                    <option value="Developer">Developer</option>
-                    <option value="Commercial">Commercial</option>
-                    <option value="Comptable">Comptable</option>
-                    <option value="Gérant Magasin">Gérant Magasin</option>
-                    <option value="Transit">Transit</option>
-                </select>
-                <input type="password" id="Password" name="Password" placeholder="Password" class="form-control" value="@Request.Form["Password"]"/>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="email" name="Email" id="Email" class="form-control" value="@Request.Form["Email"]" />
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Email")
+                            ? ViewData.ModelState["Email"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Phone</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="phone" id="Phone" class="form-control" value="@Request.Form["Phone"]" />
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Phone")
+                            ? ViewData.ModelState["Phone"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Adresse</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="Address" id="Address" class="form-control" value="@Request.Form["Address"]" />
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Address")
+                            ? ViewData.ModelState["Address"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Poste</label>
+                    <div class="col-sm-8">
+                        <select name="Poste" id="Poste" class="form-control">
+                            <option value="@Request.Form["Poste"]" selected>@Request.Form["Poste"]
+                            <option />
+                            <option value="DRH">DRH</option>
+                            <option value="RH">RH</option>
+                            <option value="Developer">Developer</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Comptable">Comptable</option>
+                            <option value="Gérant Magasin">Gérant Magasin</option>
+                            <option value="Transit">Transit</option>
+                        </select>
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Poste")
+                            ? ViewData.ModelState["Poste"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-4 col-form-label">Mot de passe</label>
+                    <div class="col-sm-8">
+                        <input type="password" id="Password" name="Password" class="form-control" value="@Request.Form["Password"]" />
+                        <span class="text-danger">
+                            @(ViewData.ModelState.ContainsKey("Password")
+                            ? ViewData.ModelState["Password"].Errors.FirstOrDefault()?.ErrorMessage
+                            : "")
+                        </span>
+                    </div>
+                </div>
                 <Button type="submit" class="btn btn-sm btn-outline-success">S'inscrire</Button>
             </form>
         </div>

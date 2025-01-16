@@ -15,6 +15,7 @@ namespace intranet_somacou.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Le Matricule est obligatoire.")]
+        [Range(1,int.MaxValue, ErrorMessage = "Nombre positive uniquement")]
         public int Matricule { get; set; }
 
         [Required(ErrorMessage = "L'email est obligatoire.")]

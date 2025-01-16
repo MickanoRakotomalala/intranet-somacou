@@ -304,10 +304,19 @@ footer .col-md-6 ul li a {
 }
 
 .createUser input,
-.createUser select,
-.login input[type=email],input[type=password]{
-    margin-bottom:20px;
-    width:500px;
+.createUser select{
+    font-size:12px;
+}
+
+.createUser label{
+    font-size:14px;
+    color:grey;
+    font-weight:700;
+}
+
+.createUser span {
+    margin-bottom:-20px;
+    font-size:11px;
 }
 
 .createUser h3,

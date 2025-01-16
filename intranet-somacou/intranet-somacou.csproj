@@ -167,6 +167,10 @@
     <Compile Include="Migrations\202501131437180_pwd.Designer.cs">
       <DependentUpon>202501131437180_pwd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501160441439_UpRegisterDto.cs" />
+    <Compile Include="Migrations\202501160441439_UpRegisterDto.Designer.cs">
+      <DependentUpon>202501160441439_UpRegisterDto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\PasswordDto.cs" />
@@ -304,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501131437180_pwd.resx">
       <DependentUpon>202501131437180_pwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501160441439_UpRegisterDto.resx">
+      <DependentUpon>202501160441439_UpRegisterDto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
