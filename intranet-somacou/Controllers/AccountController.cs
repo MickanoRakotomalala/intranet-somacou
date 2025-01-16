@@ -37,10 +37,13 @@ namespace intranet_somacou.Controllers
             {
                 using (var context = new AppDbContext())
                 {
-                    registerDto.Role = "User";
-                    registerDto.CreatedAt = DateTime.Now;
-                    context.Users.Add(registerDto);
-                    context.SaveChanges();
+                    if(registerDto.Name != null && registerDto.Email != null && registerDto.Phone != null && registerDto.Poste != null && registerDto.Password != null)
+                    {
+                        registerDto.Role = "User";
+                        registerDto.CreatedAt = DateTime.Now;
+                        context.Users.Add(registerDto);
+                        context.SaveChanges();
+                    }
                 }
 
                 TempData["SuccessMessage"] = "Inscription avec succès";
