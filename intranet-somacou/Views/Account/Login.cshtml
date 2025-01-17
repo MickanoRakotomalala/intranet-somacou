@@ -5,21 +5,38 @@
 
 
 <div class="container-fluid">
-    <div class="offset-lg-4 col-lg-4 offset-lg-4 offset-md-4 col-md-4 offset-md-4 col-sm-12 login">
-        <form action="/Account/Login" method="post">
+    <div class="col-md-4 mx-auto login">
+        <div class="container-fluid p-3">
             <h3>Se connecter</h3>
-            @if(ViewBag.ErrorMessage != null)
-            {
-                <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">            
-                    <Strong>@ViewBag.ErrorMessage</Strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <form action="/Account/Login" method="post">
+                @if(ViewBag.ErrorMessage != null)
+                {
+                    <div class="row col-md-10 mx-auto alert alert-danger alert-dismissible fade show mb-3" role="alert">            
+                        <Strong>@ViewBag.ErrorMessage</Strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                <div class="row col-md-8 mx-auto mb-3">
+                    <input class="form-control" type="email" placeholder="Entrer votre Email" name="Email" id="Email" value="@Request.Form["Email"]" />
+                    <span class="text-danger">
+                        @(ViewData.ModelState.ContainsKey("Email")
+                                        ? ViewData.ModelState["Email"].Errors.FirstOrDefault()?.ErrorMessage
+                                        : "")
+                    </span>
                 </div>
-            }
-            <input class="form-control" type="email" placeholder="Entrer votre Email" name="Email" id="Email" value="@Request.Form["Email"]"/>
-            <input class="form-control" type="password" placeholder="Entrer votre Mot de passe" name="Password" id="Password" value="@Request.Form["Password"]"/>
-
-            <button type="submit" class="btn btn-outline-primary mt-3">Se connecter</button>
-        </form>
+                <div class="row col-md-8 mx-auto mb-3">
+                    <input class="form-control" type="password" placeholder="Entrer votre Mot de passe" name="Password" id="Password" value="@Request.Form["Password"]" />
+                    <span class="text-danger">
+                        @(ViewData.ModelState.ContainsKey("Password")
+                                        ? ViewData.ModelState["Password"].Errors.FirstOrDefault()?.ErrorMessage
+                                        : "")
+                    </span>
+                </div>
+                <div class="row col-md-6 mx-auto">
+                    <button type="submit" class="btn btn-outline-primary mt-2">Se connecter</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

@@ -93,16 +93,10 @@ namespace intranet_somacou.Controllers
                     Session["Role"] = user.Role;
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
-                    ViewBag.ErrorMessage = "Mot de passe  ou Email invalide.";
-                    ModelState.AddModelError("", "Mot de passe ou Email invalide.");
-                }
-
             }
             else
             {
-                    ViewBag.ErrorMessage = "Les formulaires ne doivent pas être vide.";
+                    ViewBag.ErrorMessage = "Connexion invalide";
                     return View(loginDto);
             }
                 return View(loginDto);

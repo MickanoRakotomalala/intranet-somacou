@@ -308,15 +308,20 @@ footer .col-md-6 ul li a {
     font-size:12px;
 }
 
+.createUser button{
+    float:right;
+}
+
 .createUser label{
-    font-size:14px;
+    font-size:15px;
     color:grey;
     font-weight:700;
 }
 
-.createUser span {
-    margin-bottom:-20px;
-    font-size:11px;
+.createUser span,
+.login span {
+    margin-bottom:-10px;
+    font-size:10px;
 }
 
 .createUser h3,
@@ -325,6 +330,10 @@ footer .col-md-6 ul li a {
     justify-content: center;
     color: #F15858;
     font-weight: 900;
+}
+.login{
+    display:flex;
+    justify-content:center;
 }
 
 .login strong{
@@ -363,9 +372,12 @@ footer .col-md-6 ul li a {
     color:white;
 }
 
-.ProfilUpdate button{
-    float:right;
+.ProfilUpdate {
+    background-color: #F16476;
+    border-radius:16px;
+    height:250px;
 }
+
 
 /*Responsive*/
 @media(max-width:1200px){
