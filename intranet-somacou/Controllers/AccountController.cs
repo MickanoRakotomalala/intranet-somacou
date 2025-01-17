@@ -82,25 +82,35 @@ namespace intranet_somacou.Controllers
         [HttpPost]
         public ActionResult Login(LoginDto loginDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = db.Users.FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
-
-                if(user != null)
-                {
-                    Session["UserId"] = user.Id;
-                    Session["FullName"] = user.Name;
-                    Session["Role"] = user.Role;
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-            else
-            {
-                    ViewBag.ErrorMessage = "Connexion invalide";
-                    return View(loginDto);
-            }
+                ViewBag.ErrorMessage = "Connexion invalide";
                 return View(loginDto);
+            }
+
+            // Recherche de l'utilisateur avec l'email spécifié
+            var user = db.Users.FirstOrDefault(u => u.Email == loginDto.Email);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = "Adresse email incorrecte";
+                return View(loginDto);
+            }
+
+            // Vérification du mot de passe
+            if (user.Password != loginDto.Password)
+            {
+                ViewBag.ErrorMessage = "Mot de passe incorrect";
+                return View(loginDto);
+            }
+
+            // Si l'email et le mot de passe correspondent
+            Session["UserId"] = user.Id;
+            Session["FullName"] = user.Name;
+            Session["Role"] = user.Role;
+            return RedirectToAction("Index", "Home");
         }
+
 
         public ActionResult Logout()
         {
@@ -124,18 +134,19 @@ namespace intranet_somacou.Controllers
         [HttpGet]
         public ActionResult Profile()
         {
-            if (Session["UserId"] != null) 
-            { 
+            if (Session["UserId"] != null)
+            {
                 int userId = (int)Session["UserId"];
                 var user = db.Users.Find(userId);
 
-                if(user != null)
+                if (user != null)
                 {
-                    ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
-                    return View(user);
+                    return RedirectToAction("Profile", "Account");
                 }
             }
-            return RedirectToAction("Login", "Account");
+
+            ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
+            return View();
         }
 
         [HttpPost]
@@ -145,22 +156,22 @@ namespace intranet_somacou.Controllers
             {
                 int userId = (int)Session["UserId"];
                 var user = db.Users.Find(userId);
-
                 if (user != null)
                 {
-                        user.Name = registerDto.Name;
-                        user.Matricule = registerDto.Matricule;
-                        user.Email = registerDto.Email;
-                        user.Address = registerDto.Address;
-                        user.Poste = registerDto.Poste;
-                        user.Phone = registerDto.Phone;
-                        db.SaveChanges();
+                    user.Name = registerDto.Name;
+                    user.Matricule = registerDto.Matricule;
+                    user.Email = registerDto.Email;
+                    user.Address = registerDto.Address;
+                    user.Poste = registerDto.Poste;
+                    user.Phone = registerDto.Phone;
+
+                    db.SaveChanges();
+                    TempData["SuccessMessage"] = "La modification s'est réalisé avec succès";
+                    return RedirectToAction("Profile", "Account");
                 }
-                TempData["SuccessMessage"] = "La modification s'est réalisé avec succès";
-                return RedirectToAction("Profile", "Account");
             }
-            TempData["ErrorMessage"] = "Erreur de modification";
-            return RedirectToAction("Profile", "Account");
+                TempData["ErrorMessage"] = "Erreur de modification";
+                return RedirectToAction("Profile","Account");
         }
 
         [HttpGet]

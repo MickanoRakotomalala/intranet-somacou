@@ -372,12 +372,15 @@ footer .col-md-6 ul li a {
     color:white;
 }
 
-.ProfilUpdate {
+.PasswordUpdate{
     background-color: #F16476;
     border-radius:16px;
-    height:250px;
+    height:300px;
 }
 
+.ProfilUpdate {
+    height: 350px;
+}
 
 /*Responsive*/
 @media(max-width:1200px){
