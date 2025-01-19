@@ -372,13 +372,18 @@ footer .col-md-6 ul li a {
     color:white;
 }
 
-.PasswordUpdate{
+.PasswordUpdate {
+    padding:20px;
     background-color: #F16476;
     border-radius:16px;
-    height:300px;
 }
 
-.ProfilUpdate span {
+.PasswordUpdate h3{
+    margin-bottom:20px;
+}
+
+.ProfilUpdate span,
+.PasswordUpdate span {
     font-size:12px;
 }
 

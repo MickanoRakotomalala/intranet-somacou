@@ -94,7 +94,7 @@ namespace intranet_somacou.Controllers
 
             if (user == null)
             {
-                ViewBag.ErrorMessage = "Adresse email incorrecte";
+                ViewBag.ErrorMessage = "Adresse email introuvable";
                 return View(loginDto);
             }
 
@@ -217,7 +217,7 @@ namespace intranet_somacou.Controllers
                     return View();
                 }
             }
-            return View();
+                    return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -231,21 +231,39 @@ namespace intranet_somacou.Controllers
 
                 if (user != null)
                 {
-                    if (user.Password == passwordDto.CurrentPassword && passwordDto.NewPassword == passwordDto.ConfirmPassword)
-                    { 
-                         user.Password = passwordDto.NewPassword;
-                         db.SaveChanges();
-                         TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisé avec succès";
-                         return RedirectToAction("Profile", "Account");
+                    if (passwordDto.CurrentPassword == null || passwordDto.NewPassword == null || passwordDto.ConfirmPassword == null)
+                    {
+                        TempData["ErrorMessage"] = "Le champ ne doit pas être vide.";
+                        return View(passwordDto);
                     }
-                    else if (!ModelState.IsValid) 
+                    else if(user.Password != passwordDto.CurrentPassword)
                     {
                         TempData["ErrorMessage"] = "Erreur de modification";
-                        return View(passwordDto);    
+                        ViewBag.ErrorMessage = "L'Ancien mot de passe est incorrect.";
+                        return View(passwordDto);
+                    }
+                    else if(passwordDto.NewPassword != passwordDto.ConfirmPassword)
+                    {
+                        TempData["ErrorMessage"] = "Erreur de modification";
+                        return View(passwordDto);
+                    }
+                    else
+                    {
+                         user.Password = passwordDto.NewPassword;
+                         db.SaveChanges();
+                         TempData["SuccessMessage"] = "La modification du mot de passe s'est réalisée avec succès.";
+                         return RedirectToAction("Profile", "Account");
                     }
                 }
             }
-            return RedirectToAction("Profile", "Account");
+
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Erreur de modification";
+                return View(passwordDto);
+            }
+                TempData["ErrorMessage"] = "Erreur de modification";
+                return View(passwordDto);
         }
     }
 }

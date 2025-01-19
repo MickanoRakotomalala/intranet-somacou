@@ -8,12 +8,12 @@ namespace intranet_somacou.Models
 {
     public class PasswordDto
     {
-        [Required(ErrorMessage = "Ancien Mot de passe obligatoire"), MaxLength(50)]
+        [Required(ErrorMessage = "Ancien Mot de passe est requis."), MaxLength(50)]
         public string CurrentPassword { get; set; }
-        [Required(ErrorMessage = "Nouveau Mot de passe obligatoire"),MaxLength(50)]
+        [Required(ErrorMessage = "Nouveau Mot de passe est requis."),MaxLength(50)]
         public string NewPassword { get; set; }
-        [Required(ErrorMessage = "Confirmation Mot de passe obligatoire"),MaxLength(50)]
-        [Compare("NewPassword",ErrorMessage = "Erreur de confimation")]
+        [Required(ErrorMessage = "Confirmation Mot de passe est requis."),MaxLength(50)]
+        [Compare("NewPassword",ErrorMessage = "Confirmation invalide")]
         public string ConfirmPassword { get; set; }
     }
 }

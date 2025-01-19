@@ -261,7 +261,6 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Account\Password.cshtml" />
-    <Content Include="Views\Account\_EditProfileModal.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
