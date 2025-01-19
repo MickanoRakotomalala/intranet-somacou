@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.ModelBinding;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.WebPages.Html;
 using PasswordDto = intranet_somacou.Models.PasswordDto;
 using RegisterDto = intranet_somacou.Models.RegisterDto;
 
@@ -141,22 +142,47 @@ namespace intranet_somacou.Controllers
 
                 if (user != null)
                 {
-                    return RedirectToAction("Profile", "Account");
+                    var registerDto = new RegisterDto
+                    {
+                        Id = user.Id,
+                        Name = user.Name,
+                        Matricule = user.Matricule,
+                        Email = user.Email,
+                        Address = user.Address,
+                        Poste = user.Poste,
+                        Phone = user.Phone,
+                        Role = user.Role,
+                        CreatedAt = user.CreatedAt,
+                        Password = user.Password
+                    };
+
+                    ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
+                    return View(registerDto);
                 }
             }
-
-            ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
-            return View();
+            return RedirectToAction("Profile", "Account");
         }
 
         [HttpPost]
         public ActionResult Profile(RegisterDto registerDto)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors)
+                                                   .Select(e => e.ErrorMessage)
+                                                   .ToList();
+                ViewBag.HasErrors = true;
+                ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
+                TempData["ErrorMessage"] = "Veuillez corriger les erreurs avant de soumettre.";
+                return View(registerDto); // Renvoie à la vue pour afficher les erreurs
+            }
+
             if (Session["UserId"] != null)
             {
                 int userId = (int)Session["UserId"];
                 var user = db.Users.Find(userId);
-                if (user != null)
+
+                if (user != null && ModelState.IsValid)
                 {
                     user.Name = registerDto.Name;
                     user.Matricule = registerDto.Matricule;
@@ -164,15 +190,19 @@ namespace intranet_somacou.Controllers
                     user.Address = registerDto.Address;
                     user.Poste = registerDto.Poste;
                     user.Phone = registerDto.Phone;
-
                     db.SaveChanges();
-                    TempData["SuccessMessage"] = "La modification s'est réalisé avec succès";
-                    return RedirectToAction("Profile", "Account");
+
+                    TempData["SuccessMessage"] = "La modification a été enregistrée avec succès.";
+                    return RedirectToAction("Profile");
                 }
+ 
             }
-                TempData["ErrorMessage"] = "Erreur de modification";
-                return RedirectToAction("Profile","Account");
+
+            TempData["ErrorMessage"] = "Erreur lors de la mise à jour du profil.";
+            return RedirectToAction("Profile");
         }
+
+
 
         [HttpGet]
         public ActionResult Password()

@@ -378,8 +378,8 @@ footer .col-md-6 ul li a {
     height:300px;
 }
 
-.ProfilUpdate {
-    height: 350px;
+.ProfilUpdate span {
+    font-size:12px;
 }
 
 /*Responsive*/
