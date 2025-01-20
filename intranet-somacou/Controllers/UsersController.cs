@@ -15,19 +15,34 @@ namespace intranet_somacou.Controllers
         {
             _context = new AppDbContext();
         }
-
         public ActionResult Index(int page = 1, int pageSize = 5)
         {
-            var users = _context.Users.OrderBy(u => u.Id)
-                                      .Skip((page - 1) * pageSize)
-                                      .Take(pageSize)
-                                      .ToList();
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
 
-            var totalUsers = _context.Users.Count();
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalUsers / pageSize);
+            if (Session["UserId"] != null)
+            {
+                int userId = (int)Session["UserId"];
+                var user = _context.Users.Find(userId);
+                if (user != null)
+                {
+                    if(user.Role == "Admin")
+                    {
+                        var users = _context.Users.OrderBy(u => u.Id)
+                                                  .Skip((page - 1) * pageSize)
+                                                  .Take(pageSize)
+                                                  .ToList();
 
-            return View(users);
+                        var totalUsers = _context.Users.Count();
+                        ViewBag.CurrentPage = page;
+                        ViewBag.TotalPages = (int)Math.Ceiling((double)totalUsers / pageSize);
+                        return View(users);
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Details(int? id)
