@@ -1,9 +1,9 @@
-﻿@{
+﻿@model intranet_somacou.Models.IncidentDto
+@{
     ViewBag.Title = "Intranet";
 }
-<main>
+
     <div class="container-fluid">
-        @*<h3>@ViewBag.Message</h3>*@
         <div class="container-fluid">
             <img src="~/Assets/DSI.PNG" alt="DSI"/>
         </div>
@@ -38,10 +38,10 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Liste Incident</span></h5>
+                    <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Incident</span></h5>
                     <ul class="collapse" id="Incident">
-                        <li id="detailinc"><i class="bi bi-file-text me-2"></i><a href="#addinc" onclick="showInc()">Incident</a></li>
-                        <li id="respinc"><i class="bi bi-gear me-2"></i>Responsable</li>
+                        <li id="detailinc"><i class="bi bi-file-text me-2"></i><a href="#addinc" onclick="showInc()">Ajout Incident</a></li>
+                        <li id="respinc"><i class="bi bi-gear me-2"></i>Liste Incident</li>
                     </ul>
                 </div>
             </div>
@@ -100,26 +100,81 @@
             @*INCIDENT*@
             <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
                 <h5><i class="bi bi-list-task me-2"></i>INCIDENT</h5>
-                <p>
-                    <h6>Gestion des infrastructures technologiques</h6>
-                    <span>Mise en place, gestion et maintenance des serveurs, des réseaux, des bases de données et autres infrastructures IT de l'entreprise.</span>
-                </p>
-
-                <p>
-                    <h6>Développement et maintenance des logiciels :</h6>
-                    <span>Création ou personnalisation de logiciels et d'applications métiers pour répondre aux besoins spécifiques de l'entreprise.</span>
-                </p>
-
-                <p>
-                    <h6>Sécurité des systèmes d'information :</h6>
-                    <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>
-                </p>
-
-                <p>
-                    <h6>Support aux utilisateurs :</h6>
-                    <span>Assistance technique pour résoudre les problèmes informatiques des employés, ainsi que la gestion des demandes et des incidents.</span>
-                </p>
+                <div class="container-fluid p-2">
+                    <form action="Home/Dsi" method="post">
+                        <input type="hidden" name="Id" id="Id" value="" />
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Utilisateur</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="User" id="User" value="@Session["FullName"].ToString()" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Type</label>
+                            <div class="col-sm-8">
+                                <select name="Type" id="Type" class="form-control">
+                                    <option value="Matériel">Panne matériel</option>
+                                    <option value="Logiciel">Panne logiciel</option>
+                                    <option value="Réseaux">Panne réseaux</option>
+                                    <option value="Périphérique">Panne périphérique</option>
+                                    <option value="Performance">Panne performance</option>
+                                    <option value="Sauvegarde">Panne sauvegarde</option>
+                                    <option value="Autre">Autre Panne</option>
+                                </select>
+                                <span class="text-white"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Détails</label>
+                            <div class="col-sm-8">
+                                <Textarea name="Details" id="Details" class="form-control"></Textarea>
+                                <span class="text-white"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Statut</label>
+                            <div class="col-sm-8">
+                                <select name="Etat" id="Etat" class="form-control">
+                                    <option value="Nouveau">Nouveau</option>
+                                    <option value="EnCours">En Cours</option>
+                                    <option value="Terminé">Terminé</option>
+                                </select>
+                                <span class="text-white"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Date de création</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="CreatedDate" id="CreatedDate" value="" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Action</label>
+                            <div class="col-sm-8">
+                                <select name="Action" id="Action" class="form-control">
+                                    <option value="Attente">Attente</option>
+                                    <option value="Terminé">Terminé</option>
+                                </select>
+                                <span class="text-white"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Date de validation</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="UpdateDate" id="UpdateDate" value="" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col-sm-4 col-form-label">Responsable</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="Responsible" id="Responsible" value="" class="form-control" disabled />
+                            </div>
+                        </div>
+                        <div class="row offset-sm-6 col-sm-2">
+                            <Button type="submit" class="btn btn-outline-warning">Soumettre</Button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</main>
