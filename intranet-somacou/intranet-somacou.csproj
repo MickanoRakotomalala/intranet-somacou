@@ -175,8 +175,13 @@
     <Compile Include="Migrations\202501210509303_RegisterDtoesToUsersTable.Designer.cs">
       <DependentUpon>202501210509303_RegisterDtoesToUsersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501210535558_Incidents.cs" />
+    <Compile Include="Migrations\202501210535558_Incidents.Designer.cs">
+      <DependentUpon>202501210535558_Incidents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\IncidentDto.cs" />
     <Compile Include="Models\PasswordDto.cs" />
     <Compile Include="Models\RegisterDto.cs" />
     <Compile Include="Models\LoginDto.cs" />
@@ -318,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501210509303_RegisterDtoesToUsersTable.resx">
       <DependentUpon>202501210509303_RegisterDtoesToUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501210535558_Incidents.resx">
+      <DependentUpon>202501210535558_Incidents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

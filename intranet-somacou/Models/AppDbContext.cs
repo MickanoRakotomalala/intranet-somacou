@@ -11,5 +11,6 @@ namespace intranet_somacou.Models
     {
         public AppDbContext() : base("DefaultConnection") { }
         public DbSet <RegisterDto> Users { get;set; }
+        public DbSet <IncidentDto> Incidents { get;set; }
     }
 }
