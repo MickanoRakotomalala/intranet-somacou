@@ -38,21 +38,25 @@
                     </ul>
                 </div>
                 <div>
-                    <h5><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Liste Incident</span></h5>
+                    <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Liste Incident</span></h5>
                     <ul class="collapse" id="Incident">
-                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                        <li><i class="bi bi-gear me-2"></i>Responsable</li>
+                        <li id="detailinc"><i class="bi bi-file-text me-2"></i><a href="#addinc" onclick="showInc()">Incident</a></li>
+                        <li id="respinc"><i class="bi bi-gear me-2"></i>Responsable</li>
                     </ul>
                 </div>
             </div>
-            <div class=" offset-1 col-md-9 mx-auto" id="idsi"> 
+
+            @*DSI*@
+            <div class=" offset-1 col-md-9 mx-auto" id="idsi">
                 <h5><i class="bi bi-textarea me-2"></i>Département Système d'Information</h5>
                 <p>
                     <h6>C'est quoi le DSI ?</h6>
-                    <span>Le département Système d'Information (SI) est une entité au sein d'une organisation qui est responsable de la gestion, 
-                    de l'optimisation et de la sécurité des technologies de l'information. Son rôle est essentiel pour assurer le bon 
-                    fonctionnement des opérations informatiques, la gestion des données et la communication entre les différents services d'une 
-                    entreprise.</span>
+                    <span>
+                        Le département Système d'Information (SI) est une entité au sein d'une organisation qui est responsable de la gestion,
+                        de l'optimisation et de la sécurité des technologies de l'information. Son rôle est essentiel pour assurer le bon
+                        fonctionnement des opérations informatiques, la gestion des données et la communication entre les différents services d'une
+                        entreprise.
+                    </span>
                 </p>
             </div>
             <div class="offset-1 col-md-9 mx-auto" id="rdsi" hidden>
@@ -69,7 +73,7 @@
 
                 <p>
                     <h6>Sécurité des systèmes d'information :</h6>
-                    <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>  
+                    <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>
                 </p>
 
                 <p>
@@ -89,7 +93,31 @@
 
                 <p>
                     <h6>Veille technologique :</h6>
-                    <span>Suivi des évolutions technologiques et des tendances pour anticiper les besoins futurs de l'entreprise en matière de systèmes d'information.</span>  
+                    <span>Suivi des évolutions technologiques et des tendances pour anticiper les besoins futurs de l'entreprise en matière de systèmes d'information.</span>
+                </p>
+            </div>
+
+            @*INCIDENT*@
+            <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
+                <h5><i class="bi bi-list-task me-2"></i>INCIDENT</h5>
+                <p>
+                    <h6>Gestion des infrastructures technologiques</h6>
+                    <span>Mise en place, gestion et maintenance des serveurs, des réseaux, des bases de données et autres infrastructures IT de l'entreprise.</span>
+                </p>
+
+                <p>
+                    <h6>Développement et maintenance des logiciels :</h6>
+                    <span>Création ou personnalisation de logiciels et d'applications métiers pour répondre aux besoins spécifiques de l'entreprise.</span>
+                </p>
+
+                <p>
+                    <h6>Sécurité des systèmes d'information :</h6>
+                    <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>
+                </p>
+
+                <p>
+                    <h6>Support aux utilisateurs :</h6>
+                    <span>Assistance technique pour résoudre les problèmes informatiques des employés, ainsi que la gestion des demandes et des incidents.</span>
                 </p>
             </div>
         </div>

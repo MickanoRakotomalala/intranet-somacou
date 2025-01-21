@@ -74,30 +74,63 @@ function showSalary() {
     console.log('Salary');
 }
 
-//DSI
-const menuDsi = document.getElementById("menudsi");
-const Idsi = document.getElementById("idsi");
-const Rdsi = document.getElementById("rdsi");
-const Sidsi = document.getElementById("sidsi");
-const Srdsi = document.getElementById("srdsi");
+//MENU DSI
+    // Sélection des éléments
+const elements = {
+    menuDsi: document.getElementById("menudsi"),
+    Idsi: document.getElementById("idsi"),
+    Rdsi: document.getElementById("rdsi"),
+    Sidsi: document.getElementById("sidsi"),
+    Srdsi: document.getElementById("srdsi"),
+    menuIncident: document.getElementById("menuinc"),
+    AddIncident: document.getElementById("addinc"),
+    DetailInc: document.getElementById("detailinc"),
+};
 
+// Fonction générique pour afficher une section
+function showSection({ visibleId, activeMenu, activeList, consoleMessage }) {
+    // Réinitialiser tous les éléments
+    elements.Idsi.hidden = true;
+    elements.Rdsi.hidden = true;
+    elements.AddIncident.hidden = true;
+    elements.menuDsi.classList.remove("menuactive");
+    elements.menuIncident.classList.remove("menuactive");
+    elements.Sidsi.classList.remove("listactive");
+    elements.Srdsi.classList.remove("listactive");
+    elements.DetailInc.classList.remove("listactive");
+
+    // Afficher les éléments spécifiques
+    if (visibleId) elements[visibleId].hidden = false;
+    if (activeMenu) elements[activeMenu].classList.add("menuactive");
+    if (activeList) elements[activeList].classList.add("listactive");
+
+    console.log(consoleMessage);
+}
+
+// Fonctions spécifiques
 function showIdsi() {
-    Idsi.hidden = false;
-    menuDsi.classList.add("menuactive");
-    Sidsi.classList.add("listactive");
-
-
-    Srdsi.classList.remove("listactive");
-    Rdsi.hidden = true;
-    console.log("Info DSI");
+    showSection({
+        visibleId: "Idsi",
+        activeMenu: "menuDsi",
+        activeList: "Sidsi",
+        consoleMessage: "Info DSI",
+    });
 }
 
 function showRdsi() {
-    Rdsi.hidden = false;
-    menuDsi.classList.add("menuactive");
-    Srdsi.classList.add("listactive");
+    showSection({
+        visibleId: "Rdsi",
+        activeMenu: "menuDsi",
+        activeList: "Srdsi",
+        consoleMessage: "Rôle DSI",
+    });
+}
 
-    Sidsi.classList.remove("listactive");
-    Idsi.hidden = true;
-    console.log("Rôle DSI");
+function showInc() {
+    showSection({
+        visibleId: "AddIncident",
+        activeMenu: "menuIncident",
+        activeList: "DetailInc",
+        consoleMessage: "Add Incident",
+    });
 }
