@@ -171,6 +171,10 @@
     <Compile Include="Migrations\202501160441439_UpRegisterDto.Designer.cs">
       <DependentUpon>202501160441439_UpRegisterDto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501210509303_RegisterDtoesToUsersTable.cs" />
+    <Compile Include="Migrations\202501210509303_RegisterDtoesToUsersTable.Designer.cs">
+      <DependentUpon>202501210509303_RegisterDtoesToUsersTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\PasswordDto.cs" />
@@ -311,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501160441439_UpRegisterDto.resx">
       <DependentUpon>202501160441439_UpRegisterDto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501210509303_RegisterDtoesToUsersTable.resx">
+      <DependentUpon>202501210509303_RegisterDtoesToUsersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
