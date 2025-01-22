@@ -11,6 +11,7 @@ namespace intranet_somacou.Models
     public class IncidentDto
     {
         public int Id {  get; set; }
+
         [Required(ErrorMessage = "Le champ utilisateur est requis"),MaxLength(50)]
         public string User {  get; set; }
 

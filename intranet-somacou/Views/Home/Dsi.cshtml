@@ -3,102 +3,102 @@
     ViewBag.Title = "Intranet";
 }
 
+<div class="container-fluid">
     <div class="container-fluid">
-        <div class="container-fluid">
-            <img src="~/Assets/DSI.PNG" alt="DSI"/>
+        <img src="~/Assets/DSI.PNG" alt="DSI" />
+    </div>
+    <div class="row">
+        <div class="col-md-2 mx-auto">
+            <div>
+                <h5 class="menuactive" id="menudsi"><i class="bi bi-box me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#dsi" aria-expanded="false" aria-controls="dsi">DSI</span></h5>
+                <ul class="collapse" id="dsi">
+                    <li class="listactive" id="sidsi"><i class="bi bi-textarea me-2"></i><a href="#idsi" onclick="showIdsi()">Informations</a></li>
+                    <li id="srdsi"><i class="bi bi-list-task me-2"></i><a href="#rdsi" onclick="showRdsi()">Rôle</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5><i class="bi bi-pc-display-horizontal me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#soft_hard" aria-expanded="false" aria-controls="soft_hard">Software / Hardware</span></h5>
+                <ul class="collapse" id="soft_hard">
+                    <li><i class="bi bi-file-text me-2"></i>Détails</li>
+                    <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
+                </ul>
+            </div>
+            <div>
+                <h5><i class="bi bi-shield-lock me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#security" aria-expanded="false" aria-controls="security">Sécurité Informatique</span></h5>
+                <ul class="collapse" id="security">
+                    <li><i class="bi bi-file-text me-2"></i>Détails</li>
+                    <li><i class="bi bi-gear me-2"></i>Résponsabilité</li>
+                </ul>
+            </div>
+            <div>
+                <h5><i class="bi bi-code-square me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#dev" aria-expanded="false" aria-controls="dev">Développement / Applicatif</span></h5>
+                <ul class="collapse" id="dev">
+                    <li><i class="bi bi-file-text me-2"></i>Détails</li>
+                    <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
+                </ul>
+            </div>
+            <div>
+
+                <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Incident</span></h5>
+                <ul class="collapse" id="Incident">
+                    <li id="detailinc"><i class="bi bi-file-text me-2"></i><a href="#addinc" onclick="showInc()">Ajout Incident</a></li>
+                    <li id="respinc"><i class="bi bi-gear me-2"></i>Liste Incident</li>
+                </ul>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-2 mx-auto">
-                <div>
-                    <h5 class="menuactive" id="menudsi"><i class="bi bi-box me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#dsi" aria-expanded="false" aria-controls="dsi">DSI</span></h5>
-                    <ul class="collapse" id="dsi">
-                        <li class="listactive" id="sidsi"><i class="bi bi-textarea me-2"></i><a href="#idsi" onclick="showIdsi()">Informations</a></li>
-                        <li id="srdsi"><i class="bi bi-list-task me-2"></i><a href="#rdsi" onclick="showRdsi()">Rôle</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5><i class="bi bi-pc-display-horizontal me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#soft_hard" aria-expanded="false" aria-controls="soft_hard">Software / Hardware</span></h5>
-                    <ul class="collapse" id="soft_hard">
-                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                        <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
-                    </ul>
-                </div>
-                <div>
-                    <h5><i class="bi bi-shield-lock me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#security" aria-expanded="false" aria-controls="security">Sécurité Informatique</span></h5>
-                    <ul class="collapse" id="security">
-                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                        <li><i class="bi bi-gear me-2"></i>Résponsabilité</li>
-                    </ul>
-                </div>
-                <div>
-                    <h5><i class="bi bi-code-square me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#dev" aria-expanded="false" aria-controls="dev">Développement / Applicatif</span></h5>
-                    <ul class="collapse" id="dev">
-                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                        <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
-                    </ul>
-                </div>
-                <div>
 
-                    <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Incident</span></h5>
-                    <ul class="collapse" id="Incident">
-                        <li id="detailinc"><i class="bi bi-file-text me-2"></i><a href="#addinc" onclick="showInc()">Ajout Incident</a></li>
-                        <li id="respinc"><i class="bi bi-gear me-2"></i>Liste Incident</li>
-                    </ul>
-                </div>
-            </div>
+        @*DSI*@
+        <div class=" offset-1 col-md-9 mx-auto" id="idsi">
+            <h5><i class="bi bi-textarea me-2"></i>Département Système d'Information</h5>
+            <p>
+                <h6>C'est quoi le DSI ?</h6>
+                <span>
+                    Le département Système d'Information (SI) est une entité au sein d'une organisation qui est responsable de la gestion,
+                    de l'optimisation et de la sécurité des technologies de l'information. Son rôle est essentiel pour assurer le bon
+                    fonctionnement des opérations informatiques, la gestion des données et la communication entre les différents services d'une
+                    entreprise.
+                </span>
+            </p>
+        </div>
+        <div class="offset-1 col-md-9 mx-auto" id="rdsi" hidden>
+            <h5><i class="bi bi-list-task me-2"></i> Rôle DSI</h5>
+            <p>
+                <h6>Gestion des infrastructures technologiques</h6>
+                <span>Mise en place, gestion et maintenance des serveurs, des réseaux, des bases de données et autres infrastructures IT de l'entreprise.</span>
+            </p>
 
-            @*DSI*@
-            <div class=" offset-1 col-md-9 mx-auto" id="idsi">
-                <h5><i class="bi bi-textarea me-2"></i>Département Système d'Information</h5>
-                <p>
-                    <h6>C'est quoi le DSI ?</h6>
-                    <span>
-                        Le département Système d'Information (SI) est une entité au sein d'une organisation qui est responsable de la gestion,
-                        de l'optimisation et de la sécurité des technologies de l'information. Son rôle est essentiel pour assurer le bon
-                        fonctionnement des opérations informatiques, la gestion des données et la communication entre les différents services d'une
-                        entreprise.
-                    </span>
-                </p>
-            </div>
-            <div class="offset-1 col-md-9 mx-auto" id="rdsi" hidden>
-                <h5><i class="bi bi-list-task me-2"></i> Rôle DSI</h5>
-                <p>
-                    <h6>Gestion des infrastructures technologiques</h6>
-                    <span>Mise en place, gestion et maintenance des serveurs, des réseaux, des bases de données et autres infrastructures IT de l'entreprise.</span>
-                </p>
+            <p>
+                <h6>Développement et maintenance des logiciels :</h6>
+                <span>Création ou personnalisation de logiciels et d'applications métiers pour répondre aux besoins spécifiques de l'entreprise.</span>
+            </p>
 
-                <p>
-                    <h6>Développement et maintenance des logiciels :</h6>
-                    <span>Création ou personnalisation de logiciels et d'applications métiers pour répondre aux besoins spécifiques de l'entreprise.</span>
-                </p>
+            <p>
+                <h6>Sécurité des systèmes d'information :</h6>
+                <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>
+            </p>
 
-                <p>
-                    <h6>Sécurité des systèmes d'information :</h6>
-                    <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>
-                </p>
+            <p>
+                <h6>Support aux utilisateurs :</h6>
+                <span>Assistance technique pour résoudre les problèmes informatiques des employés, ainsi que la gestion des demandes et des incidents.</span>
+            </p>
 
-                <p>
-                    <h6>Support aux utilisateurs :</h6>
-                    <span>Assistance technique pour résoudre les problèmes informatiques des employés, ainsi que la gestion des demandes et des incidents.</span>
-                </p>
+            <p>
+                <h6>Gestion des données et des systèmes d'information :</h6>
+                <span>Veiller à la qualité, à la cohérence et à l'intégrité des données utilisées par l'entreprise. Cela inclut également la gestion des bases de données et des systèmes de gestion de contenu.</span>
+            </p>
 
-                <p>
-                    <h6>Gestion des données et des systèmes d'information :</h6>
-                    <span>Veiller à la qualité, à la cohérence et à l'intégrité des données utilisées par l'entreprise. Cela inclut également la gestion des bases de données et des systèmes de gestion de contenu.</span>
-                </p>
+            <p>
+                <h6>Gestion de projets technologiques :</h6>
+                <span>Planification et exécution de projets liés à la transformation numérique, l'implémentation de nouveaux systèmes ou la mise à jour des systèmes existants.</span>
+            </p>
 
-                <p>
-                    <h6>Gestion de projets technologiques :</h6>
-                    <span>Planification et exécution de projets liés à la transformation numérique, l'implémentation de nouveaux systèmes ou la mise à jour des systèmes existants.</span>
-                </p>
+            <p>
+                <h6>Veille technologique :</h6>
+                <span>Suivi des évolutions technologiques et des tendances pour anticiper les besoins futurs de l'entreprise en matière de systèmes d'information.</span>
+            </p>
+        </div>
 
-                <p>
-                    <h6>Veille technologique :</h6>
-                    <span>Suivi des évolutions technologiques et des tendances pour anticiper les besoins futurs de l'entreprise en matière de systèmes d'information.</span>
-                </p>
-            </div>
-
-            @*INCIDENT*@
+        @*INCIDENT*@
         <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
             <h5><i class="bi bi-list-task me-2"></i>INCIDENT</h5>
             @if (TempData["ErrorMessage"] != null)
@@ -126,8 +126,8 @@
             }
 
             <div class="container-fluid p-2">
-                <form method="post">
-                    <input type="hidden" name="Id" id="Id" value="" />
+                <form action="Dsi" method="post">
+                    <input type="hidden" name="Id" id="Id" />
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Utilisateur</label>
                         <div class="col-sm-8">
@@ -171,7 +171,7 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Date de création</label>
                         <div class="col-sm-8">
-                            <input type="text" name="CreatedDate" id="CreatedDate" value="" class="form-control" disabled />
+                            <input type="date" name="CreatedDate" id="CreatedDate" class="form-control" disabled />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.CreatedDate)</span>
                         </div>
                     </div>
@@ -188,14 +188,14 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Date de validation</label>
                         <div class="col-sm-8">
-                            <input type="text" name="UpdateDate" id="UpdateDate" value="" class="form-control" disabled />
+                            <input type="text" name="UpdateDate" id="UpdateDate"  class="form-control" disabled />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.UpdateDate)</span>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Responsable</label>
                         <div class="col-sm-8">
-                            <input type="text" name="Responsible" id="Responsible" value="" class="form-control" disabled />
+                            <input type="text" name="Responsible" id="Responsible" value="@Session["FullName"].ToString()" class="form-control" disabled />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.Responsible)</span>
                         </div>
                     </div>
@@ -205,5 +205,14 @@
                 </form>
             </div>
         </div>
-        </div>
     </div>
+</div>
+
+@if (TempData["Anchor"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.location.hash = "#@TempData["Anchor"]";
+        });
+    </script>
+}
