@@ -47,7 +47,6 @@ namespace intranet_somacou.Controllers
                     }
                 }
 
-                TempData["SuccessMessage"] = "Inscription avec succès";
                 Session["UserId"] = registerDto.Id;
                 Session["FullName"] = registerDto.Name;
                 Session["Role"] = registerDto.Role;

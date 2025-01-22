@@ -9,27 +9,76 @@ namespace intranet_somacou.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else if (Session["UserId"] != null)
+            {
+                return View();
+            }
             return View();
         }
 
         public ActionResult Rh()
         {
-            ViewBag.Message = "Service de Ressources Humaines";
-
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else if (Session["UserId"] != null)
+            {
+                return View();
+            }
             return View();
         }
 
         public ActionResult Dsi()
         {
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else if (Session["UserId"] != null)
+            {
+                return View();
+            }
             return View();
         }
 
-        [HttpPost]        
+        [HttpPost]
         public ActionResult Dsi(IncidentDto incidentDto)
         {
-            return RedirectToAction("Dsi","Home");
+            if (ModelState.IsValid)
+            {
+                using (var context = new AppDbContext())
+                {
+                    if (incidentDto.User != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null && incidentDto.Action != null && incidentDto.UpdateDate != null && incidentDto.Responsible != null)
+                    {
+                        incidentDto.CreatedDate = DateTime.Now;
+                        incidentDto.Etat = "Nouveau";
+                        incidentDto.Action = "Attente";
+                        incidentDto.UpdateDate = DateTime.Now;
+                        context.Incidents.Add(incidentDto);
+                        context.SaveChanges();
+                    }
+                }
+
+                TempData["SuccessMessage"] = "Incident envoyé avec succès";
+                return View(incidentDto);
+            }
+            else if(!ModelState.IsValid)
+            {
+                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors)
+                                   .Select(e => e.ErrorMessage)
+                                   .ToList();
+                TempData["ErrorMessage"] = "Vous devez remplir les informations correctement avant de soumettre";
+                return RedirectToAction("Dsi");
+            }    
+            return View(incidentDto);
         }
     }
 }

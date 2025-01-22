@@ -179,6 +179,10 @@
     <Compile Include="Migrations\202501210535558_Incidents.Designer.cs">
       <DependentUpon>202501210535558_Incidents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501221325260_UpIncident.cs" />
+    <Compile Include="Migrations\202501221325260_UpIncident.Designer.cs">
+      <DependentUpon>202501221325260_UpIncident.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\IncidentDto.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501210535558_Incidents.resx">
       <DependentUpon>202501210535558_Incidents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501221325260_UpIncident.resx">
+      <DependentUpon>202501221325260_UpIncident.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

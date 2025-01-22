@@ -38,6 +38,7 @@
                     </ul>
                 </div>
                 <div>
+
                     <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Incident</span></h5>
                     <ul class="collapse" id="Incident">
                         <li id="detailinc"><i class="bi bi-file-text me-2"></i><a href="#addinc" onclick="showInc()">Ajout Incident</a></li>
@@ -98,83 +99,111 @@
             </div>
 
             @*INCIDENT*@
-            <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
-                <h5><i class="bi bi-list-task me-2"></i>INCIDENT</h5>
-                <div class="container-fluid p-2">
-                    <form action="Home/Dsi" method="post">
-                        <input type="hidden" name="Id" id="Id" value="" />
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Utilisateur</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="User" id="User" value="@Session["FullName"].ToString()" class="form-control" disabled />
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Type</label>
-                            <div class="col-sm-8">
-                                <select name="Type" id="Type" class="form-control">
-                                    <option value="Matériel">Panne matériel</option>
-                                    <option value="Logiciel">Panne logiciel</option>
-                                    <option value="Réseaux">Panne réseaux</option>
-                                    <option value="Périphérique">Panne périphérique</option>
-                                    <option value="Performance">Panne performance</option>
-                                    <option value="Sauvegarde">Panne sauvegarde</option>
-                                    <option value="Autre">Autre Panne</option>
-                                </select>
-                                <span class="text-white"></span>
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Détails</label>
-                            <div class="col-sm-8">
-                                <Textarea name="Details" id="Details" class="form-control"></Textarea>
-                                <span class="text-white"></span>
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Statut</label>
-                            <div class="col-sm-8">
-                                <select name="Etat" id="Etat" class="form-control">
-                                    <option value="Nouveau">Nouveau</option>
-                                    <option value="EnCours">En Cours</option>
-                                    <option value="Terminé">Terminé</option>
-                                </select>
-                                <span class="text-white"></span>
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Date de création</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="CreatedDate" id="CreatedDate" value="" class="form-control" disabled />
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Action</label>
-                            <div class="col-sm-8">
-                                <select name="Action" id="Action" class="form-control">
-                                    <option value="Attente">Attente</option>
-                                    <option value="Terminé">Terminé</option>
-                                </select>
-                                <span class="text-white"></span>
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Date de validation</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="UpdateDate" id="UpdateDate" value="" class="form-control" disabled />
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="col-sm-4 col-form-label">Responsable</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="Responsible" id="Responsible" value="" class="form-control" disabled />
-                            </div>
-                        </div>
-                        <div class="row offset-sm-6 col-sm-2">
-                            <Button type="submit" class="btn btn-outline-warning">Soumettre</Button>
-                        </div>
-                    </form>
+        <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
+            <h5><i class="bi bi-list-task me-2"></i>INCIDENT</h5>
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <strong>@TempData["ErrorMessage"]</strong>
+                    @if (ViewBag.Errors != null)
+                    {
+                        <ul class="text-danger">
+                            @foreach (var error in ViewBag.Errors)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    }
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+            }
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <strong>@TempData["SuccessMessage"]</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <div class="container-fluid p-2">
+                <form method="post">
+                    <input type="hidden" name="Id" id="Id" value="" />
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Utilisateur</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="User" id="User" value="@Session["FullName"].ToString()" class="form-control" disabled />
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.User)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Type</label>
+                        <div class="col-sm-8">
+                            <select name="Type" id="Type" class="form-control">
+                                <option value="Matériel">Panne matériel</option>
+                                <option value="Logiciel">Panne logiciel</option>
+                                <option value="Réseaux">Panne réseaux</option>
+                                <option value="Périphérique">Panne périphérique</option>
+                                <option value="Performance">Panne performance</option>
+                                <option value="Sauvegarde">Panne sauvegarde</option>
+                                <option value="Autre">Autre Panne</option>
+                            </select>
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.Type)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Détails</label>
+                        <div class="col-sm-8">
+                            <Textarea name="Details" id="Details" class="form-control"></Textarea>
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.Details)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Statut</label>
+                        <div class="col-sm-8">
+                            <select name="Etat" id="Etat" class="form-control">
+                                <option value="Nouveau">Nouveau</option>
+                                <option value="EnCours">En Cours</option>
+                                <option value="Terminé">Terminé</option>
+                            </select>
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.Etat)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Date de création</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="CreatedDate" id="CreatedDate" value="" class="form-control" disabled />
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.CreatedDate)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Action</label>
+                        <div class="col-sm-8">
+                            <select name="Action" id="Action" class="form-control">
+                                <option value="Attente">Attente</option>
+                                <option value="Terminé">Terminé</option>
+                            </select>
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.Action)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Date de validation</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="UpdateDate" id="UpdateDate" value="" class="form-control" disabled />
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.UpdateDate)</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Responsable</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="Responsible" id="Responsible" value="" class="form-control" disabled />
+                            <span class="text-white">@Html.ValidationMessageFor(m => m.Responsible)</span>
+                        </div>
+                    </div>
+                    <div class="row offset-sm-6 col-sm-2">
+                        <Button type="submit" class="btn btn-outline-warning">Soumettre</Button>
+                    </div>
+                </form>
             </div>
+        </div>
         </div>
     </div>

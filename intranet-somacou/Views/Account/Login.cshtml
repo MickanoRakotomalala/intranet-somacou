@@ -9,9 +9,9 @@
         <div class="container-fluid p-3">
             <h3>Se connecter</h3>
             <form action="/Account/Login" method="post">
-                @if(ViewBag.ErrorMessage != null)
+                @if (ViewBag.ErrorMessage != null)
                 {
-                    <div class="row col-md-10 mx-auto alert alert-danger alert-dismissible fade show mb-3" role="alert">            
+                    <div class="row col-md-10 mx-auto alert alert-danger alert-dismissible fade show mb-3" role="alert">
                         <Strong>@ViewBag.ErrorMessage</Strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
