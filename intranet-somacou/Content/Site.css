@@ -387,6 +387,15 @@ footer .col-md-6 ul li a {
     font-size:12px;
 }
 
+/*DSI*/
+.Incident h5,
+.Incident button{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
 /*Responsive*/
 @media(max-width:1200px){
     /*navbar*/

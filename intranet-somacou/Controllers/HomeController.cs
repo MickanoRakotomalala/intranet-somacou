@@ -66,7 +66,7 @@ namespace intranet_somacou.Controllers
                     }
                 }
 
-                TempData["SuccessMessage"] = "Incident envoyé avec succès";
+                TempData["SuccessMessage"] = "Incident enregistré avec succès";
                 return View(incidentDto);
             }
             else if(!ModelState.IsValid)
