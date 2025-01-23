@@ -30,10 +30,8 @@ namespace intranet_somacou.Models
         [Required(ErrorMessage = "Le champ Action est requis")]
         public string Action { get; set; }
 
-        [Required(ErrorMessage = "Le champ Date de validation est requis")]
         public DateTime UpdateDate { get; set; }
 
-        [Required(ErrorMessage = "Le champ Responsable est requis")]
         public string Responsible {  get; set; }
     }
 }

@@ -183,6 +183,14 @@
     <Compile Include="Migrations\202501221325260_UpIncident.Designer.cs">
       <DependentUpon>202501221325260_UpIncident.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501231412226_UpmodelIncidentDto.cs" />
+    <Compile Include="Migrations\202501231412226_UpmodelIncidentDto.Designer.cs">
+      <DependentUpon>202501231412226_UpmodelIncidentDto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202501231414323_UpmodelIncidentDto2.cs" />
+    <Compile Include="Migrations\202501231414323_UpmodelIncidentDto2.Designer.cs">
+      <DependentUpon>202501231414323_UpmodelIncidentDto2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\IncidentDto.cs" />
@@ -333,6 +341,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501221325260_UpIncident.resx">
       <DependentUpon>202501221325260_UpIncident.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501231412226_UpmodelIncidentDto.resx">
+      <DependentUpon>202501231412226_UpmodelIncidentDto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501231414323_UpmodelIncidentDto2.resx">
+      <DependentUpon>202501231414323_UpmodelIncidentDto2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

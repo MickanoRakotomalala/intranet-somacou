@@ -56,15 +56,11 @@ namespace intranet_somacou.Controllers
             {
                 using (var context = new AppDbContext())
                 {
-                    if (incidentDto.User != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null && incidentDto.Action != null && incidentDto.UpdateDate != null && incidentDto.Responsible != null)
+                    if (incidentDto.User != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null && incidentDto.Action != null)
                     {
-                        incidentDto.Id = incidentDto.Id;
-                        incidentDto.User = Session["FullName"].ToString();
-                        incidentDto.CreatedDate = DateTime.Now;
                         incidentDto.Etat = "Nouveau";
                         incidentDto.Action = "Attente";
                         incidentDto.UpdateDate = DateTime.Now;
-                        incidentDto.Responsible = Session["FullName"].ToString();
                         context.Incidents.Add(incidentDto);
                         context.SaveChanges();
                     }
