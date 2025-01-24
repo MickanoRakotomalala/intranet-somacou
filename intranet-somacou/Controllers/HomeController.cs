@@ -75,7 +75,7 @@ namespace intranet_somacou.Controllers
                                    .Select(e => e.ErrorMessage)
                                    .ToList();
                 TempData["ErrorMessage"] = "Vous devez remplir les informations avant de soumettre";
-                TempData["Anchor"] = "addinc"; // Ajout de l'ancre
+                ViewBag.Anchor = "addinc";
                 return View(incidentDto);
             }    
             return View(incidentDto);

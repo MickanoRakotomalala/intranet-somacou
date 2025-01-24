@@ -74,8 +74,8 @@ function showSalary() {
     console.log('Salary');
 }
 
-//MENU DSI
-    // Sélection des éléments
+// MENU DSI
+// Sélection des éléments
 const elements = {
     menuDsi: document.getElementById("menudsi"),
     Idsi: document.getElementById("idsi"),
@@ -107,7 +107,7 @@ function showSection({ visibleId, activeMenu, activeList, consoleMessage }) {
     console.log(consoleMessage);
 }
 
-// Fonctions spécifiques
+// Fonctions spécifiques pour les sections
 function showIdsi() {
     showSection({
         visibleId: "Idsi",
@@ -134,3 +134,27 @@ function showInc() {
         consoleMessage: "Add Incident",
     });
 }
+
+// Gérer les ancres au chargement de la page
+document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer l'ancre actuelle
+    var anchor = location.hash.substring(1); // Récupère l'ancre sans le #
+    console.log("Current hash:", anchor);
+
+    if (anchor && elements[anchor]) {
+        // Affiche l'élément correspondant
+        elements[anchor].hidden = false;
+
+        // Gérer les affichages spécifiques selon l'ancre
+        if (anchor === "addinc") {
+            showInc();
+        }
+
+        // Scroller jusqu'à l'élément (si nécessaire)
+        var element = document.getElementById(anchor);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }
+});
+

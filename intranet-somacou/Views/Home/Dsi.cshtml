@@ -100,21 +100,21 @@
 
         @*INCIDENT*@
         <div class="offset-1 col-md-9 mx-auto Incident" id="addinc" hidden>
-            <div class="row offset-2 col-8 offset-2">
+            <div class="row offset-2 col-8 offset-2" id="formulaire">
                 <h5><i class="bi bi-plus-circle me-2"></i>DEMANDE D'INTERVENTION :</h5>
                 @if (TempData["ErrorMessage"] != null)
                 {
                     <div class="alert alert-danger alert-dismissible fade show">
                         <strong>@TempData["ErrorMessage"]</strong>
                         @*@if (ViewBag.Errors != null)
-                        {
-                            <ul class="text-danger">
-                                @foreach (var error in ViewBag.Errors)
-                                {
-                                    <li>@error</li>
-                                }
-                            </ul>
-                        }*@
+                            {
+                                <ul class="text-danger">
+                                    @foreach (var error in ViewBag.Errors)
+                                    {
+                                        <li>@error</li>
+                                    }
+                                </ul>
+                            }*@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 }
@@ -165,7 +165,7 @@
                         </div>
 
                         <input type="hidden" name="CreatedDate" id="CreatedDate" class="form-control" value="@DateTime.Now.ToString()" />
- 
+
                         <div class="row mb-2" hidden>
                             <label class="col-sm-4 col-form-label">Action</label>
                             <div class="col-sm-8">
@@ -177,7 +177,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="UpdateDate" id="UpdateDate"  class="form-control" value="@DateTime.Now.ToString()"/>
+                        <input type="hidden" name="UpdateDate" id="UpdateDate" class="form-control" value="@DateTime.Now.ToString()" />
 
                         <input type="hidden" name="Responsible" id="Responsible" class="form-control" />
 
@@ -191,11 +191,3 @@
     </div>
 </div>
 
-@if (TempData["Anchor"] != null)
-{
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            window.location.hash = "#@TempData["Anchor"]";
-        });
-    </script>
-}
