@@ -396,6 +396,38 @@ footer .col-md-6 ul li a {
     text-align:center;
 }
 
+.error-message {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /*animation: slideDown 0.5s ease-out;*/
+    border-radius: 10px;
+    align-items: center;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+.message {
+    animation: slideDown 0.5s ease-out;
+}
+
 /*Responsive*/
 @media(max-width:1200px){
     /*navbar*/

@@ -85,6 +85,8 @@ const elements = {
     menuIncident: document.getElementById("menuinc"),
     AddIncident: document.getElementById("addinc"),
     DetailInc: document.getElementById("detailinc"),
+    ListInc: document.getElementById("listInc"),
+    RespInc: document.getElementById("respinc")
 };
 
 // Fonction générique pour afficher une section
@@ -93,11 +95,13 @@ function showSection({ visibleId, activeMenu, activeList, consoleMessage }) {
     elements.Idsi.hidden = true;
     elements.Rdsi.hidden = true;
     elements.AddIncident.hidden = true;
+    elements.ListInc.hidden = true;
     elements.menuDsi.classList.remove("menuactive");
     elements.menuIncident.classList.remove("menuactive");
     elements.Sidsi.classList.remove("listactive");
     elements.Srdsi.classList.remove("listactive");
     elements.DetailInc.classList.remove("listactive");
+    elements.RespInc.classList.remove("listactive");
 
     // Afficher les éléments spécifiques
     if (visibleId) elements[visibleId].hidden = false;
@@ -135,26 +139,129 @@ function showInc() {
     });
 }
 
-// Gérer les ancres au chargement de la page
-document.addEventListener("DOMContentLoaded", function () {
-    // Récupérer l'ancre actuelle
-    var anchor = location.hash.substring(1); // Récupère l'ancre sans le #
-    console.log("Current hash:", anchor);
+function showListInc() {
+    showSection({
+        visibleId: "ListInc",
+        activeMenu: "menuIncident",
+        activeList: "RespInc",
+        consoleMessage: "List Incident",
+    });
+}
 
-    if (anchor && elements[anchor]) {
-        // Affiche l'élément correspondant
-        elements[anchor].hidden = false;
 
-        // Gérer les affichages spécifiques selon l'ancre
-        if (anchor === "addinc") {
-            showInc();
-        }
+//Validation formulaire INCIDENT - DSI
+function showErrorMessage(message, type) {
+    // Créez un élément div pour le message
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message flex-column align-items-center justify-content-center';
+    //Champ Details
+    const Details = document.getElementById("Details");
 
-        // Scroller jusqu'à l'élément (si nécessaire)
-        var element = document.getElementById(anchor);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+    // Style de base pour le message
+    messageDiv.style.position = 'fixed';
+    messageDiv.style.top = '80px'; // Position en haut de la page
+    messageDiv.style.left = '50%'; // Centré horizontalement
+    messageDiv.style.transform = 'translateX(-50%)'; // Centrage précis
+    messageDiv.style.width = 'auto'; // Largeur automatique
+    messageDiv.style.padding = '10px 20px'; // Padding horizontal et vertical
+    messageDiv.style.color = '#fff'; // Texte blanc
+    messageDiv.style.textAlign = 'center';
+    messageDiv.style.zIndex = '1000'; // Assurez-vous qu'il est au-dessus des autres éléments
+    messageDiv.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+    messageDiv.style.borderRadius = '5px'; // Coins arrondis
+    messageDiv.style.animation = 'slideDown 0.5s ease-out';
+
+    // Définissez la couleur de fond et l'icône en fonction du type de message
+    const icon = document.createElement('i');
+    icon.style.fontSize = '1.0rem'; // Taille de l'icône
+    icon.className = 'bi me-2'; // Classe de base pour Bootstrap Icons
+
+    if (type === 'error') {
+        messageDiv.style.backgroundColor = '#E57070'; // Rouge pour les erreurs
+        icon.className += ' bi-x-circle'; // Icône d'erreur
+        Details.style.borderColor = '#E57070';
+    } else if (type === 'success') {
+        messageDiv.style.backgroundColor = '#4DF0B8'; // Vert pour les succès
+        icon.className += ' bi-check-circle'; // Icône de succès
     }
+
+    // Ajoutez le texte du message
+    const text = document.createElement('span');
+    text.textContent = message;
+
+    // Créez la barre de progression
+    const progressBar = document.createElement('div');
+    progressBar.style.width = '100%';
+    progressBar.style.height = '4px';
+    progressBar.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+    progressBar.style.borderRadius = '2px';
+    progressBar.style.marginTop = '10px';
+    progressBar.style.overflow = 'hidden';
+
+    //Créez l'élément de remplissage de la barre de progression
+    const progressBarFill = document.createElement('div');
+    progressBarFill.style.width = '0%';
+    progressBarFill.style.height = '100%';
+    progressBarFill.style.backgroundColor = '#fff';
+    progressBarFill.style.transition = 'width 5s linear';
+
+    //Ajoutez le remplissage à la barre de progression
+    progressBar.appendChild(progressBarFill);
+
+    // Ajoutez l'icône et le texte au message
+    messageDiv.appendChild(icon);
+    messageDiv.appendChild(text);
+    messageDiv.appendChild(progressBar);
+
+    // Ajoutez le message au début du body
+    document.body.prepend(messageDiv);
+
+    // Démarrez l'animation de la barre de progression
+    setTimeout(() => {
+        progressBarFill.style.width = '100%';
+    }, 10);
+
+    // Supprimez le message après 5 secondes
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
+
+$(document).ready(function () {
+    $('#incidentForm').on('submit', function (e) {
+        e.preventDefault(); // Empêche la soumission traditionnelle du formulaire
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function (response) {
+                if (response.success) {
+                    // Affichez un message de succès
+                    showErrorMessage('Incident enregistré avec succès', 'success');
+
+                    // Réinitialisez le formulaire
+                    $('#incidentForm')[0].reset();
+                } else {
+                    // Affichez les erreurs retournées par le serveur
+                    if (response.errors && response.errors.length > 0) {
+                        showErrorMessage(response.errors.join(', '), 'error');
+                    } else {
+                        showErrorMessage('Erreur lors de l\'enregistrement de l\'incident', 'error');
+                    }
+                }
+            },
+            error: function () {
+                // Affichez un message d'erreur générique en cas d'échec de la requête AJAX
+                showErrorMessage('Erreur lors de la soumission du formulaire', 'error');
+            }
+        });
+    });
 });
+
+
+
+
+
+
 

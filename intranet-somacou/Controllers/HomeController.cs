@@ -67,18 +67,23 @@ namespace intranet_somacou.Controllers
                 }
 
                 TempData["SuccessMessage"] = "Incident enregistré avec succès";
-                return View(incidentDto);
+                return Json(new { success = true });
             }
-            else if(!ModelState.IsValid)
+            else if (!ModelState.IsValid)
             {
-                ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors)
-                                   .Select(e => e.ErrorMessage)
-                                   .ToList();
+                var errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
                 TempData["ErrorMessage"] = "Vous devez remplir les informations avant de soumettre";
-                ViewBag.Anchor = "addinc";
-                return View(incidentDto);
-            }    
-            return View(incidentDto);
+                return Json(new { success = false, errors = errors });
+            }
+            return Json(new { success = false });
+        }
+
+        public ActionResult ListDsi()
+        {
+            return View();
         }
     }
 }
