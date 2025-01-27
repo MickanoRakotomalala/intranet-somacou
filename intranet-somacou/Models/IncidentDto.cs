@@ -13,10 +13,12 @@ namespace intranet_somacou.Models
         public int Id {  get; set; }
 
         [Required(ErrorMessage = "Le champ utilisateur est requis"),MaxLength(50)]
-        public string User {  get; set; }
+        public string UserName {  get; set; }
 
         //Clé étrangère vers la table Users
         public int UserId { get; set; }
+
+        public virtual RegisterDto User { get; set; } // Propriété de navigation
 
         [Required(ErrorMessage = "Le champ Type est requis")]
         public string Type {  get; set; }

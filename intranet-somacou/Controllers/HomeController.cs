@@ -56,8 +56,9 @@ namespace intranet_somacou.Controllers
             {
                 using (var context = new AppDbContext())
                 {
-                    if (incidentDto.User != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null && incidentDto.Action != null)
+                    if (incidentDto.UserName != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null && incidentDto.Action != null)
                     {
+                        incidentDto.UserId = (int)Session["UserId"];
                         incidentDto.Etat = "Nouveau";
                         incidentDto.Action = "Attente";
                         incidentDto.UpdateDate = DateTime.Now;
@@ -99,23 +100,32 @@ namespace intranet_somacou.Controllers
             }
 
             // Récupérez tous les incidents associés à l'utilisateur
-            var userIncidents = db.Incidents.Where(i => i.Id == userId).ToList();
+            var userIncidents = db.Incidents
+                                    .Where(i => i.UserId == userId)
+                                    .ToList();
+
+
 
             // Créez une liste de IncidentDto
             var incidentDtos = userIncidents.Select(incident => new IncidentDto
             {
                 Id = incident.Id,
-                User = incident.User,
+                UserName = incident.UserName,
                 Type = incident.Type,
                 Details = incident.Details,
                 Etat = incident.Etat,
                 CreatedDate = incident.CreatedDate,
                 Action = incident.Action,
                 UpdateDate = incident.UpdateDate,
-                Responsible = incident.Responsible
+                Responsible = incident.Responsible,
+                UserId = incident.UserId
             }).ToList();
 
+            if (!ModelState.IsValid) {
+                ViewBag.ErrorMessage = "echec";
+            }
             return View(incidentDtos);
+
         }
     }
 }

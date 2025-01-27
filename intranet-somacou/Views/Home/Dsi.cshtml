@@ -1,4 +1,4 @@
-﻿@model IEnumerable<intranet_somacou.Models.IncidentDto>
+﻿@model List<intranet_somacou.Models.IncidentDto>
 @{
     ViewBag.Title = "Intranet";
 }
@@ -129,7 +129,7 @@
                 <div class="container-fluid p-2">
                     <form id="incidentForm" action="Dsi#addinc" method="post">
                         @*<input type="hidden" name="Id" id="Id" />*@
-                        <input type="hidden" name="User" id="User" value="@Session["FullName"].ToString()" class="form-control" />
+                        <input type="hidden" name="UserName" id="UserName" value="@Session["FullName"].ToString()" class="form-control" />
                         <div class="row mb-2">
                             <label class="offset-sm-2 col-sm-2 col-form-label">Type :</label>
                             <div class="col-sm-8">
@@ -186,30 +186,40 @@
         </div>
         <div class="offset-1 col-md-9 mx-auto" id="listInc" hidden>
             <h5>Liste Incident</h5>
+            <span>@ViewBag.ErrorMessage</span>
             <div class="table-responsive-sm">
                 <table class="table table-responsive-sm">
                     <thead>
                         <tr>
-                            <th>Utilisateur</th>  
-                            <th>Type</th>  
-                            <th>Détails</th>  
-                            <th>Statut</th>  
-                            <th>Date</th>  
-                            <th></th>  
-                        </tr>  
+                            <th>Utilisateur</th>
+                            <th>Type</th>
+                            <th>Détails</th>
+                            <th>Statut</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
-                        @foreach(var incident in Model)
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var incident in Model)
+                            {
+                                <tr>
+                                    <td>@incident.UserName</td>
+                                    <td>@incident.Type</td>
+                                    <td>@incident.Details</td>
+                                    <td>@incident.Etat</td>
+                                    <td>@incident.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <a href="#"><i class="bi bi-pencil-square"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
                         {
                             <tr>
-                                <td>@incident.User</td>
-                                <td>@incident.Type</td>
-                                <td>@incident.Details</td>
-                                <td>@incident.Etat</td>
-                                <td>@incident.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td>
-                                    <a href="#"><i class="bi bi-pencil-square"></i></a>
-                                </td>
+                                <td colspan="6">Aucun incident trouvé.</td>
                             </tr>
                         }
                     </tbody>

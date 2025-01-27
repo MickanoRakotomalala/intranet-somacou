@@ -43,5 +43,8 @@ namespace intranet_somacou.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        // Propriété de navigation pour les incidents
+        public virtual ICollection<IncidentDto> Incidents { get; set; }
     }
 }

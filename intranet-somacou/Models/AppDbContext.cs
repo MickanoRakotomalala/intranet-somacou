@@ -14,12 +14,12 @@ namespace intranet_somacou.Models
         public DbSet <RegisterDto> Users { get;set; }
         public DbSet <IncidentDto> Incidents { get;set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure la relation entre IncidentDto et RegisterDto
             modelBuilder.Entity<IncidentDto>()
-                .HasOne(i => i.User) // IncidentDto a un utilisateur
-                .WithMany() // RegisterDto peut avoir plusieurs incidents
+                .HasRequired(i => i.User) // IncidentDto a un utilisateur
+                .WithMany(u => u.Incidents) // RegisterDto peut avoir plusieurs incidents
                 .HasForeignKey(i => i.UserId); // Clé étrangère UserId
 
             base.OnModelCreating(modelBuilder);

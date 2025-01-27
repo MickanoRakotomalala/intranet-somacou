@@ -19,7 +19,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort>44357</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -191,6 +191,14 @@
     <Compile Include="Migrations\202501231414323_UpmodelIncidentDto2.Designer.cs">
       <DependentUpon>202501231414323_UpmodelIncidentDto2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501270627587_UpTT.cs" />
+    <Compile Include="Migrations\202501270627587_UpTT.Designer.cs">
+      <DependentUpon>202501270627587_UpTT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202501270629537_UpDb.cs" />
+    <Compile Include="Migrations\202501270629537_UpDb.Designer.cs">
+      <DependentUpon>202501270629537_UpDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\IncidentDto.cs" />
@@ -347,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202501231414323_UpmodelIncidentDto2.resx">
       <DependentUpon>202501231414323_UpmodelIncidentDto2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501270627587_UpTT.resx">
+      <DependentUpon>202501270627587_UpTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501270629537_UpDb.resx">
+      <DependentUpon>202501270629537_UpDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
