@@ -1,4 +1,4 @@
-﻿@model intranet_somacou.Models.IncidentDto
+﻿@model IEnumerable<intranet_somacou.Models.IncidentDto>
 @{
     ViewBag.Title = "Intranet";
 }
@@ -142,14 +142,12 @@
                                     <option value="Sauvegarde">Panne sauvegarde</option>
                                     <option value="Autre">Autre Panne</option>
                                 </select>
-                                <span class="text-white">@Html.ValidationMessageFor(m => m.Type)</span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <label class="offset-2 col-sm-2 col-form-label">Détails :</label>
                             <div class="col-sm-8">
                                 <Textarea name="Details" id="Details" class="form-control"></Textarea>
-                                <span class="text-white">@Html.ValidationMessageFor(m => m.Details)</span>
                             </div>
                         </div>
                         <div class="row mb-2" hidden>
@@ -160,7 +158,6 @@
                                     <option value="EnCours">En Cours</option>
                                     <option value="Terminé">Terminé</option>
                                 </select>
-                                <span class="text-white">@Html.ValidationMessageFor(m => m.Etat)</span>
                             </div>
                         </div>
 
@@ -173,7 +170,6 @@
                                     <option value="Attente">Attente</option>
                                     <option value="Terminé">Terminé</option>
                                 </select>
-                                <span class="text-white">@Html.ValidationMessageFor(m => m.Action)</span>
                             </div>
                         </div>
 
@@ -190,6 +186,35 @@
         </div>
         <div class="offset-1 col-md-9 mx-auto" id="listInc" hidden>
             <h5>Liste Incident</h5>
+            <div class="table-responsive-sm">
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th>Utilisateur</th>  
+                            <th>Type</th>  
+                            <th>Détails</th>  
+                            <th>Statut</th>  
+                            <th>Date</th>  
+                            <th></th>  
+                        </tr>  
+                    </thead>
+                    <tbody>
+                        @foreach(var incident in Model)
+                        {
+                            <tr>
+                                <td>@incident.User</td>
+                                <td>@incident.Type</td>
+                                <td>@incident.Details</td>
+                                <td>@incident.Etat</td>
+                                <td>@incident.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <a href="#"><i class="bi bi-pencil-square"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

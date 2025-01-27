@@ -81,9 +81,41 @@ namespace intranet_somacou.Controllers
             return Json(new { success = false });
         }
 
+        private AppDbContext db = new AppDbContext();
+
+        [HttpGet]
         public ActionResult ListDsi()
         {
-            return View();
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            int userId = (int)Session["UserId"];
+            var user = db.Users.Find(userId);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Récupérez tous les incidents associés à l'utilisateur
+            var userIncidents = db.Incidents.Where(i => i.Id == userId).ToList();
+
+            // Créez une liste de IncidentDto
+            var incidentDtos = userIncidents.Select(incident => new IncidentDto
+            {
+                Id = incident.Id,
+                User = incident.User,
+                Type = incident.Type,
+                Details = incident.Details,
+                Etat = incident.Etat,
+                CreatedDate = incident.CreatedDate,
+                Action = incident.Action,
+                UpdateDate = incident.UpdateDate,
+                Responsible = incident.Responsible
+            }).ToList();
+
+            return View(incidentDtos);
         }
     }
 }

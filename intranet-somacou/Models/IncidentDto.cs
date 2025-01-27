@@ -15,6 +15,9 @@ namespace intranet_somacou.Models
         [Required(ErrorMessage = "Le champ utilisateur est requis"),MaxLength(50)]
         public string User {  get; set; }
 
+        //Clé étrangère vers la table Users
+        public int UserId { get; set; }
+
         [Required(ErrorMessage = "Le champ Type est requis")]
         public string Type {  get; set; }
 
