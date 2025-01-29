@@ -61,7 +61,6 @@ namespace intranet_somacou.Controllers
                         incidentDto.UserId = (int)Session["UserId"];
                         incidentDto.Etat = "Nouveau";
                         incidentDto.Action = "Attente";
-                        incidentDto.UpdateDate = DateTime.Now;
                         context.Incidents.Add(incidentDto);
                         context.SaveChanges();
                     }
@@ -104,8 +103,7 @@ namespace intranet_somacou.Controllers
                                     .Where(i => i.UserId == userId)
                                     .ToList();
 
-
-
+            
             // Créez une liste de IncidentDto
             var incidentDtos = userIncidents.Select(incident => new IncidentDto
             {
@@ -116,14 +114,10 @@ namespace intranet_somacou.Controllers
                 Etat = incident.Etat,
                 CreatedDate = incident.CreatedDate,
                 Action = incident.Action,
-                UpdateDate = incident.UpdateDate,
                 Responsible = incident.Responsible,
                 UserId = incident.UserId
             }).ToList();
 
-            if (!ModelState.IsValid) {
-                ViewBag.ErrorMessage = "echec";
-            }
             return View(incidentDtos);
 
         }
