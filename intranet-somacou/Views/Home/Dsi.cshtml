@@ -186,7 +186,13 @@
         </div>
         <div class="offset-1 col-md-9 mx-auto" id="listInc" hidden>
             <h5>Liste Incident</h5>
-            <span>@ViewBag.ErrorMessage</span>
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <strong>@TempData["ErrorMessage"]</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <div class="table-responsive-sm">
                 <table class="table table-responsive-sm">
                     <thead>

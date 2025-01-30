@@ -176,29 +176,9 @@
     <Compile Include="Migrations\202501210509303_RegisterDtoesToUsersTable.Designer.cs">
       <DependentUpon>202501210509303_RegisterDtoesToUsersTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202501210535558_Incidents.cs" />
-    <Compile Include="Migrations\202501210535558_Incidents.Designer.cs">
-      <DependentUpon>202501210535558_Incidents.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202501221325260_UpIncident.cs" />
-    <Compile Include="Migrations\202501221325260_UpIncident.Designer.cs">
-      <DependentUpon>202501221325260_UpIncident.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202501231412226_UpmodelIncidentDto.cs" />
-    <Compile Include="Migrations\202501231412226_UpmodelIncidentDto.Designer.cs">
-      <DependentUpon>202501231412226_UpmodelIncidentDto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202501231414323_UpmodelIncidentDto2.cs" />
-    <Compile Include="Migrations\202501231414323_UpmodelIncidentDto2.Designer.cs">
-      <DependentUpon>202501231414323_UpmodelIncidentDto2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202501270627587_UpTT.cs" />
-    <Compile Include="Migrations\202501270627587_UpTT.Designer.cs">
-      <DependentUpon>202501270627587_UpTT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202501270629537_UpDb.cs" />
-    <Compile Include="Migrations\202501270629537_UpDb.Designer.cs">
-      <DependentUpon>202501270629537_UpDb.cs</DependentUpon>
+    <Compile Include="Migrations\202501291921042_UpIncident.cs" />
+    <Compile Include="Migrations\202501291921042_UpIncident.Designer.cs">
+      <DependentUpon>202501291921042_UpIncident.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
@@ -345,23 +325,8 @@
     <EmbeddedResource Include="Migrations\202501210509303_RegisterDtoesToUsersTable.resx">
       <DependentUpon>202501210509303_RegisterDtoesToUsersTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202501210535558_Incidents.resx">
-      <DependentUpon>202501210535558_Incidents.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202501221325260_UpIncident.resx">
-      <DependentUpon>202501221325260_UpIncident.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202501231412226_UpmodelIncidentDto.resx">
-      <DependentUpon>202501231412226_UpmodelIncidentDto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202501231414323_UpmodelIncidentDto2.resx">
-      <DependentUpon>202501231414323_UpmodelIncidentDto2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202501270627587_UpTT.resx">
-      <DependentUpon>202501270627587_UpTT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202501270629537_UpDb.resx">
-      <DependentUpon>202501270629537_UpDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202501291921042_UpIncident.resx">
+      <DependentUpon>202501291921042_UpIncident.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

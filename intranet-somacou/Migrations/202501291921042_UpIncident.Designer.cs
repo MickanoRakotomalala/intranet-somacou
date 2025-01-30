@@ -7,13 +7,13 @@ namespace intranet_somacou.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class UpDb : IMigrationMetadata
+    public sealed partial class UpIncident : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpIncident));
         
         string IMigrationMetadata.Id
         {
-            get { return "202501270629537_UpDb"; }
+            get { return "202501291921042_UpIncident"; }
         }
         
         string IMigrationMetadata.Source

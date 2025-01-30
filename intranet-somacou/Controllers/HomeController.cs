@@ -103,6 +103,11 @@ namespace intranet_somacou.Controllers
                                     .Where(i => i.UserId == userId)
                                     .ToList();
 
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Aucun incident trouvé";
+                return View();
+            }
             
             // Créez une liste de IncidentDto
             var incidentDtos = userIncidents.Select(incident => new IncidentDto
