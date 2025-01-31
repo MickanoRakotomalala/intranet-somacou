@@ -202,7 +202,13 @@
                             <th>Détails</th>
                             <th>Statut</th>
                             <th>Date</th>
-                            <th></th>
+                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") && (Session["Poste"].ToString() == "Developer"))
+                            {
+                                <th>Action</th>
+                                <th>Réalisation</th>
+                                <th>Responsable</th>
+                                <th></th>
+                            }
                         </tr>
                     </thead>
                     <tbody>

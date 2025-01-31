@@ -187,6 +187,9 @@ function showListInc() {
     });
 
     const listDsiUrl = '/Home/ListDsi';
+    // Transférer les informations de session côté client
+    const userRole = '@Session["Role"].ToString()';
+    const userPoste = '@Session["Poste"].ToString()';
 
     // Appeler l'action ListDsi via AJAX
     fetch(listDsiUrl)
@@ -199,14 +202,28 @@ function showListInc() {
                 // Ajouter les nouvelles lignes
                 data.data.forEach(incident => {
                     const row = document.createElement("tr");
+
+                    // Gestion des colonnes supplémentaires
+                    let additionalColumns = '';
+                    if ((userRole == "Admin" || userRole == "Chef") && (userPoste == "Developer")) {
+                        additionalColumns = `
+                            <td>${incident.Action}</td>
+                            <td>${FormatDate(incident.UpdateDate)}</td>
+                            <td>${incident.Responsible}</td>
+                            <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                        `;
+                    }
+
+                    // Intégrer les colonnes supplémentaires dans la ligne du tableau
                     row.innerHTML = `
                         <td>${incident.UserName}</td>
                         <td>${incident.Type}</td>
                         <td>${incident.Details}</td>
                         <td>${incident.Etat}</td>
                         <td>${FormatDate(incident.CreatedDate)}</td>
-                        <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                        ${additionalColumns}
                     `;
+
                     tbody.appendChild(row);
                 });
 

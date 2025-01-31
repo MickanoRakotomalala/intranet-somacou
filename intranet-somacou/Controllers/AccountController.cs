@@ -50,6 +50,7 @@ namespace intranet_somacou.Controllers
                 Session["UserId"] = registerDto.Id;
                 Session["FullName"] = registerDto.Name;
                 Session["Role"] = registerDto.Role;
+                Session["Poste"] = registerDto.Poste;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -108,6 +109,7 @@ namespace intranet_somacou.Controllers
             Session["UserId"] = user.Id;
             Session["FullName"] = user.Name;
             Session["Role"] = user.Role;
+            Session["Poste"] = user.Poste;
             return RedirectToAction("Index", "Home");
         }
 
