@@ -141,14 +141,39 @@ function showInc() {
 
 //Fonction FromDate
 function FormatDate(dateString) {
-    const date = new Date(dateString); // Convertir la chaîne en objet Date
-    const day = String(date.getDate()).padStart(2, '0'); // Jour (2 chiffres)
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mois (2 chiffres)
-    const year = date.getFullYear(); // Année (4 chiffres)
-    const hours = String(date.getHours()).padStart(2, '0'); // Heures (2 chiffres)
-    const minutes = String(date.getMinutes()).padStart(2, '0'); // Minutes (2 chiffres)
+    // Vérifier si la date est au format "/Date(timestamp)/"
+    if (dateString.startsWith("/Date(") && dateString.endsWith(")/")) {
+        // Extraire le timestamp (nombre entre parenthèses)
+        const timestamp = parseInt(dateString.slice(6, -2), 10);
 
-    // Retourner la date formatée (exemple : "JJ/MM/AAAA HH:MM")
+        // Créer un objet Date à partir du timestamp
+        const date = new Date(timestamp);
+
+        // Formater la date en "JJ/MM/AAAA HH:MM"
+        const day = String(date.getDate()).padStart(2, '0'); // Jour (2 chiffres)
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Mois (2 chiffres)
+        const year = date.getFullYear(); // Année (4 chiffres)
+        const hours = String(date.getHours()).padStart(2, '0'); // Heures (2 chiffres)
+        const minutes = String(date.getMinutes()).padStart(2, '0'); // Minutes (2 chiffres)
+
+        return `${day}/${month}/${year} ${hours}:${minutes}`;
+    }
+
+    // Si la date n'est pas au format "/Date(timestamp)/", essayer de la convertir directement
+    const date = new Date(dateString);
+
+    // Vérifier si la date est valide
+    if (isNaN(date.getTime())) {
+        return "Date inconnue"; // Retourner une valeur par défaut si la date est invalide
+    }
+
+    // Formater la date en "JJ/MM/AAAA HH:MM"
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
