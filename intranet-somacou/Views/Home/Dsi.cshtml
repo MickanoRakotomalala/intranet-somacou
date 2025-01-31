@@ -42,7 +42,7 @@
                 <h5 id="menuinc"><i class="bi bi-tools me-2"></i><span type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev">Incident</span></h5>
                 <ul class="collapse" id="Incident">
                     <li id="detailinc"><i class="bi bi-plus-circle me-2"></i><a href="#addinc" onclick="showInc()">Nouvel Incident</a></li>
-                    <li id="respinc"><i class="bi bi-gear me-2"></i><a href="@Url.Action("ListDsi","Home")" onclick="showListInc()">Liste Incident</a></li>
+                    <li id="respinc"><i class="bi bi-gear me-2"></i><a href="#" onclick="showListInc()">Liste Incident</a></li>
                 </ul>
             </div>
         </div>
@@ -194,7 +194,7 @@
                 </div>
             }
             <div class="table-responsive-sm">
-                <table class="table table-responsive-sm">
+                <table class="table table-responsive-sm" id="incidentTable">
                     <thead>
                         <tr>
                             <th>Utilisateur</th>
@@ -206,28 +206,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model != null && Model.Any())
-                        {
-                            foreach (var incident in Model)
-                            {
-                                <tr>
-                                    <td>@incident.UserName</td>
-                                    <td>@incident.Type</td>
-                                    <td>@incident.Details</td>
-                                    <td>@incident.Etat</td>
-                                    <td>@incident.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                    <td>
-                                        <a href="#"><i class="bi bi-pencil-square"></i></a>
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="6">Aucun incident trouvé.</td>
-                            </tr>
-                        }
+                        <!-- Les données seront injectées ici via JavaScript -->
                     </tbody>
                 </table>
             </div>
@@ -235,3 +214,38 @@
     </div>
 </div>
 
+@*<script>
+    function showListInc() {
+        // Afficher la section listInc
+        document.getElementById("listInc").hidden = false;
+
+        // Appeler l'action ListDsi via AJAX
+        fetch('@Url.Action("ListDsi", "Home")')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const tbody = document.querySelector("#incidentTable tbody");
+                    tbody.innerHTML = ""; // Vider le contenu existant
+
+                    // Ajouter les nouvelles lignes
+                    data.data.forEach(incident => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${incident.UserName}</td>
+                            <td>${incident.Type}</td>
+                            <td>${incident.Details}</td>
+                            <td>${incident.Etat}</td>
+                            <td>${FormatDate(incident.CreatedDate)}</td>
+                            <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                } else {
+                    alert(data.message); // Afficher un message d'erreur
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de la récupération des incidents :", error);
+            });
+    }
+</script>*@

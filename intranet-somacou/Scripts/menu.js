@@ -139,15 +139,62 @@ function showInc() {
     });
 }
 
+//Fonction FromDate
+function FormatDate(dateString) {
+    const date = new Date(dateString); // Convertir la chaîne en objet Date
+    const day = String(date.getDate()).padStart(2, '0'); // Jour (2 chiffres)
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mois (2 chiffres)
+    const year = date.getFullYear(); // Année (4 chiffres)
+    const hours = String(date.getHours()).padStart(2, '0'); // Heures (2 chiffres)
+    const minutes = String(date.getMinutes()).padStart(2, '0'); // Minutes (2 chiffres)
+
+    // Retourner la date formatée (exemple : "JJ/MM/AAAA HH:MM")
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
 function showListInc() {
+    // Afficher la section listInc
     showSection({
         visibleId: "ListInc",
         activeMenu: "menuIncident",
         activeList: "RespInc",
         consoleMessage: "List Incident",
     });
-}
 
+    const listDsiUrl = '/Home/ListDsi';
+
+    // Appeler l'action ListDsi via AJAX
+    fetch(listDsiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const tbody = document.querySelector("#incidentTable tbody");
+                tbody.innerHTML = ""; // Vider le contenu existant
+
+                // Ajouter les nouvelles lignes
+                data.data.forEach(incident => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${incident.UserName}</td>
+                        <td>${incident.Type}</td>
+                        <td>${incident.Details}</td>
+                        <td>${incident.Etat}</td>
+                        <td>${FormatDate(incident.CreatedDate)}</td>
+                        <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Défilement vers l'ancrage listInc
+                document.getElementById("listInc").scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert(data.message); // Afficher un message d'erreur
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des incidents :", error);
+        });
+}
 
 //Validation formulaire INCIDENT - DSI
 function showErrorMessage(message, type) {

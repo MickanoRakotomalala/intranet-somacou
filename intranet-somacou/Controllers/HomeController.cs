@@ -106,7 +106,7 @@ namespace intranet_somacou.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Aucun incident trouvé";
-                return View();
+                return Json(new { success = false, message = "Aucun incident trouvé" },JsonRequestBehavior.AllowGet);
             }
             
             // Créez une liste de IncidentDto
@@ -119,11 +119,14 @@ namespace intranet_somacou.Controllers
                 Etat = incident.Etat,
                 CreatedDate = incident.CreatedDate,
                 Action = incident.Action,
+                UpdateDate = incident.UpdateDate,
                 Responsible = incident.Responsible,
                 UserId = incident.UserId
             }).ToList();
 
-            return View(incidentDtos);
+            TempData["ErrorMessage"] = "TEST";
+            //return View(incidentDtos);
+            return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
 
         }
     }
