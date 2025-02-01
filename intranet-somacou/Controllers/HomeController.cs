@@ -61,6 +61,7 @@ namespace intranet_somacou.Controllers
                         incidentDto.UserId = (int)Session["UserId"];
                         incidentDto.Etat = "Nouveau";
                         incidentDto.Action = "Attente";
+                        incidentDto.Responsible = "Aucun";
                         context.Incidents.Add(incidentDto);
                         context.SaveChanges();
                     }
@@ -123,8 +124,6 @@ namespace intranet_somacou.Controllers
                 Responsible = incident.Responsible,
                 UserId = incident.UserId
             }).ToList();
-
-            TempData["ErrorMessage"] = "TEST";
             //return View(incidentDtos);
             return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
 

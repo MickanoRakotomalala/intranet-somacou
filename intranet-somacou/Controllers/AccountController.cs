@@ -157,7 +157,7 @@ namespace intranet_somacou.Controllers
                         Password = user.Password
                     };
 
-                    ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
+                    ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "HelpDesk","Commercial", "Comptable", "Gérant Magasin", "Transit" };
                     return View(registerDto);
                 }
             }
@@ -173,7 +173,7 @@ namespace intranet_somacou.Controllers
                                                    .Select(e => e.ErrorMessage)
                                                    .ToList();
                 ViewBag.HasErrors = true;
-                ViewBag.Poste = new List<string> { "DRH", "RH", "Developer", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
+                ViewBag.Poste = new List<string> { "DRH", "RH", "Developer","HelpDesk", "Commercial", "Comptable", "Gérant Magasin", "Transit" };
                 TempData["ErrorMessage"] = "Veuillez corriger les erreurs avant de soumettre.";
                 return View(registerDto); // Renvoie à la vue pour afficher les erreurs
             }

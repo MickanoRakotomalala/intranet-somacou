@@ -202,7 +202,8 @@
                             <th>Détails</th>
                             <th>Statut</th>
                             <th>Date</th>
-                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") && (Session["Poste"].ToString() == "Developer"))
+                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") 
+                                && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
                             {
                                 <th>Action</th>
                                 <th>Réalisation</th>
@@ -220,38 +221,9 @@
     </div>
 </div>
 
-@*<script>
-    function showListInc() {
-        // Afficher la section listInc
-        document.getElementById("listInc").hidden = false;
 
-        // Appeler l'action ListDsi via AJAX
-        fetch('@Url.Action("ListDsi", "Home")')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    const tbody = document.querySelector("#incidentTable tbody");
-                    tbody.innerHTML = ""; // Vider le contenu existant
-
-                    // Ajouter les nouvelles lignes
-                    data.data.forEach(incident => {
-                        const row = document.createElement("tr");
-                        row.innerHTML = `
-                            <td>${incident.UserName}</td>
-                            <td>${incident.Type}</td>
-                            <td>${incident.Details}</td>
-                            <td>${incident.Etat}</td>
-                            <td>${FormatDate(incident.CreatedDate)}</td>
-                            <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
-                        `;
-                        tbody.appendChild(row);
-                    });
-                } else {
-                    alert(data.message); // Afficher un message d'erreur
-                }
-            })
-            .catch(error => {
-                console.error("Erreur lors de la récupération des incidents :", error);
-            });
-    }
-</script>*@
+<div id="sessionData"
+     data-role="@Session["Role"]"
+     data-poste="@Session["Poste"]"
+     hidden>
+</div>

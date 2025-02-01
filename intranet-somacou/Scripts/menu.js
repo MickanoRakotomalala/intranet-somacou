@@ -177,6 +177,13 @@ function FormatDate(dateString) {
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
+// Récupérer les valeurs des data-attributes
+const sessionData = document.getElementById("sessionData");
+const userRole = sessionData.getAttribute("data-role");
+const userPoste = sessionData.getAttribute("data-poste");
+
+console.log("userRole:", userRole); // Vérifier la valeur de userRole
+console.log("userPoste:", userPoste); // Vérifier la valeur de userPoste
 function showListInc() {
     // Afficher la section listInc
     showSection({
@@ -187,42 +194,41 @@ function showListInc() {
     });
 
     const listDsiUrl = '/Home/ListDsi';
-    // Transférer les informations de session côté client
-    const userRole = '@Session["Role"].ToString()';
-    const userPoste = '@Session["Poste"].ToString()';
 
     // Appeler l'action ListDsi via AJAX
     fetch(listDsiUrl)
         .then(response => response.json())
         .then(data => {
+            console.log("Données reçues :", data); // Inspecter les données
             if (data.success) {
                 const tbody = document.querySelector("#incidentTable tbody");
                 tbody.innerHTML = ""; // Vider le contenu existant
 
                 // Ajouter les nouvelles lignes
                 data.data.forEach(incident => {
+                    console.log("Incident :", incident); // Inspecter chaque incident
                     const row = document.createElement("tr");
 
-                    // Gestion des colonnes supplémentaires
-                    let additionalColumns = '';
-                    if ((userRole == "Admin" || userRole == "Chef") && (userPoste == "Developer")) {
+                    let additionalColumns = ''; // Variable pour stocker les colonnes supplémentaires
+
+                    if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                         additionalColumns = `
-                            <td>${incident.Action}</td>
-                            <td>${FormatDate(incident.UpdateDate)}</td>
-                            <td>${incident.Responsible}</td>
-                            <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
-                        `;
+                        <td>${incident.Action || ''}</td>
+                        <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
+                        <td>${incident.Responsible || ''}</td>
+                        <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                    `;
                     }
 
-                    // Intégrer les colonnes supplémentaires dans la ligne du tableau
+                    // Construction de la ligne du tableau
                     row.innerHTML = `
-                        <td>${incident.UserName}</td>
-                        <td>${incident.Type}</td>
-                        <td>${incident.Details}</td>
-                        <td>${incident.Etat}</td>
-                        <td>${FormatDate(incident.CreatedDate)}</td>
-                        ${additionalColumns}
-                    `;
+                    <td>${incident.UserName}</td>
+                    <td>${incident.Type}</td>
+                    <td>${incident.Details}</td>
+                    <td>${incident.Etat}</td>
+                    <td>${FormatDate(incident.CreatedDate)}</td>
+                    ${additionalColumns}
+                `;
 
                     tbody.appendChild(row);
                 });
