@@ -103,28 +103,28 @@
             <div class="row offset-2 col-8 offset-2">
                 <h5><i class="bi bi-plus-circle me-2"></i>DEMANDE D'INTERVENTION :</h5>
                 @*@if (TempData["ErrorMessage"] != null)
-                {
-                    <div class="alert alert-danger alert-dismissible fade show">
-                        <strong>@TempData["ErrorMessage"]</strong>
-                        @if (ViewBag.Errors != null)
-                            {
-                                <ul class="text-danger">
-                                    @foreach (var error in ViewBag.Errors)
-                                    {
-                                        <li>@error</li>
-                                    }
-                                </ul>
-                            }
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                }
-                @if (TempData["SuccessMessage"] != null)
-                {
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <strong>@TempData["SuccessMessage"]</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                }*@
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <strong>@TempData["ErrorMessage"]</strong>
+                            @if (ViewBag.Errors != null)
+                                {
+                                    <ul class="text-danger">
+                                        @foreach (var error in ViewBag.Errors)
+                                        {
+                                            <li>@error</li>
+                                        }
+                                    </ul>
+                                }
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <strong>@TempData["SuccessMessage"]</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }*@
 
                 <div class="container-fluid p-2">
                     <form id="incidentForm" action="Dsi#addinc" method="post">
@@ -202,7 +202,7 @@
                             <th>Détails</th>
                             <th>Statut</th>
                             <th>Date</th>
-                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") 
+                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef")
                                 && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
                             {
                                 <th>Action</th>
@@ -227,3 +227,35 @@
      data-poste="@Session["Poste"]"
      hidden>
 </div>
+
+<!-- Modal -->
+<!--<div class="modal fade" id="EditProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ProfilUpdate">
+        <div class="modal-content text-white" style="background-color:#F16476;">
+            <div class="modal-header">
+                <h2 class="modal-title fs-5">INCIDENT</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <input type="hidden" name="Id" value="" />
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Statut :</label>
+                        <div class="col-sm-8">
+                            <select name="Etat" class="form-control" id="Etat">-->
+                                @*@{ foreach (var poste in ViewBag.Poste)
+                                    {
+                                        <option value="@poste" @(poste == Model.Poste ? "selected" : "")>@poste</option>
+                                    }
+                                }*@
+                            <!--</select>
+                        </div>
+                    </div>
+                    <div class="row mb-4 offset-sm-6 col-sm-4">
+                        <button type="submit" class="btn btn-outline-secondary">Sauvegarder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->

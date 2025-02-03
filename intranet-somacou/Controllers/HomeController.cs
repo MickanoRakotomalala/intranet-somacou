@@ -87,6 +87,14 @@ namespace intranet_somacou.Controllers
         [HttpGet]
         public ActionResult ListDsi()
         {
+            // Récupérez tous les incidents associés à l'utilisateur
+
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Aucun incident trouvé";
+                return Json(new { success = false, message = "Aucun incident trouvé" }, JsonRequestBehavior.AllowGet);
+            }
+
             if (Session["UserId"] == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -99,34 +107,49 @@ namespace intranet_somacou.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // Récupérez tous les incidents associés à l'utilisateur
-            var userIncidents = db.Incidents
-                                    .Where(i => i.UserId == userId)
-                                    .ToList();
-
-            if (!ModelState.IsValid)
+            if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") 
+                && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
             {
-                TempData["ErrorMessage"] = "Aucun incident trouvé";
-                return Json(new { success = false, message = "Aucun incident trouvé" },JsonRequestBehavior.AllowGet);
-            }
-            
-            // Créez une liste de IncidentDto
-            var incidentDtos = userIncidents.Select(incident => new IncidentDto
+                var userIncidents = db.Incidents
+                                        .ToList();
+                var incidentDtos = userIncidents.Select(incident => new IncidentDto
+                {
+                    Id = incident.Id,
+                    UserName = incident.UserName,
+                    Type = incident.Type,
+                    Details = incident.Details,
+                    Etat = incident.Etat,
+                    CreatedDate = incident.CreatedDate,
+                    Action = incident.Action,
+                    UpdateDate = incident.UpdateDate,
+                    Responsible = incident.Responsible,
+                    UserId = incident.UserId
+                }).ToList();
+                //return View(incidentDtos);
+                return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
+            } 
+            else
             {
-                Id = incident.Id,
-                UserName = incident.UserName,
-                Type = incident.Type,
-                Details = incident.Details,
-                Etat = incident.Etat,
-                CreatedDate = incident.CreatedDate,
-                Action = incident.Action,
-                UpdateDate = incident.UpdateDate,
-                Responsible = incident.Responsible,
-                UserId = incident.UserId
-            }).ToList();
-            //return View(incidentDtos);
-            return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
+                var userIncidents = db.Incidents
+                        .Where(i => i.UserId == userId)
+                        .ToList();
 
+                var incidentDtos = userIncidents.Select(incident => new IncidentDto
+                {
+                    Id = incident.Id,
+                    UserName = incident.UserName,
+                    Type = incident.Type,
+                    Details = incident.Details,
+                    Etat = incident.Etat,
+                    CreatedDate = incident.CreatedDate,
+                    Action = incident.Action,
+                    UpdateDate = incident.UpdateDate,
+                    Responsible = incident.Responsible,
+                    UserId = incident.UserId
+                }).ToList();
+                //return View(incidentDtos);
+                return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
+            }           
         }
     }
 }
