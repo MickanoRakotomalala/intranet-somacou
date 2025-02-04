@@ -216,7 +216,7 @@ function showListInc() {
                         <td>${incident.Action || ''}</td>
                         <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
                         <td>${incident.Responsible || ''}</td>
-                        <td><a href="#"><i class="bi bi-pencil-square"></i></a></td>
+                        <td><button class="btn btn-outline-light" type=button data-bs-target="#EditIncident" data-bs-toggle="modal"><i class="bi bi-pencil-square"></i></button></td>
                     `;
                     }
 

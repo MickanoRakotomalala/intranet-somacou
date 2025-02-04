@@ -87,8 +87,8 @@ namespace intranet_somacou.Controllers
         [HttpGet]
         public ActionResult ListDsi()
         {
-            // Récupérez tous les incidents associés à l'utilisateur
-
+            ViewBag.Incident = new List<string> { "Nouveau", "Terminé" };
+;            // Récupérez tous les incidents associés à l'utilisateur
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Aucun incident trouvé";
@@ -149,7 +149,8 @@ namespace intranet_somacou.Controllers
                 }).ToList();
                 //return View(incidentDtos);
                 return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
-            }           
+            }      
+            
         }
     }
 }

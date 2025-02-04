@@ -155,7 +155,6 @@
                             <div class="col-sm-8">
                                 <select name="Etat" id="Etat" class="form-control">
                                     <option value="Nouveau">Nouveau</option>
-                                    <option value="EnCours">En Cours</option>
                                     <option value="Terminé">Terminé</option>
                                 </select>
                             </div>
@@ -185,7 +184,7 @@
             </div>
         </div>
         <div class="offset-1 col-md-9 mx-auto" id="listInc" hidden>
-            <h5>Liste Incident</h5>
+            <h5>LISTE INCIDENT</h5>
             @if (TempData["ErrorMessage"] != null)
             {
                 <div class="alert alert-danger alert-dismissible fade show">
@@ -228,8 +227,8 @@
      hidden>
 </div>
 
-<!-- Modal -->
-<!--<div class="modal fade" id="EditProfileModal" tabindex="-1" aria-hidden="true">
+ @*Modal*@ 
+<div class="modal fade" id="EditIncident" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog ProfilUpdate">
         <div class="modal-content text-white" style="background-color:#F16476;">
             <div class="modal-header">
@@ -242,13 +241,13 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
                         <div class="col-sm-8">
-                            <select name="Etat" class="form-control" id="Etat">-->
-                                @*@{ foreach (var poste in ViewBag.Poste)
+                            <select name="Etat" class="form-control" id="Etat">
+                                @{ foreach (var incident in ViewBag.Incident)
                                     {
-                                        <option value="@poste" @(poste == Model.Poste ? "selected" : "")>@poste</option>
+                                        <option value="@incident" >@incident</option>
                                     }
-                                }*@
-                            <!--</select>
+                                }
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-4 offset-sm-6 col-sm-4">
@@ -258,4 +257,4 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
