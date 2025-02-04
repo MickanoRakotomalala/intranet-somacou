@@ -87,7 +87,6 @@ namespace intranet_somacou.Controllers
         [HttpGet]
         public ActionResult ListDsi()
         {
-            ViewBag.Incident = new List<string> { "Nouveau", "Terminé" };
 ;            // Récupérez tous les incidents associés à l'utilisateur
             if (!ModelState.IsValid)
             {
@@ -125,6 +124,7 @@ namespace intranet_somacou.Controllers
                     Responsible = incident.Responsible,
                     UserId = incident.UserId
                 }).ToList();
+                //ViewBag.Incident = new List<string> { "Nouveau", "Terminé" };
                 //return View(incidentDtos);
                 return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
             } 
@@ -152,5 +152,6 @@ namespace intranet_somacou.Controllers
             }      
             
         }
+
     }
 }
