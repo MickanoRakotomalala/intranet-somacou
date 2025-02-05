@@ -106,6 +106,9 @@ namespace intranet_somacou.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            ViewBag.Etats = new List<string> { "Nouveau", "En_cours", "Résolu", "Fermé" };
+            ViewBag.Action = new List<string> { "Attente", "En_cours","Terminé" };
+
             if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") 
                 && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
             {
@@ -124,8 +127,6 @@ namespace intranet_somacou.Controllers
                     Responsible = incident.Responsible,
                     UserId = incident.UserId
                 }).ToList();
-                //ViewBag.Incident = new List<string> { "Nouveau", "Terminé" };
-                //return View(incidentDtos);
                 return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
             } 
             else
@@ -151,6 +152,39 @@ namespace intranet_somacou.Controllers
                 return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
             }      
             
+        }
+
+        // Action pour mettre à jour un incident
+        [HttpPost]
+        public ActionResult UpdateIncident(IncidentDto incidentDto)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var context = new AppDbContext())
+                {
+                    var incident = context.Incidents.Find(incidentDto.Id);
+                    if (incident != null)
+                    {
+                        incident.Etat = incidentDto.Etat;
+                        incident.Action = incidentDto.Action;
+                        incident.Responsible = Session["FullName"].ToString();
+                        incident.UpdateDate = DateTime.Now; // Mettre à jour la date de modification
+                        context.SaveChanges();
+                    }
+                }
+
+                return Json(new { success = true });
+            }
+            else
+            {
+                ViewBag.Etats = new List<string> { "Nouveau", "En_cours", "Résolu", "Fermé" };
+                ViewBag.Action = new List<string> { "Attente", "En_cours", "Terminé" };
+                var errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+                return Json(new { success = false, message = "Erreur de validation", errors = errors });
+            }
         }
 
     }
