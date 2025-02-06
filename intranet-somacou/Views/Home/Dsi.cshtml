@@ -230,15 +230,22 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="/Home/UpdateIncident" id="editIncidentForm">
-                    <input type="hidden" name="Id" id="incidentId" value="" />
+                    <input type="hidden" name="Id" id="incidentId"/>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
                         <div class="col-sm-8">
                             <select name="Etat" class="form-control" id="Etat">
-                                @foreach (var etat in ViewBag.Etats)
+                                @*@if (ViewBag.Etats != null)
                                 {
-                                    <option value="@etat">@etat</option>
+                                    foreach (var etat in ViewBag.Etats)
+                                    {
+                                        <option value="@etat">@etat</option>
+                                    }
                                 }
+                                else
+                                {
+                                    <option value="">Aucun état disponible</option>
+                                }*@
                             </select>
                         </div>
                     </div>
@@ -246,10 +253,17 @@
                         <label class="col-sm-4 col-form-label">Action Responsable</label>
                         <div class="col-sm-8">
                             <select name="Action" class="form-control" id="Action">
-                                @foreach (var action in ViewBag.Action)
+                                @*@if (ViewBag.Action != null)
                                 {
-                                    <option value="@action">@action</option>
+                                    foreach (var action in ViewBag.Action)
+                                    {
+                                        <option value="@action">@action</option>
+                                    }
                                 }
+                                else
+                                {
+                                    <option value="">Aucune action disponible</option>
+                                }*@
                             </select>
                         </div>
                     </div>
@@ -322,48 +336,44 @@
 
         const listDsiUrl = '/Home/ListDsi';
 
-        // Appeler l'action ListDsi via AJAX
         fetch(listDsiUrl)
             .then(response => response.json())
             .then(data => {
-                console.log("Données reçues :", data); // Inspecter les données
                 if (data.success) {
                     const tbody = document.querySelector("#incidentTable tbody");
                     tbody.innerHTML = ""; // Vider le contenu existant
 
                     // Ajouter les nouvelles lignes
                     data.data.forEach(incident => {
-                        console.log("Incident :", incident); // Inspecter chaque incident
                         const row = document.createElement("tr");
 
                         let additionalColumns = ''; // Variable pour stocker les colonnes supplémentaires
 
                         if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                             additionalColumns = `
-                        <td>${incident.Action || ''}</td>
-                        <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
-                        <td>${incident.Responsible || ''}</td>
-                        <button class="btn btn-outline-light" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}')">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                    `;
+                            <td>${incident.Action || ''}</td>
+                            <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
+                            <td>${incident.Responsible || ''}</td>
+                            <td>
+                                <button class="btn btn-outline-light" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}')">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </td>
+                        `;
                         }
 
                         // Construction de la ligne du tableau
                         row.innerHTML = `
-                    <td>${incident.UserName}</td>
-                    <td>${incident.Type}</td>
-                    <td>${incident.Details}</td>
-                    <td>${incident.Etat}</td>
-                    <td>${FormatDate(incident.CreatedDate)}</td>
-                    ${additionalColumns}
-                `;
+                        <td>${incident.UserName}</td>
+                        <td>${incident.Type}</td>
+                        <td>${incident.Details}</td>
+                        <td>${incident.Etat}</td>
+                        <td>${FormatDate(incident.CreatedDate)}</td>
+                        ${additionalColumns}
+                    `;
 
                         tbody.appendChild(row);
                     });
-
-                    // Défilement vers l'ancrage listInc
-                    document.getElementById("listInc").scrollIntoView({ behavior: 'smooth' });
                 } else {
                     alert(data.message); // Afficher un message d'erreur
                 }
@@ -371,6 +381,7 @@
             .catch(error => {
                 console.error("Erreur lors de la récupération des incidents :", error);
             });
+
     }
 
     //Validation formulaire AJOUT INCIDENT - DSI
@@ -484,12 +495,44 @@
     });
 
     //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
+    // Définir les listes d'états et d'actions
+    const etats = ["Nouveau", "En_cours", "Résolu", "Fermé"];
+    const actions = ["Attente", "En_cours", "Terminé"];
+
     // Fonction pour ouvrir le modal et remplir les champs
     function openEditModal(id, etat, action) {
+        console.log("ID de l'incident :", id);
+        console.log("État de l'incident :", etat);
+        console.log("Action de l'incident :", action);
+
         // Remplir les champs du modal avec les données de l'incident
         document.getElementById("incidentId").value = id;
-        document.getElementById("Etat").value = etat;
-        document.getElementById("Action").value = action;
+
+        // Remplir la liste déroulante "Etat"
+        const etatSelect = document.getElementById("Etat");
+        etatSelect.innerHTML = ""; // Vider les options existantes
+        etats.forEach(e => {
+            const option = document.createElement("option");
+            option.value = e;
+            option.text = e;
+            etatSelect.appendChild(option);
+        });
+
+        // Définir la valeur sélectionnée pour "Etat"
+        etatSelect.value = etat;
+
+        // Remplir la liste déroulante "Action"
+        const actionSelect = document.getElementById("Action");
+        actionSelect.innerHTML = ""; // Vider les options existantes
+        actions.forEach(a => {
+            const option = document.createElement("option");
+            option.value = a;
+            option.text = a;
+            actionSelect.appendChild(option);
+        });
+
+        // Définir la valeur sélectionnée pour "Action"
+        actionSelect.value = action;
 
         // Ouvrir le modal
         const editModal = new bootstrap.Modal(document.getElementById('EditIncident'));
