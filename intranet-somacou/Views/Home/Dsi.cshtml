@@ -226,16 +226,20 @@
         <div class="modal-content text-white" style="background-color:#F16476;">
             <div class="modal-header">
                 <h2 class="modal-title fs-5">EDITER INCIDENT</h2>
+                @if(ViewBag.ID != "")
+                {
+                    <span>@ViewBag.ID</span>
+                }
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post" action="/Home/UpdateIncident" id="editIncidentForm">
-                    <input type="hidden" name="Id" id="incidentId"/>
+                    <input type="hidden" name="Id" id="incidentId" value="@ViewBag.ID"/>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
                         <div class="col-sm-8">
                             <select name="Etat" class="form-control" id="Etat">
-                                @*@if (ViewBag.Etats != null)
+                                @if (ViewBag.Etats != null)
                                 {
                                     foreach (var etat in ViewBag.Etats)
                                     {
@@ -245,7 +249,7 @@
                                 else
                                 {
                                     <option value="">Aucun état disponible</option>
-                                }*@
+                                }
                             </select>
                         </div>
                     </div>
@@ -253,7 +257,7 @@
                         <label class="col-sm-4 col-form-label">Action Responsable</label>
                         <div class="col-sm-8">
                             <select name="Action" class="form-control" id="Action">
-                                @*@if (ViewBag.Action != null)
+                                @if (ViewBag.Action != null)
                                 {
                                     foreach (var action in ViewBag.Action)
                                     {
@@ -263,7 +267,7 @@
                                 else
                                 {
                                     <option value="">Aucune action disponible</option>
-                                }*@
+                                }
                             </select>
                         </div>
                     </div>
@@ -494,6 +498,7 @@
         });
     });
 
+
     //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
     // Définir les listes d'états et d'actions
     const etats = ["Nouveau", "En_cours", "Résolu", "Fermé"];
@@ -539,31 +544,31 @@
         editModal.show();
     }
 
-    // Gérer la soumission du formulaire via AJAX
-    document.getElementById("editIncidentForm").addEventListener("submit", function (e) {
-        e.preventDefault(); // Empêcher la soumission normale du formulaire
+    //// Gérer la soumission du formulaire via AJAX
+    //document.getElementById("editIncidentForm").addEventListener("submit", function (e) {
+    //    e.preventDefault(); // Empêcher la soumission normale du formulaire
 
-        const formData = new FormData(this); // Récupérer les données du formulaire
+    //    const formData = new FormData(this); // Récupérer les données du formulaire
 
-        fetch("/Home/UpdateIncident", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Incident mis à jour avec succès !");
-                    // Fermer le modal
-                    const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
-                    editModal.hide();
-                    // Recharger la liste des incidents
-                    showListInc();
-                } else {
-                    alert("Erreur lors de la mise à jour de l'incident : " + data.message);
-                }
-            })
-            .catch(error => {
-                console.error("Erreur lors de la mise à jour de l'incident :", error);
-            });
-    });
+    //    fetch("/Home/UpdateIncident", {
+    //        method: "POST",
+    //        body: formData
+    //    })
+    //        .then(response => response.json())
+    //        .then(data => {
+    //            if (data.success) {
+    //                alert("Incident mis à jour avec succès !");
+    //                // Fermer le modal
+    //                const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
+    //                editModal.hide();
+    //                // Recharger la liste des incidents
+    //                showListInc();
+    //            } else {
+    //                alert("Erreur lors de la mise à jour de l'incident : " + data.message);
+    //            }
+    //        })
+    //        .catch(error => {
+    //            console.error("Erreur lors de la mise à jour de l'incident :", error);
+    //        });
+    //});
 </script>
