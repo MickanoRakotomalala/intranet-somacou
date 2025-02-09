@@ -140,6 +140,312 @@ function showInc() {
 }
 
 
+// DSI
+//Fonction FromDate
+function FormatDate(dateString) {
+    // Vérifier si la date est au format "/Date(timestamp)/"
+    if (dateString.startsWith("/Date(") && dateString.endsWith(")/")) {
+        // Extraire le timestamp (nombre entre parenthèses)
+        const timestamp = parseInt(dateString.slice(6, -2), 10);
+
+        // Créer un objet Date à partir du timestamp
+        const date = new Date(timestamp);
+
+        // Formater la date en "JJ/MM/AAAA HH:MM"
+        const day = String(date.getDate()).padStart(2, '0'); // Jour (2 chiffres)
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Mois (2 chiffres)
+        const year = date.getFullYear(); // Année (4 chiffres)
+        const hours = String(date.getHours()).padStart(2, '0'); // Heures (2 chiffres)
+        const minutes = String(date.getMinutes()).padStart(2, '0'); // Minutes (2 chiffres)
+
+        return `${day}/${month}/${year} ${hours}:${minutes}`;
+    }
+
+    // Si la date n'est pas au format "/Date(timestamp)/", essayer de la convertir directement
+    const date = new Date(dateString);
+
+    // Vérifier si la date est valide
+    if (isNaN(date.getTime())) {
+        return "Date inconnue"; // Retourner une valeur par défaut si la date est invalide
+    }
+
+    // Formater la date en "JJ/MM/AAAA HH:MM"
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
+// Récupérer les valeurs des data-attributes
+const sessionData = document.getElementById("sessionData");
+const userRole = sessionData.getAttribute("data-role");
+const userPoste = sessionData.getAttribute("data-poste");
+
+console.log("userRole:", userRole); // Vérifier la valeur de userRole
+console.log("userPoste:", userPoste); // Vérifier la valeur de userPoste
+function showListInc() {
+    // Afficher la section listInc
+    showSection({
+        visibleId: "ListInc",
+        activeMenu: "menuIncident",
+        activeList: "RespInc",
+        consoleMessage: "List Incident",
+    });
+
+    const listDsiUrl = '/Home/ListDsi';
+
+    fetch(listDsiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const tbody = document.querySelector("#incidentTable tbody");
+                tbody.innerHTML = ""; // Vider le contenu existant
+
+                // Ajouter les nouvelles lignes
+                data.data.forEach(incident => {
+                    const row = document.createElement("tr");
+
+                    let additionalColumns = ''; // Variable pour stocker les colonnes supplémentaires
+
+                    if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
+                        additionalColumns = `
+                            <td>${incident.Action || ''}</td>
+                            <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
+                            <td>${incident.Responsible || ''}</td>
+                            <td>
+                                <button class="btn btn-outline-light" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}')">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </td>
+                        `;
+                    }
+
+                    // Construction de la ligne du tableau
+                    row.innerHTML = `
+                        <td>${incident.UserName}</td>
+                        <td>${incident.Type}</td>
+                        <td>${incident.Details}</td>
+                        <td>${incident.Etat}</td>
+                        <td>${FormatDate(incident.CreatedDate)}</td>
+                        ${additionalColumns}
+                    `;
+
+                    tbody.appendChild(row);
+                });
+            } else {
+                alert(data.message); // Afficher un message d'erreur
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des incidents :", error);
+        });
+}
+
+//VALIDATION FORMULAIRE EDIT INCIDENT - DSI
+    // Définir les listes d'états et d'actions
+    const etats = ["Nouveau", "En_cours", "Résolu", "Fermé"];
+    const actions = ["Attente", "En_cours", "Terminé"];
+
+    // Fonction pour ouvrir le modal et remplir les champs
+    function openEditModal(id, etat, action) {
+        console.log("ID de l'incident :", id);
+        console.log("État de l'incident :", etat);
+        console.log("Action de l'incident :", action);
+
+        // Remplir les champs du modal avec les données de l'incident
+        document.getElementById("incidentId").value = id;
+
+        // Remplir la liste déroulante "Etat"
+        const etatSelect = document.getElementById("Etat");
+        etatSelect.innerHTML = ""; // Vider les options existantes
+        etats.forEach(e => {
+            const option = document.createElement("option");
+            option.value = e;
+            option.text = e;
+
+            if (e === etat) {
+                option.selected = true;
+            }
+            etatSelect.appendChild(option);
+            console.log(option);
+        });
+
+        // Forcer le rendu
+        etatSelect.style.display = "none";
+        etatSelect.offsetHeight; // Déclenche un reflow
+        etatSelect.style.display = "block";
+
+        // Remplir la liste déroulante "Action"
+        const actionSelect = document.getElementById("Action");
+        actionSelect.innerHTML = ""; // Vider les options existantes
+        actions.forEach(a => {
+            const option = document.createElement("option");
+            option.value = a;
+            option.text = a;
+
+            if (a === action) {
+                option.selected = true;
+            }
+            actionSelect.appendChild(option);
+            console.log(option);
+        });
+
+        console.log("Options Etat :", [...etatSelect.options].map(opt => opt.value));
+        console.log("Options Action :", [...actionSelect.options].map(opt => opt.value));
+
+        setTimeout(() => {
+            etatSelect.value = etat;
+            actionSelect.value = action;
+            console.log("Valeur sélectionnée pour Etat :", etatSelect.value);
+            console.log("Valeur sélectionnée pour Action :", actionSelect.value);
+        }, 200);
+
+        // Ouvrir le modal
+        const editModal = new bootstrap.Modal(document.getElementById('EditIncident'));
+        editModal.show();
 
 
+    }
 
+
+    // Gérer la soumission du formulaire via AJAX
+    document.getElementById("editIncidentForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Empêcher la soumission normale du formulaire
+
+        const formData = new FormData(this); // Récupérer les données du formulaire
+
+        fetch("/Home/UpdateIncident", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Incident mis à jour avec succès !");
+                    // Fermer le modal
+                    const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
+                    editModal.hide();
+                    // Recharger la liste des incidents
+                    showListInc();
+                } else {
+                    alert("Erreur lors de la mise à jour de l'incident : " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de la mise à jour de l'incident :", error);
+            });
+    });
+
+
+//Validation formulaire AJOUT INCIDENT - DSI
+function showErrorMessage(message, type) {
+    // Créez un élément div pour le message
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message flex-column align-items-center justify-content-center';
+    //Champ Details
+    const Details = document.getElementById("Details");
+
+    // Style de base pour le message
+    messageDiv.style.position = 'fixed';
+    messageDiv.style.top = '80px'; // Position en haut de la page
+    messageDiv.style.left = '50%'; // Centré horizontalement
+    messageDiv.style.transform = 'translateX(-50%)'; // Centrage précis
+    messageDiv.style.width = 'auto'; // Largeur automatique
+    messageDiv.style.padding = '10px 20px'; // Padding horizontal et vertical
+    messageDiv.style.color = '#fff'; // Texte blanc
+    messageDiv.style.textAlign = 'center';
+    messageDiv.style.zIndex = '1000'; // Assurez-vous qu'il est au-dessus des autres éléments
+    messageDiv.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+    messageDiv.style.borderRadius = '5px'; // Coins arrondis
+    messageDiv.style.animation = 'slideDown 0.5s ease-out';
+
+    // Définissez la couleur de fond et l'icône en fonction du type de message
+    const icon = document.createElement('i');
+    icon.style.fontSize = '1.0rem'; // Taille de l'icône
+    icon.className = 'bi me-2'; // Classe de base pour Bootstrap Icons
+
+    if (type === 'error') {
+        messageDiv.style.backgroundColor = '#E57070'; // Rouge pour les erreurs
+        icon.className += ' bi-x-circle'; // Icône d'erreur
+        Details.style.borderColor = '#E57070';
+    } else if (type === 'success') {
+        messageDiv.style.backgroundColor = '#4DF0B8'; // Vert pour les succès
+        icon.className += ' bi-check-circle'; // Icône de succès
+    }
+
+    // Ajoutez le texte du message
+    const text = document.createElement('span');
+    text.textContent = message;
+
+    // Créez la barre de progression
+    const progressBar = document.createElement('div');
+    progressBar.style.width = '100%';
+    progressBar.style.height = '4px';
+    progressBar.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+    progressBar.style.borderRadius = '2px';
+    progressBar.style.marginTop = '10px';
+    progressBar.style.overflow = 'hidden';
+
+    //Créez l'élément de remplissage de la barre de progression
+    const progressBarFill = document.createElement('div');
+    progressBarFill.style.width = '0%';
+    progressBarFill.style.height = '100%';
+    progressBarFill.style.backgroundColor = '#fff';
+    progressBarFill.style.transition = 'width 5s linear';
+
+    //Ajoutez le remplissage à la barre de progression
+    progressBar.appendChild(progressBarFill);
+
+    // Ajoutez l'icône et le texte au message
+    messageDiv.appendChild(icon);
+    messageDiv.appendChild(text);
+    messageDiv.appendChild(progressBar);
+
+    // Ajoutez le message au début du body
+    document.body.prepend(messageDiv);
+
+    // Démarrez l'animation de la barre de progression
+    setTimeout(() => {
+        progressBarFill.style.width = '100%';
+    }, 10);
+
+    // Supprimez le message après 5 secondes
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}
+
+$(document).ready(function () {
+    $('#incidentForm').on('submit', function (e) {
+        e.preventDefault(); // Empêche la soumission traditionnelle du formulaire
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function (response) {
+                if (response.success) {
+                    // Affichez un message de succès
+                    showErrorMessage('Incident enregistré avec succès', 'success');
+
+                    // Réinitialisez le formulaire
+                    $('#incidentForm')[0].reset();
+                } else {
+                    // Affichez les erreurs retournées par le serveur
+                    if (response.errors && response.errors.length > 0) {
+                        showErrorMessage(response.errors.join(', '), 'error');
+                    } else {
+                        showErrorMessage('Erreur lors de l\'enregistrement de l\'incident', 'error');
+                    }
+                }
+            },
+            error: function () {
+                // Affichez un message d'erreur générique en cas d'échec de la requête AJAX
+                showErrorMessage('Erreur lors de la soumission du formulaire', 'error');
+            }
+        });
+    });
+});

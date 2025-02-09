@@ -105,9 +105,6 @@ namespace intranet_somacou.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-
-            ViewBag.Etats = new List<string> { "Nouveau", "En_cours", "Résolu", "Fermé" };
-            ViewBag.Action = new List<string> { "Attente", "En_cours","Terminé" };
             
 
             if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") 
@@ -159,10 +156,6 @@ namespace intranet_somacou.Controllers
         [HttpPost]
         public ActionResult UpdateIncident(IncidentDto incidentDto)
         {
-            ViewBag.Etats = new List<string> { "Nouveau", "En_cours", "Résolu", "Fermé" };
-            ViewBag.Action = new List<string> { "Attente", "En_cours", "Terminé" };
-            ViewBag.ID = incidentDto.Id.ToString();
-
             if (ModelState.IsValid)
             {
                 using (var context = new AppDbContext())
