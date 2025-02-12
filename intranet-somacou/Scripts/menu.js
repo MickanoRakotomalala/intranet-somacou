@@ -216,7 +216,7 @@ function showListInc() {
                             <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
                             <td>${incident.Responsible || ''}</td>
                             <td>
-                                <button class="btn btn-outline-light" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}')">
+                                <button class="btn btn-outline-light" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}','${incident.UserName}','${incident.Details}','${incident.Type}')">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </td>
@@ -246,13 +246,19 @@ function showListInc() {
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
 // Fonction pour ouvrir le modal et remplir les champs
-function openEditModal(id, etat, action) {
+function openEditModal(id, etat, action,username, details, type) {
     console.log("ID de l'incident :", id);
     console.log("État de l'incident :", etat);
     console.log("Action de l'incident :", action);
+    console.log("User de l'incident :", username);
+    console.log("Détails de l'incident :", details);
+    console.log("Type de l'incident :", type);
 
     // Remplir le champ caché pour l'ID de l'incident
     document.getElementById("incidentId").value = id;
+    document.getElementById("incidentUserName").value = username;
+    document.getElementById("incidentDetails").value = details;
+    document.getElementById("incidentType").value = type;
 
     // Effacer les anciens <select> (s'il y en a)
     const formEtat = document.getElementById("Form_Etat");
@@ -317,9 +323,25 @@ function openEditModal(id, etat, action) {
 
     // Gérer la soumission du formulaire via AJAX
     document.getElementById("editIncidentForm").addEventListener("submit", function (e) {
-        e.preventDefault(); // Empêcher la soumission normale du formulaire
+        e.preventDefault();
 
-        const formData = new FormData(this); // Récupérer les données du formulaire
+        // S'assurer que les valeurs sélectionnées sont prises en compte avant de soumettre
+        const etatSelect = document.getElementById("Etat");
+        const actionSelect = document.getElementById("Action");
+
+        // Ajouter manuellement la sélection des options
+        if (!etatSelect.value) {
+            etatSelect.value = document.querySelector("#Etat option").value; // Valeur par défaut
+        }
+        if (!actionSelect.value) {
+            actionSelect.value = document.querySelector("#Action option").value; // Valeur par défaut
+        }
+
+        // Créer un FormData à partir du formulaire
+        const formData = new FormData(this);
+
+        // Vérifier le contenu de formData dans la console
+        console.log("FormData content:", [...formData]);
 
         fetch("/Home/UpdateIncident", {
             method: "POST",
@@ -332,16 +354,22 @@ function openEditModal(id, etat, action) {
                     // Fermer le modal
                     const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
                     editModal.hide();
-                    // Recharger la liste des incidents
                     showListInc();
                 } else {
+                    // Si une erreur de validation se produit
                     alert("Erreur lors de la mise à jour de l'incident : " + data.message);
+                    console.log("Erreurs de validation :", data.errors); // Afficher les erreurs dans la console
+                    data.errors.forEach((error, index) => {
+                        console.log(`Erreur ${index + 1}: ${error}`);
+                    });
                 }
             })
             .catch(error => {
                 console.error("Erreur lors de la mise à jour de l'incident :", error);
             });
     });
+
+
 
 
 //Validation formulaire AJOUT INCIDENT - DSI

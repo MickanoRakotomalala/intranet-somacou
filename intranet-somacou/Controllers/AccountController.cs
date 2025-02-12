@@ -38,7 +38,9 @@ namespace intranet_somacou.Controllers
             {
                 using (var context = new AppDbContext())
                 {
-                    if(registerDto.Name != null && registerDto.Email != null && registerDto.Phone != null && registerDto.Poste != null && registerDto.Password != null)
+                    if(registerDto.Name != null && registerDto.Email != null 
+                        && registerDto.Phone != null && registerDto.Poste != null 
+                        && registerDto.Password != null)
                     {
                         registerDto.Role = "User";
                         registerDto.CreatedAt = DateTime.Now;

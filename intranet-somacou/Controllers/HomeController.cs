@@ -85,7 +85,7 @@ namespace intranet_somacou.Controllers
         private AppDbContext db = new AppDbContext();
 
         [HttpGet]
-        public ActionResult ListDsi()
+        public ActionResult ListDsi(int page = 1, int pageSize = 8)
         {
 ;            // Récupérez tous les incidents associés à l'utilisateur
             if (!ModelState.IsValid)
@@ -111,7 +111,14 @@ namespace intranet_somacou.Controllers
                 && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
             {
                 var userIncidents = db.Incidents
+                                        .OrderByDescending(x => x.UserId)
+                                        .Skip((page - 1) * pageSize)
+                                        .Take(pageSize)
                                         .ToList();
+                var totalIncidents = userIncidents.Count();
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalIncidents / pageSize);
+
                 var incidentDtos = userIncidents.Select(incident => new IncidentDto
                 {
                     Id = incident.Id,
@@ -131,7 +138,14 @@ namespace intranet_somacou.Controllers
             {
                 var userIncidents = db.Incidents
                         .Where(i => i.UserId == userId)
+                        .OrderByDescending(x => x.CreatedDate)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
                         .ToList();
+
+                var totalIncidents = userIncidents.Count();
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalIncidents / pageSize);
 
                 var incidentDtos = userIncidents.Select(incident => new IncidentDto
                 {
@@ -163,6 +177,9 @@ namespace intranet_somacou.Controllers
                     var incident = context.Incidents.Find(incidentDto.Id);
                     if (incident != null)
                     {
+                        incident.UserName = incidentDto.UserName;
+                        incident.Type = incidentDto.Type;
+                        incident.Details = incidentDto.Details;
                         incident.Etat = incidentDto.Etat;
                         incident.Action = incidentDto.Action;
                         incident.Responsible = Session["FullName"].ToString();
@@ -171,7 +188,7 @@ namespace intranet_somacou.Controllers
                     }
                 }
 
-                return Json(new { success = true });
+                return Json(new { success = true, data = incidentDto }, JsonRequestBehavior.AllowGet);
             }
             else
             {
