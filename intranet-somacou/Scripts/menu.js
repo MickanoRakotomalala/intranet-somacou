@@ -245,70 +245,74 @@ function showListInc() {
 }
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
-    // Définir les listes d'états et d'actions
+// Fonction pour ouvrir le modal et remplir les champs
+function openEditModal(id, etat, action) {
+    console.log("ID de l'incident :", id);
+    console.log("État de l'incident :", etat);
+    console.log("Action de l'incident :", action);
+
+    // Remplir le champ caché pour l'ID de l'incident
+    document.getElementById("incidentId").value = id;
+
+    // Effacer les anciens <select> (s'il y en a)
+    const formEtat = document.getElementById("Form_Etat");
+    const formAction = document.getElementById("Form_Action");
+    formEtat.innerHTML = ''; // Vider l'élément
+    formAction.innerHTML = ''; // Vider l'élément
+
+    // Créer un nouveau <select> pour l'état
+    const etatSelect = document.createElement("select");
+    etatSelect.name = "Etat";
+    etatSelect.id = "Etat";
+    etatSelect.classList.add("form-control"); // Ajouter la classe Bootstrap
+
+    // Ajouter les options pour l'état
     const etats = ["Nouveau", "En_cours", "Résolu", "Fermé"];
+    etats.forEach(e => {
+        const option = document.createElement("option");
+        option.value = e;
+        option.textContent = e;
+        etatSelect.appendChild(option);
+    });
+
+    // Sélectionner la bonne option pour l'état
+    setTimeout(() => {
+        etatSelect.value = etat; // Sélectionner l'état
+        console.log("Valeur sélectionnée pour Etat :", etatSelect.value);
+    }, 100);
+
+    // Ajouter le <select> créé dans la div Form_Etat
+    formEtat.appendChild(etatSelect);
+
+    // Créer un nouveau <select> pour l'action
+    const actionSelect = document.createElement("select");
+    actionSelect.name = "Action";
+    actionSelect.id = "Action";
+    actionSelect.classList.add("form-control"); // Ajouter la classe Bootstrap
+
+    // Ajouter les options pour l'action
     const actions = ["Attente", "En_cours", "Terminé"];
+    actions.forEach(a => {
+        const option = document.createElement("option");
+        option.value = a;
+        option.textContent = a;
+        actionSelect.appendChild(option);
+    });
 
-    // Fonction pour ouvrir le modal et remplir les champs
-    function openEditModal(id, etat, action) {
-        console.log("ID de l'incident :", id);
-        console.log("État de l'incident :", etat);
-        console.log("Action de l'incident :", action);
+    // Sélectionner la bonne option pour l'action
+    setTimeout(() => {
+        actionSelect.value = action; // Sélectionner l'action
+        console.log("Valeur sélectionnée pour Action :", actionSelect.value);
+    }, 100);
 
-        // Remplir les champs du modal avec les données de l'incident
-        document.getElementById("incidentId").value = id;
+    // Ajouter le <select> créé dans la div Form_Action
+    formAction.appendChild(actionSelect);
 
-        // Remplir la liste déroulante "Etat"
-        const etatSelect = document.getElementById("Etat");
-        etatSelect.innerHTML = ""; // Vider les options existantes
-        etats.forEach(e => {
-            const option = document.createElement("option");
-            option.value = e;
-            option.text = e;
-
-            if (e === etat) {
-                option.selected = true;
-            }
-            etatSelect.appendChild(option);
-            console.log(option);
-        });
-
-        // Forcer le rendu
-        etatSelect.style.display = "none";
-        etatSelect.offsetHeight; // Déclenche un reflow
-        etatSelect.style.display = "block";
-
-        // Remplir la liste déroulante "Action"
-        const actionSelect = document.getElementById("Action");
-        actionSelect.innerHTML = ""; // Vider les options existantes
-        actions.forEach(a => {
-            const option = document.createElement("option");
-            option.value = a;
-            option.text = a;
-
-            if (a === action) {
-                option.selected = true;
-            }
-            actionSelect.appendChild(option);
-            console.log(option);
-        });
-
-        console.log("Options Etat :", [...etatSelect.options].map(opt => opt.value));
-        console.log("Options Action :", [...actionSelect.options].map(opt => opt.value));
-
-        setTimeout(() => {
-            etatSelect.value = etat;
-            actionSelect.value = action;
-            console.log("Valeur sélectionnée pour Etat :", etatSelect.value);
-            console.log("Valeur sélectionnée pour Action :", actionSelect.value);
-        }, 200);
-
-        // Ouvrir le modal
-        const editModal = new bootstrap.Modal(document.getElementById('EditIncident'));
-        editModal.show();
+    // Ouvrir le modal
+    $("#EditIncident").modal('show');
+}
 
 
-    }
 
 
     // Gérer la soumission du formulaire via AJAX

@@ -214,18 +214,13 @@
 </div>
 
 
-<div id="sessionData"
-     data-role="@Session["Role"]"
-     data-poste="@Session["Poste"]"
-     hidden>
-</div>
 
 @* Modal pour éditer un incident *@
-<div class="modal fade" id="EditIncident" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal" id="EditIncident" tabindex="-1">
     <div class="modal-dialog ProfilUpdate">
         <div class="modal-content text-white" style="background-color:#F16476;">
             <div class="modal-header">
-                <h2 class="modal-title fs-5">EDITER INCIDENT</h2>
+                <h5 class="modal-title">EDITER INCIDENT</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -234,13 +229,11 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
                         <div class="col-sm-8" id="Form_Etat">
-                            <select name="Etat" class="form-control" id="Etat"></select>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Action Responsable</label>
-                        <div class="col-sm-8">
-                            <select name="Action" class="form-control" id="Action"></select>
+                        <div class="col-sm-8" id="Form_Action">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -252,4 +245,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div id="sessionData"
+     data-role="@Session["Role"]"
+     data-poste="@Session["Poste"]"
+     hidden>
 </div>

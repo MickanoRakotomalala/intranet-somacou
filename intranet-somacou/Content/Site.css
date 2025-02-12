@@ -412,6 +412,12 @@ footer .col-md-6 ul li a {
     align-items: center;
 }
 
+#Etat, #Action{
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 @keyframes slideDown {
     from {
         transform: translate(-50%, -100%);
