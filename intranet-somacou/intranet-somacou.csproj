@@ -184,6 +184,22 @@
     <Compile Include="Migrations\202502131346322_Observation.Designer.cs">
       <DependentUpon>202502131346322_Observation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502132006415_UpdateAddINCIDENT.cs" />
+    <Compile Include="Migrations\202502132006415_UpdateAddINCIDENT.Designer.cs">
+      <DependentUpon>202502132006415_UpdateAddINCIDENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502132038327_UpdateDeleteAction.cs" />
+    <Compile Include="Migrations\202502132038327_UpdateDeleteAction.Designer.cs">
+      <DependentUpon>202502132038327_UpdateDeleteAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502132105039_Update.cs" />
+    <Compile Include="Migrations\202502132105039_Update.Designer.cs">
+      <DependentUpon>202502132105039_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502132141479_UpdatePhone.cs" />
+    <Compile Include="Migrations\202502132141479_UpdatePhone.Designer.cs">
+      <DependentUpon>202502132141479_UpdatePhone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\IncidentDto.cs" />
@@ -334,6 +350,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502131346322_Observation.resx">
       <DependentUpon>202502131346322_Observation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502132006415_UpdateAddINCIDENT.resx">
+      <DependentUpon>202502132006415_UpdateAddINCIDENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502132038327_UpdateDeleteAction.resx">
+      <DependentUpon>202502132038327_UpdateDeleteAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502132105039_Update.resx">
+      <DependentUpon>202502132105039_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502132141479_UpdatePhone.resx">
+      <DependentUpon>202502132141479_UpdatePhone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

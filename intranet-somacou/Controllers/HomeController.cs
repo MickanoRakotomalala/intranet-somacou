@@ -57,12 +57,13 @@ namespace intranet_somacou.Controllers
             {
                 using (var context = new AppDbContext())
                 {
-                    if (incidentDto.UserName != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null && incidentDto.Action != null)
+                    if (incidentDto.UserName != null && incidentDto.Type != null && incidentDto.Etat != null && incidentDto.Details != null && incidentDto.CreatedDate != null)
                     {
                         incidentDto.UserId = (int)Session["UserId"];
-                        incidentDto.Etat = "Nouveau";
-                        incidentDto.Action = "Attente";
-                        incidentDto.Responsible = "Aucun";
+                        incidentDto.Phone = Session["Phone"].ToString();
+                        incidentDto.CreatedDate = DateTime.Now;
+                        incidentDto.Responsible = "";
+                        incidentDto.UpdateDate = DateTime.Now;
                         context.Incidents.Add(incidentDto);
                         context.SaveChanges();
                     }
@@ -124,11 +125,11 @@ namespace intranet_somacou.Controllers
             {
                 Id = incident.Id,
                 UserName = incident.UserName,
+                Phone = incident.Phone,
                 Type = incident.Type,
                 Details = incident.Details,
                 Etat = incident.Etat,
                 CreatedDate = incident.CreatedDate,
-                Action = incident.Action,
                 UpdateDate = incident.UpdateDate,
                 Responsible = incident.Responsible,
                 Observation = incident.Observation,
@@ -160,10 +161,10 @@ namespace intranet_somacou.Controllers
                     if (incident != null)
                     {
                         incident.UserName = incidentDto.UserName;
+                        incident.Phone = incidentDto.Phone;
                         incident.Type = incidentDto.Type;
                         incident.Details = incidentDto.Details;
                         incident.Etat = incidentDto.Etat;
-                        incident.Action = incidentDto.Action;
                         incident.Responsible = Session["FullName"].ToString();
                         incident.Observation = incidentDto.Observation;
                         incident.UpdateDate = DateTime.Now; // Mettre à jour la date de modification

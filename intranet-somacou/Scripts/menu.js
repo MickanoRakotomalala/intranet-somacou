@@ -226,36 +226,11 @@ function showListInc(page = 1) {
                                 break;
                     }
 
-                    let badgeColorAction = '';
-                    switch (incident.Action) {
-                        case 'Attente':
-                            badgeColorAction = 'bg-secondary';
-                            break;
-                        case 'En_cours':
-                            badgeColorAction = 'bg-warning';
-                            break;
-                        case 'Terminé':
-                            badgeColorAction = 'bg-success';
-                            break;
-                        case 'Non_résolu':
-                            badgeColorAction = 'bg-danger';
-                            break;
-                        default:
-                            badgeColorAction = 'bg-info';
-                            break;
-                    }
-
                     let additionalColumns = '';
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                         additionalColumns = `
                             <td>
-                                <span class="badge rounded-pill text-white ${badgeColorAction}">${incident.Action}</span>
-                            </td>
-                            <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
-                            <td>${incident.Responsible || ''}</td>
-                            <td>${incident.Observation || ''}</td>
-                            <td>
-                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}','${incident.UserName}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.UserName}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </td>
@@ -265,12 +240,16 @@ function showListInc(page = 1) {
 
                     row.innerHTML = `
                         <td>${incident.UserName}</td>
+                        <td>${incident.Phone || ''}</td>
                         <td>${incident.Type}</td>
                         <td>${incident.Details}</td>
+                        <td>${FormatDate(incident.CreatedDate)}</td>
                         <td>
                             <span class="badge rounded-pill text-white ${badgeColorEtat}">${incident.Etat}</span>
                         </td >
-                        <td>${FormatDate(incident.CreatedDate)}</td>
+                        <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
+                        <td>${incident.Responsible || ''}</td>
+                        <td>${incident.Observation || ''}</td>
                         ${additionalColumns}
                     `;
                     tbody.appendChild(row);
@@ -319,10 +298,9 @@ function updatePagination(currentPage, totalPages) {
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
 // Fonction pour ouvrir le modal et remplir les champs
-function openEditModal(id, etat, action,username, details, type, observation) {
+function openEditModal(id, etat,username, details, type, observation) {
     console.log("ID de l'incident :", id);
     console.log("État de l'incident :", etat);
-    console.log("Action de l'incident :", action);
     console.log("User de l'incident :", username);
     console.log("Détails de l'incident :", details);
     console.log("Type de l'incident :", type);
@@ -337,9 +315,7 @@ function openEditModal(id, etat, action,username, details, type, observation) {
 
     // Effacer les anciens <select> (s'il y en a)
     const formEtat = document.getElementById("Form_Etat");
-    const formAction = document.getElementById("Form_Action");
     formEtat.innerHTML = ''; // Vider l'élément
-    formAction.innerHTML = ''; // Vider l'élément
 
     // Créer un nouveau <select> pour l'état
     const etatSelect = document.createElement("select");
@@ -355,39 +331,10 @@ function openEditModal(id, etat, action,username, details, type, observation) {
         option.textContent = e;
         etatSelect.appendChild(option);
     });
-
-    // Sélectionner la bonne option pour l'état
-    setTimeout(() => {
         etatSelect.value = etat; // Sélectionner l'état
-        console.log("Valeur sélectionnée pour Etat :", etatSelect.value);
-    }, 100);
 
     // Ajouter le <select> créé dans la div Form_Etat
     formEtat.appendChild(etatSelect);
-
-    // Créer un nouveau <select> pour l'action
-    const actionSelect = document.createElement("select");
-    actionSelect.name = "Action";
-    actionSelect.id = "Action";
-    actionSelect.classList.add("form-control"); // Ajouter la classe Bootstrap
-
-    // Ajouter les options pour l'action
-    const actions = ["Attente", "En_cours", "Terminé", "Non_résolu"];
-    actions.forEach(a => {
-        const option = document.createElement("option");
-        option.value = a;
-        option.textContent = a;
-        actionSelect.appendChild(option);
-    });
-
-    // Sélectionner la bonne option pour l'action
-    setTimeout(() => {
-        actionSelect.value = action; // Sélectionner l'action
-        console.log("Valeur sélectionnée pour Action :", actionSelect.value);
-    }, 100);
-
-    // Ajouter le <select> créé dans la div Form_Action
-    formAction.appendChild(actionSelect);
 
     // Ouvrir le modal
     $("#EditIncident").modal('show');
@@ -402,14 +349,10 @@ function openEditModal(id, etat, action,username, details, type, observation) {
 
         // S'assurer que les valeurs sélectionnées sont prises en compte avant de soumettre
         const etatSelect = document.getElementById("Etat");
-        const actionSelect = document.getElementById("Action");
 
         // Ajouter manuellement la sélection des options
         if (!etatSelect.value) {
             etatSelect.value = document.querySelector("#Etat option").value; // Valeur par défaut
-        }
-        if (!actionSelect.value) {
-            actionSelect.value = document.querySelector("#Action option").value; // Valeur par défaut
         }
 
         // Créer un FormData à partir du formulaire

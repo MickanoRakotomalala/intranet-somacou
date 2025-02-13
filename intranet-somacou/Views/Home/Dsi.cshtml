@@ -131,26 +131,10 @@
                             <div class="col-sm-8">
                                 <select name="Etat" id="Etat" class="form-control">
                                     <option value="Nouveau">Nouveau</option>
-                                    <option value="Terminé">Terminé</option>
                                 </select>
                             </div>
                         </div>
 
-                        <input type="hidden" name="CreatedDate" id="CreatedDate" class="form-control" value="@DateTime.Now" />
-
-                        <div class="row mb-2" hidden>
-                            <label class="col-sm-4 col-form-label">Action</label>
-                            <div class="col-sm-8">
-                                <select name="Action" id="Action" class="form-control">
-                                    <option value="Attente">Attente</option>
-                                    <option value="Terminé">Terminé</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="UpdateDate" id="UpdateDate" class="form-control" value="@DateTime.Now" />
-
-                        <input type="hidden" name="Responsible" id="Responsible" class="form-control" />
 
                         <div class="row mb-4 offset-4 col-4 offset-4">
                             <button type="submit" class="btn btn-outline-warning offset-sm-4 col-sm-6">Soumettre</button>
@@ -166,17 +150,17 @@
                     <thead>
                         <tr>
                             <th>Utilisateur</th>
+                            <th>Contact</th>
                             <th>Type</th>
                             <th>Détails</th>
-                            <th>Statut</th>
                             <th>Création</th>
+                            <th>Statut</th>
+                            <th>Réalisation</th>
+                            <th>Responsable</th>
+                            <th>Observation</th>
                             @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef")
                                 && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
                             {
-                                <th>Action</th>
-                                <th>Réalisation</th>
-                                <th>Responsable</th>
-                                <th>Observation</th>
                                 <th></th>
                             }
                         </tr>
@@ -214,11 +198,6 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
                         <div class="col-sm-8" id="Form_Etat">
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Action Responsable</label>
-                        <div class="col-sm-8" id="Form_Action">
                         </div>
                     </div>
                     <div class="row mb-2">
