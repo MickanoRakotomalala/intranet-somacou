@@ -212,7 +212,7 @@ footer .col-md-6 ul li a {
 
 /*MENU Rh - DSI*/
 .row .col-md-2 {
-    background-color: #9E6A6A;
+    background-color: #F16476;
     box-shadow: 2px 2px 2px #E3D2D2;
     margin-top: 20px;
     border-radius: 10px;
@@ -220,23 +220,30 @@ footer .col-md-6 ul li a {
     padding: 10px;
 }
 
-.row .col-md-9{
-    background-color: #A35C5C;
-    box-shadow: 2px 2px 2px #E3D2D2;
+.row .col-md-9 {
+    background-color: #F9F4F4;
+    box-shadow: 2px 2px 2px #BCB7B7;
+    border: 1px solid #C5BFBF;
     margin-top: 20px;
     border-radius: 10px;
-    color: white;
+    color: #7B7878;
     padding: 20px;
+}
+
+.row .col-md-9 table tbody,
+.row .col-md-9 span{
+    color: #7B7878;
+    font-size:12px;
 }
 
 .row .col-md-2 ul li a{
     text-decoration:none;
     color:white;
-    font-size:16px;
+    font-size:14px;
 }
 
 .row .col-md-2 ul li i {
-    font-size:16px;
+    font-size:14px;
 }
 
 .row .col-md-2 ul li a:hover,
@@ -246,11 +253,11 @@ footer .col-md-6 ul li a {
 }
 
 .row .col-md-2 h5 i{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .row .col-md-2 h5{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .col-md-9 ul li,

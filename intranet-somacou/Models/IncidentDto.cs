@@ -38,5 +38,7 @@ namespace intranet_somacou.Models
         public DateTime UpdateDate { get; set; }
 
         public string Responsible {  get; set; }
+
+        public string Observation { get; set; }
     }
 }

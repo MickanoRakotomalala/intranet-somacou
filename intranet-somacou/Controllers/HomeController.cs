@@ -131,6 +131,7 @@ namespace intranet_somacou.Controllers
                 Action = incident.Action,
                 UpdateDate = incident.UpdateDate,
                 Responsible = incident.Responsible,
+                Observation = incident.Observation,
                 UserId = incident.UserId
             }).ToList();
 
@@ -164,6 +165,7 @@ namespace intranet_somacou.Controllers
                         incident.Etat = incidentDto.Etat;
                         incident.Action = incidentDto.Action;
                         incident.Responsible = Session["FullName"].ToString();
+                        incident.Observation = incidentDto.Observation;
                         incident.UpdateDate = DateTime.Now; // Mettre à jour la date de modification
                         context.SaveChanges();
                     }

@@ -169,13 +169,14 @@
                             <th>Type</th>
                             <th>Détails</th>
                             <th>Statut</th>
-                            <th>Date</th>
+                            <th>Création</th>
                             @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef")
                                 && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
                             {
                                 <th>Action</th>
                                 <th>Réalisation</th>
                                 <th>Responsable</th>
+                                <th>Observation</th>
                                 <th></th>
                             }
                         </tr>
@@ -218,6 +219,12 @@
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Action Responsable</label>
                         <div class="col-sm-8" id="Form_Action">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-sm-4 col-form-label">Observation :</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" name="Observation" id="incidentObservation"></textarea>
                         </div>
                     </div>
                     <div class="row mb-4">

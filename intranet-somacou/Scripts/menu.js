@@ -205,10 +205,9 @@ function showListInc(page = 1) {
                 // Ajouter les nouvelles lignes
                 data.data.forEach(incident => {
                     const row = document.createElement("tr");
-                    row.classList.add("text-white");
 
                         //badgeColor
-                    let badgeColorEtat = '';
+                    let badgeColor = '';
                     switch (incident.Etat) {
                             case 'Nouveau':
                                 badgeColorEtat = 'bg-secondary';
@@ -250,12 +249,13 @@ function showListInc(page = 1) {
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                         additionalColumns = `
                             <td>
-                                <span class="badge rounded-pill ${badgeColorAction}">${incident.Action}</span>
+                                <span class="badge rounded-pill text-white ${badgeColorAction}">${incident.Action}</span>
                             </td>
                             <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
                             <td>${incident.Responsible || ''}</td>
+                            <td>${incident.Observation || ''}</td>
                             <td>
-                                <button class="btn btn-outline-light" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}','${incident.UserName}','${incident.Details}','${incident.Type}')">
+                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}', '${incident.Action}','${incident.UserName}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </td>
@@ -268,7 +268,7 @@ function showListInc(page = 1) {
                         <td>${incident.Type}</td>
                         <td>${incident.Details}</td>
                         <td>
-                            <span class="badge rounded-pill ${badgeColorEtat}">${incident.Etat}</span>
+                            <span class="badge rounded-pill text-white ${badgeColorEtat}">${incident.Etat}</span>
                         </td >
                         <td>${FormatDate(incident.CreatedDate)}</td>
                         ${additionalColumns}
@@ -319,19 +319,21 @@ function updatePagination(currentPage, totalPages) {
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
 // Fonction pour ouvrir le modal et remplir les champs
-function openEditModal(id, etat, action,username, details, type) {
+function openEditModal(id, etat, action,username, details, type, observation) {
     console.log("ID de l'incident :", id);
     console.log("État de l'incident :", etat);
     console.log("Action de l'incident :", action);
     console.log("User de l'incident :", username);
     console.log("Détails de l'incident :", details);
     console.log("Type de l'incident :", type);
+    console.log("Observation :", observation);
 
     // Remplir le champ caché pour l'ID de l'incident
     document.getElementById("incidentId").value = id;
     document.getElementById("incidentUserName").value = username;
     document.getElementById("incidentDetails").value = details;
     document.getElementById("incidentType").value = type;
+    document.getElementById("incidentObservation").value = observation;
 
     // Effacer les anciens <select> (s'il y en a)
     const formEtat = document.getElementById("Form_Etat");
@@ -423,13 +425,14 @@ function openEditModal(id, etat, action,username, details, type) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showErrorMessage("Incident mis à jour avec succès !",'success')
+                    showMessage("Incident mis à jour avec succès !",'success')
                     // Fermer le modal
                     const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
                     editModal.hide();
                     showListInc();
                 } else {
                     // Si une erreur de validation se produit
+                    showMessage('Erreur lors de la mise à jour de l\'incident' + data.message,'error')
                     alert("Erreur lors de la mise à jour de l'incident : " + data.message);
                     console.log("Erreurs de validation :", data.errors); // Afficher les erreurs dans la console
                     data.errors.forEach((error, index) => {
@@ -446,7 +449,7 @@ function openEditModal(id, etat, action,username, details, type) {
 
 
 //Validation formulaire AJOUT INCIDENT - DSI
-function showErrorMessage(message, type) {
+function showMessage(message, type) {
     // Créez un élément div pour le message
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message flex-column align-items-center justify-content-center';
@@ -534,16 +537,16 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     // Affichez un message de succès
-                    showErrorMessage('Incident enregistré avec succès', 'success');
+                    showMessage('Incident enregistré avec succès', 'success');
 
                     // Réinitialisez le formulaire
                     $('#incidentForm')[0].reset();
                 } else {
                     // Affichez les erreurs retournées par le serveur
                     if (response.errors && response.errors.length > 0) {
-                        showErrorMessage(response.errors.join(', '), 'error');
+                        showMessage(response.errors.join(', '), 'error');
                     } else {
-                        showErrorMessage('Erreur lors de l\'enregistrement de l\'incident', 'error');
+                        showMessage('Erreur lors de l\'enregistrement de l\'incident', 'error');
                     }
                 }
             },
