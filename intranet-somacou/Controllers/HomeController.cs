@@ -1,4 +1,5 @@
-﻿using intranet_somacou.Models;
+﻿using intranet_somacou.Migrations;
+using intranet_somacou.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,10 +88,8 @@ namespace intranet_somacou.Controllers
         [HttpGet]
         public ActionResult ListDsi(int page = 1, int pageSize = 8)
         {
-;            // Récupérez tous les incidents associés à l'utilisateur
             if (!ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Aucun incident trouvé";
                 return Json(new { success = false, message = "Aucun incident trouvé" }, JsonRequestBehavior.AllowGet);
             }
 
@@ -105,66 +104,48 @@ namespace intranet_somacou.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            
 
-            if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") 
-                && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
+            IQueryable<IncidentDto> query;
+
+            if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") &&
+                (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
             {
-                var userIncidents = db.Incidents
-                                        .OrderByDescending(x => x.UserId)
-                                        .Skip((page - 1) * pageSize)
-                                        .Take(pageSize)
-                                        .ToList();
-                var totalIncidents = userIncidents.Count();
-                ViewBag.CurrentPage = page;
-                ViewBag.TotalPages = (int)Math.Ceiling((double)totalIncidents / pageSize);
-
-                var incidentDtos = userIncidents.Select(incident => new IncidentDto
-                {
-                    Id = incident.Id,
-                    UserName = incident.UserName,
-                    Type = incident.Type,
-                    Details = incident.Details,
-                    Etat = incident.Etat,
-                    CreatedDate = incident.CreatedDate,
-                    Action = incident.Action,
-                    UpdateDate = incident.UpdateDate,
-                    Responsible = incident.Responsible,
-                    UserId = incident.UserId
-                }).ToList();
-                return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
-            } 
+                query = db.Incidents.OrderByDescending(x => x.UserId);
+            }
             else
             {
-                var userIncidents = db.Incidents
-                        .Where(i => i.UserId == userId)
-                        .OrderByDescending(x => x.CreatedDate)
-                        .Skip((page - 1) * pageSize)
-                        .Take(pageSize)
-                        .ToList();
+                query = db.Incidents.Where(i => i.UserId == userId).OrderByDescending(x => x.CreatedDate);
+            }
 
-                var totalIncidents = userIncidents.Count();
-                ViewBag.CurrentPage = page;
-                ViewBag.TotalPages = (int)Math.Ceiling((double)totalIncidents / pageSize);
+            int totalIncidents = query.Count(); // Nombre total avant pagination
+            var incidents = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-                var incidentDtos = userIncidents.Select(incident => new IncidentDto
+            var incidentDtos = incidents.Select(incident => new IncidentDto
+            {
+                Id = incident.Id,
+                UserName = incident.UserName,
+                Type = incident.Type,
+                Details = incident.Details,
+                Etat = incident.Etat,
+                CreatedDate = incident.CreatedDate,
+                Action = incident.Action,
+                UpdateDate = incident.UpdateDate,
+                Responsible = incident.Responsible,
+                UserId = incident.UserId
+            }).ToList();
+
+            return Json(new
+            {
+                success = true,
+                data = incidentDtos,
+                pagination = new
                 {
-                    Id = incident.Id,
-                    UserName = incident.UserName,
-                    Type = incident.Type,
-                    Details = incident.Details,
-                    Etat = incident.Etat,
-                    CreatedDate = incident.CreatedDate,
-                    Action = incident.Action,
-                    UpdateDate = incident.UpdateDate,
-                    Responsible = incident.Responsible,
-                    UserId = incident.UserId
-                }).ToList();
-                //return View(incidentDtos);
-                return Json(new { success = true, data = incidentDtos }, JsonRequestBehavior.AllowGet);
-            }      
-            
+                    currentPage = page,
+                    totalPages = (int)Math.Ceiling((double)totalIncidents / pageSize)
+                }
+            }, JsonRequestBehavior.AllowGet);
         }
+
 
         // Action pour mettre à jour un incident
         [HttpPost]

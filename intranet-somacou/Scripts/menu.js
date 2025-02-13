@@ -186,8 +186,7 @@ const userPoste = sessionData.getAttribute("data-poste");
 
 console.log("userRole:", userRole); // Vérifier la valeur de userRole
 console.log("userPoste:", userPoste); // Vérifier la valeur de userPoste
-function showListInc() {
-    // Afficher la section listInc
+function showListInc(page = 1) {
     showSection({
         visibleId: "ListInc",
         activeMenu: "menuIncident",
@@ -195,7 +194,7 @@ function showListInc() {
         consoleMessage: "List Incident",
     });
 
-    const listDsiUrl = '/Home/ListDsi';
+    const listDsiUrl = `/Home/ListDsi?page=${page}`;
 
     fetch(listDsiUrl)
         .then(response => response.json())
@@ -208,8 +207,7 @@ function showListInc() {
                 data.data.forEach(incident => {
                     const row = document.createElement("tr");
 
-                    let additionalColumns = ''; // Variable pour stocker les colonnes supplémentaires
-
+                    let additionalColumns = '';
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                         additionalColumns = `
                             <td>${incident.Action || ''}</td>
@@ -223,26 +221,61 @@ function showListInc() {
                         `;
                     }
 
-                    // Construction de la ligne du tableau
                     row.innerHTML = `
                         <td>${incident.UserName}</td>
                         <td>${incident.Type}</td>
                         <td>${incident.Details}</td>
-                        <td>${incident.Etat}</td>
+                        <td>${etat = incident.Etat,
+                              if (etat === "Nouveau") {
+
+                    };
+                                }</td >
                         <td>${FormatDate(incident.CreatedDate)}</td>
                         ${additionalColumns}
                     `;
-
                     tbody.appendChild(row);
                 });
+
+                // Mise à jour de la pagination
+                updatePagination(data.pagination.currentPage, data.pagination.totalPages);
             } else {
-                alert(data.message); // Afficher un message d'erreur
+                alert(data.message);
             }
         })
         .catch(error => {
             console.error("Erreur lors de la récupération des incidents :", error);
         });
 }
+
+// Mise à jour dynamique de la pagination
+function updatePagination(currentPage, totalPages) {
+    const paginationContainer = document.querySelector(".pagination");
+    paginationContainer.innerHTML = ""; // Réinitialiser la pagination
+
+    // Précédent
+    paginationContainer.innerHTML += `
+        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+            <a class="page-link" href="#" onclick="showListInc(${currentPage - 1})">Précédent</a>
+        </li>
+    `;
+
+    // Numéros de page
+    for (let i = 1; i <= totalPages; i++) {
+        paginationContainer.innerHTML += `
+            <li class="page-item ${i === currentPage ? 'active' : ''}">
+                <a class="page-link" href="#" onclick="showListInc(${i})">${i}</a>
+            </li>
+        `;
+    }
+
+    // Suivant
+    paginationContainer.innerHTML += `
+        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+            <a class="page-link" href="#" onclick="showListInc(${currentPage + 1})">Suivant</a>
+        </li>
+    `;
+}
+
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
 // Fonction pour ouvrir le modal et remplir les champs

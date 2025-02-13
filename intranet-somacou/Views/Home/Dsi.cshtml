@@ -209,40 +209,8 @@
                     </tbody>
                 </table>
             </div>
-            <nav aria-label="Page navigation" class="container paginationUsers">
+            <nav aria-label="Page navigation" class="container paginationIncident">
                 <ul class="pagination">
-                    @if (ViewBag.CurrentPage > 1)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Dsi", new { page = ViewBag.CurrentPage - 1 })">Précédent</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item disabled">
-                            <span class="page-link">Précédent</span>
-                        </li>
-                    }
-
-                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                    {
-                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("Dsi", new { page = i })">@i</a>
-                        </li>
-                    }
-
-                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Dsi", new { page = ViewBag.CurrentPage + 1 })">Suivant</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item disabled">
-                            <span class="page-link">Suivant</span>
-                        </li>
-                    }
                 </ul>
             </nav>
         </div>
