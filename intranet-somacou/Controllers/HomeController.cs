@@ -110,7 +110,7 @@ namespace intranet_somacou.Controllers
             if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef") &&
                 (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
             {
-                query = db.Incidents.OrderByDescending(x => x.UserId);
+                query = db.Incidents.OrderByDescending(x => x.CreatedDate);
             }
             else
             {

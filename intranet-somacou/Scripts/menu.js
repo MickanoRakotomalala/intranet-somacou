@@ -193,7 +193,6 @@ function showListInc(page = 1) {
         activeList: "RespInc",
         consoleMessage: "List Incident",
     });
-
     const listDsiUrl = `/Home/ListDsi?page=${page}`;
 
     fetch(listDsiUrl)
@@ -206,11 +205,53 @@ function showListInc(page = 1) {
                 // Ajouter les nouvelles lignes
                 data.data.forEach(incident => {
                     const row = document.createElement("tr");
+                    row.classList.add("text-white");
+
+                        //badgeColor
+                    let badgeColorEtat = '';
+                    switch (incident.Etat) {
+                            case 'Nouveau':
+                                badgeColorEtat = 'bg-secondary';
+                                break;
+                            case 'En_cours':
+                                badgeColorEtat = 'bg-warning';
+                                break;
+                            case 'Résolu':
+                                badgeColorEtat = 'bg-success';
+                                break;
+                            case 'Non_résolu':
+                                badgeColorEtat = 'bg-danger';
+                                break;
+                            default:
+                                badgeColorEtat = 'bg-info';
+                                break;
+                    }
+
+                    let badgeColorAction = '';
+                    switch (incident.Action) {
+                        case 'Attente':
+                            badgeColorAction = 'bg-secondary';
+                            break;
+                        case 'En_cours':
+                            badgeColorAction = 'bg-warning';
+                            break;
+                        case 'Terminé':
+                            badgeColorAction = 'bg-success';
+                            break;
+                        case 'Non_résolu':
+                            badgeColorAction = 'bg-danger';
+                            break;
+                        default:
+                            badgeColorAction = 'bg-info';
+                            break;
+                    }
 
                     let additionalColumns = '';
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                         additionalColumns = `
-                            <td>${incident.Action || ''}</td>
+                            <td>
+                                <span class="badge rounded-pill ${badgeColorAction}">${incident.Action}</span>
+                            </td>
                             <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
                             <td>${incident.Responsible || ''}</td>
                             <td>
@@ -221,15 +262,14 @@ function showListInc(page = 1) {
                         `;
                     }
 
+
                     row.innerHTML = `
                         <td>${incident.UserName}</td>
                         <td>${incident.Type}</td>
                         <td>${incident.Details}</td>
-                        <td>${etat = incident.Etat,
-                              if (etat === "Nouveau") {
-
-                    };
-                                }</td >
+                        <td>
+                            <span class="badge rounded-pill ${badgeColorEtat}">${incident.Etat}</span>
+                        </td >
                         <td>${FormatDate(incident.CreatedDate)}</td>
                         ${additionalColumns}
                     `;
@@ -306,7 +346,7 @@ function openEditModal(id, etat, action,username, details, type) {
     etatSelect.classList.add("form-control"); // Ajouter la classe Bootstrap
 
     // Ajouter les options pour l'état
-    const etats = ["Nouveau", "En_cours", "Résolu", "Fermé"];
+    const etats = ["Nouveau", "En_cours", "Résolu", "Non_résolu"];
     etats.forEach(e => {
         const option = document.createElement("option");
         option.value = e;
@@ -330,7 +370,7 @@ function openEditModal(id, etat, action,username, details, type) {
     actionSelect.classList.add("form-control"); // Ajouter la classe Bootstrap
 
     // Ajouter les options pour l'action
-    const actions = ["Attente", "En_cours", "Terminé"];
+    const actions = ["Attente", "En_cours", "Terminé", "Non_résolu"];
     actions.forEach(a => {
         const option = document.createElement("option");
         option.value = a;
@@ -383,7 +423,7 @@ function openEditModal(id, etat, action,username, details, type) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert("Incident mis à jour avec succès !");
+                    showErrorMessage("Incident mis à jour avec succès !",'success')
                     // Fermer le modal
                     const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
                     editModal.hide();

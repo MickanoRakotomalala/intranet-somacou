@@ -210,20 +210,20 @@ footer .col-md-6 ul li a {
     color:lightslategrey;
 }
 
-/*Rh*/
-.row .col-md-2{
-    background-color: #F16476;
+/*MENU Rh - DSI*/
+.row .col-md-2 {
+    background-color: #9E6A6A;
     box-shadow: 2px 2px 2px #E3D2D2;
-    margin-top:20px;
-    border-radius:10px;
-    color:white;
-    padding:10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
 }
 
-.row .col-md-9 {
-    background-color: #479943;
+.row .col-md-9{
+    background-color: #A35C5C;
     box-shadow: 2px 2px 2px #E3D2D2;
-    margin-top:20px;
+    margin-top: 20px;
     border-radius: 10px;
     color: white;
     padding: 20px;
@@ -232,17 +232,17 @@ footer .col-md-6 ul li a {
 .row .col-md-2 ul li a{
     text-decoration:none;
     color:white;
-    font-size:12px;
+    font-size:16px;
 }
 
-.row .col-md-2 ul li i{
-    font-size:14px;
+.row .col-md-2 ul li i {
+    font-size:16px;
 }
 
 .row .col-md-2 ul li a:hover,
 .row .col-md-2 ul li:hover{
     color: #8CA0A0;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .row .col-md-2 h5 i{
@@ -250,7 +250,7 @@ footer .col-md-6 ul li a {
 }
 
 .row .col-md-2 h5{
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .col-md-9 ul li,
@@ -388,13 +388,17 @@ footer .col-md-6 ul li a {
 }
 
 /*DSI*/
-.Incident h5,
-.Incident button{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+.col-md-9 h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
+
+.col-md-9 table thead tr th {
+    font-size: 20px;
+    color: #AFA9A9;
+} 
 
 .error-message {
     position: fixed;

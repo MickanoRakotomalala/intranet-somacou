@@ -99,33 +99,9 @@
         </div>
 
         @*INCIDENT*@
-        <div class="offset-1 col-md-9 mx-auto Incident" id="addinc" hidden>
+        <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
             <div class="row offset-2 col-8 offset-2">
                 <h5><i class="bi bi-plus-circle me-2"></i>DEMANDE D'INTERVENTION :</h5>
-                @*@if (TempData["ErrorMessage"] != null)
-                    {
-                        <div class="alert alert-danger alert-dismissible fade show">
-                            <strong>@TempData["ErrorMessage"]</strong>
-                            @if (ViewBag.Errors != null)
-                                {
-                                    <ul class="text-danger">
-                                        @foreach (var error in ViewBag.Errors)
-                                        {
-                                            <li>@error</li>
-                                        }
-                                    </ul>
-                                }
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    }
-                    @if (TempData["SuccessMessage"] != null)
-                    {
-                        <div class="alert alert-success alert-dismissible fade show">
-                            <strong>@TempData["SuccessMessage"]</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    }*@
-
                 <div class="container-fluid p-2">
                     <form id="incidentForm" action="Dsi#addinc" method="post">
                         @*<input type="hidden" name="Id" id="Id" />*@
@@ -176,15 +152,15 @@
 
                         <input type="hidden" name="Responsible" id="Responsible" class="form-control" />
 
-                        <div class="row offset-7">
-                            <Button type="submit" class="btn btn-outline-warning col-4">Soumettre</Button>
+                        <div class="row mb-4 offset-4 col-4 offset-4">
+                            <button type="submit" class="btn btn-outline-warning offset-sm-4 col-sm-6">Soumettre</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         <div class="offset-1 col-md-9 mx-auto" id="listInc" hidden>
-            <h5>LISTE INCIDENT</h5>
+            <h5><i class="bi bi-list-task me-2"></i>LISTE INCIDENT</h5>
             <div class="table-responsive-sm">
                 <table class="table table-responsive-sm" id="incidentTable">
                     <thead>
@@ -211,12 +187,12 @@
             </div>
             <nav aria-label="Page navigation" class="container paginationIncident">
                 <ul class="pagination">
+                    @*Les données seront ajoutées ici dynamiquement par AJAX de Javascript*@
                 </ul>
             </nav>
         </div>
     </div>
 </div>
-
 
 
 @* Modal pour éditer un incident *@
