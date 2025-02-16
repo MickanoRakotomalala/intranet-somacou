@@ -22,6 +22,7 @@ namespace intranet_somacou.Models
 
         public string Type {  get; set; }
 
+        [Required(ErrorMessage = "Le champ Details est requis")]
         public string Details {  get; set; }
 
         public string Etat {  get; set; }

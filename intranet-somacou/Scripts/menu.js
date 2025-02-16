@@ -230,7 +230,7 @@ function showListInc(page = 1) {
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </td>
@@ -241,7 +241,7 @@ function showListInc(page = 1) {
                     if (userRole === "Admin") {
                         additionalColumnsTrash = `
                             <td>
-                                <button class="btn btn-outline-danger" type="button" onclick="openDeleteModal(${incident.Id})">
+                                <button class="btn btn-outline-danger" type="button" onclick="openDeleteModal(${incident.Id},'${incident.Details}')">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </td>
@@ -307,9 +307,10 @@ function updatePagination(currentPage, totalPages) {
     `;
 }
 
-function openDeleteModal(id) {
+function openDeleteModal(id,details) {
     console.log("ID de l'incident à supprimer :", id)
     document.getElementById("incidentID").value = id;
+    document.getElementById("incidentDetailsDelete").value = details;
 
     //ouvrir mon modal
     $("#deletemodal").modal('show');
@@ -348,13 +349,17 @@ document.getElementById("deleteIncidentForm").addEventListener("submit", functio
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
 // Fonction pour ouvrir le modal et remplir les champs
-function openEditModal(id, etat,observation) {
+function openEditModal(id,etat,details,type,observation) {
     console.log("ID de l'incident :", id);
+    console.log("Type de l'incident :", type);
+    console.log("Details de l'incident :", details);
     console.log("État de l'incident :", etat);
     console.log("Observation :", observation);
 
     // Remplir le champ caché pour l'ID de l'incident
     document.getElementById("incidentId").value = id;
+    document.getElementById("incidentType").value = type;
+    document.getElementById("incidentDetails").value = details;
     document.getElementById("incidentObservation").value = observation;
 
     // Effacer les anciens <select> (s'il y en a)

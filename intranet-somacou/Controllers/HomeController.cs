@@ -69,20 +69,16 @@ namespace intranet_somacou.Controllers
                         context.SaveChanges();
                     }
                 }
-
-                TempData["SuccessMessage"] = "Incident enregistré avec succès";
                 return Json(new { success = true });
             }
-            else if (!ModelState.IsValid)
+            else
             {
                 var errors = ModelState.Values
                     .SelectMany(v => v.Errors)
                     .Select(e => e.ErrorMessage)
                     .ToList();
-                TempData["ErrorMessage"] = "Vous devez remplir les informations avant de soumettre";
                 return Json(new { success = false, errors = errors });
             }
-            return Json(new { success = false });
         }
 
         private AppDbContext db = new AppDbContext();

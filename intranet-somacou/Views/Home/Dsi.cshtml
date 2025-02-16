@@ -195,6 +195,8 @@
             <div class="modal-body">
                 <form method="post" action="/Home/UpdateIncident" id="editIncidentForm">
                     <input type="hidden" name="Id" id="incidentId" />
+                    <input type="hidden" name="Type" id="incidentType" />
+                    <input type="hidden" name="Details" id="incidentDetails" />
 
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
@@ -231,6 +233,7 @@
             <div class="modal-body">
                 <form action="/Home/DeleteIncident" method="post" id="deleteIncidentForm">
                     <input type="hidden" name="id" id="incidentID" />
+                    <input type="hidden" name="Details" id="incidentDetailsDelete" />
                     <p>Vous êtes sûre de supprimer cet Incident ?</p>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger">Supprimer</button>
