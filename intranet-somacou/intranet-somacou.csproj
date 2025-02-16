@@ -200,6 +200,10 @@
     <Compile Include="Migrations\202502132141479_UpdatePhone.Designer.cs">
       <DependentUpon>202502132141479_UpdatePhone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502161505097_UpIncidentDto.cs" />
+    <Compile Include="Migrations\202502161505097_UpIncidentDto.Designer.cs">
+      <DependentUpon>202502161505097_UpIncidentDto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\IncidentDto.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502132141479_UpdatePhone.resx">
       <DependentUpon>202502132141479_UpdatePhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502161505097_UpIncidentDto.resx">
+      <DependentUpon>202502161505097_UpIncidentDto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

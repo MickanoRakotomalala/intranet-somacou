@@ -20,10 +20,8 @@ namespace intranet_somacou.Models
         public virtual RegisterDto User { get; set; } // Propriété de navigation
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Le champ Type est requis")]
         public string Type {  get; set; }
 
-        [Required(ErrorMessage = "Le champ Détails est requis")]
         public string Details {  get; set; }
 
         public string Etat {  get; set; }

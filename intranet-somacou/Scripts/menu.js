@@ -226,12 +226,23 @@ function showListInc(page = 1) {
                                 break;
                     }
 
-                    let additionalColumns = '';
+                    let additionalColumnsEdit = '';
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
-                        additionalColumns = `
+                        additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.UserName}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Observation || ''}')">
                                     <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </td>
+                        `;
+                    }
+
+                    let additionalColumnsTrash = '';
+                    if (userRole === "Admin") {
+                        additionalColumnsTrash = `
+                            <td>
+                                <button class="btn btn-outline-danger" type="button" onclick="openDeleteModal(${incident.Id})">
+                                    <i class="bi bi-trash"></i>
                                 </button>
                             </td>
                         `;
@@ -250,7 +261,8 @@ function showListInc(page = 1) {
                         <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
                         <td>${incident.Responsible || ''}</td>
                         <td>${incident.Observation || ''}</td>
-                        ${additionalColumns}
+                        ${additionalColumnsEdit}
+                        ${additionalColumnsTrash}
                     `;
                     tbody.appendChild(row);
                 });
@@ -295,22 +307,54 @@ function updatePagination(currentPage, totalPages) {
     `;
 }
 
+function openDeleteModal(id) {
+    console.log("ID de l'incident à supprimer :", id)
+    document.getElementById("incidentID").value = id;
+
+    //ouvrir mon modal
+    $("#deletemodal").modal('show');
+}
+
+// Gérer la soumission du formulaire via AJAX
+document.getElementById("deleteIncidentForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Créer un FormData à partir du formulaire
+    const formData = new FormData(this);
+    console.log("FormData content:", [...formData]); // Debug
+
+    fetch("/Home/DeleteIncident", {
+        method: "POST",
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showMessage("Incident supprimé avec succès !", 'success');
+                // Fermer le modal
+                const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deletemodal'));
+                deleteModal.hide();
+                showListInc();
+            } else {
+                showMessage('Erreur lors de la suppression : ' + data.message, 'error');
+                console.log("Erreurs :", data.errors);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la suppression :", error);
+        });
+});
+
 
 //VALIDATION FORMULAIRE EDIT INCIDENT - DSI
 // Fonction pour ouvrir le modal et remplir les champs
-function openEditModal(id, etat,username, details, type, observation) {
+function openEditModal(id, etat,observation) {
     console.log("ID de l'incident :", id);
     console.log("État de l'incident :", etat);
-    console.log("User de l'incident :", username);
-    console.log("Détails de l'incident :", details);
-    console.log("Type de l'incident :", type);
     console.log("Observation :", observation);
 
     // Remplir le champ caché pour l'ID de l'incident
     document.getElementById("incidentId").value = id;
-    document.getElementById("incidentUserName").value = username;
-    document.getElementById("incidentDetails").value = details;
-    document.getElementById("incidentType").value = type;
     document.getElementById("incidentObservation").value = observation;
 
     // Effacer les anciens <select> (s'il y en a)

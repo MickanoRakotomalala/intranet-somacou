@@ -1,5 +1,6 @@
 ﻿using intranet_somacou.Migrations;
 using intranet_somacou.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -178,7 +179,29 @@ namespace intranet_somacou.Controllers
                     .SelectMany(v => v.Errors)
                     .Select(e => e.ErrorMessage)
                     .ToList();
-                return Json(new { success = false, message = "Erreur de validation", errors = errors });
+                return Json(new { success = false, message = "Erreur de validation UpdateIncident", errors = errors });
+            }
+        }
+
+        public ActionResult DeleteIncident(IncidentDto incidentDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var incident = db.Incidents.Find(incidentDto.Id);
+                if (incident != null)
+                {
+                    db.Incidents.Remove(incident);
+                    db.SaveChanges();
+                }
+                return Json(new { success = true, data = incidentDto }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var erros = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+                return Json(new {success = false, message = "Erreur de validation Delete", errors = erros});
             }
         }
 

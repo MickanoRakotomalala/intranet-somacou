@@ -163,6 +163,10 @@
                             {
                                 <th></th>
                             }
+                            @if (Session["Role"].ToString() == "Admin")
+                            {
+                                <th></th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -191,9 +195,6 @@
             <div class="modal-body">
                 <form method="post" action="/Home/UpdateIncident" id="editIncidentForm">
                     <input type="hidden" name="Id" id="incidentId" />
-                    <input type="hidden" name="UserName" id="incidentUserName" />
-                    <input type="hidden" name="Type" id="incidentType" />
-                    <input type="hidden" name="Details" id="incidentDetails" />
 
                     <div class="row mb-2">
                         <label class="col-sm-4 col-form-label">Statut :</label>
@@ -211,6 +212,29 @@
                         <div class="offset-sm-8 col-sm-4">
                             <button type="submit" class="btn btn-outline-secondary">Sauvegarder</button>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal pour supprimer l'incident-->
+<div class="modal" id="deletemodal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fs-5">Supprimer l'incident</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="/Home/DeleteIncident" method="post" id="deleteIncidentForm">
+                    <input type="hidden" name="id" id="incidentID" />
+                    <p>Vous êtes sûre de supprimer cet Incident ?</p>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </form>
             </div>
