@@ -336,6 +336,35 @@ function openEditModal(id, etat,username, details, type, observation) {
     // Ajouter le <select> créé dans la div Form_Etat
     formEtat.appendChild(etatSelect);
 
+        // Ajouter un écouteur d'événements pour détecter les changements de l'état
+        etatSelect.addEventListener("change", function () {
+            const observationField = document.getElementById("incidentObservation");
+            const observationError = document.getElementById("Error");
+
+            if (this.value === "Non_résolu" ) {
+                observationField.setAttribute("required", "required");
+                observationField.classList.add("is-invalid"); // Ajoute une classe visuelle Bootstrap
+                observationField.style.border = '1px solid Red';
+                observationError.classList.remove("d-none"); //Afficher le message
+                observationError.textContent = "Le champ Observation est requis";
+                observationField.onkeydown = function () {
+                    observationField.classList.remove("is-invalid"); // Retire la classe visuelle Bootstrap
+                    observationField.style.border = '1px solid Green';
+                    observationError.classList.add("d-none"); //Cacher le message
+                }
+            } else {
+                    observationField.removeAttribute("required");
+                    observationField.classList.remove("is-invalid"); // Retire la classe visuelle Bootstrap
+                    observationField.style.border = '1px solid Green';
+                    observationError.classList.add("d-none"); //Cacher le message
+            }
+        });
+
+        // Définir initialement l'état du champ Observation en fonction de la valeur actuelle
+        if (etat === "Non_résolu") {
+            document.getElementById("incidentObservation").setAttribute("required", "required");
+        }
+
     // Ouvrir le modal
     $("#EditIncident").modal('show');
 }
@@ -347,45 +376,37 @@ function openEditModal(id, etat,username, details, type, observation) {
     document.getElementById("editIncidentForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // S'assurer que les valeurs sélectionnées sont prises en compte avant de soumettre
-        const etatSelect = document.getElementById("Etat");
+            // Créer un FormData à partir du formulaire
+            const formData = new FormData(this);
 
-        // Ajouter manuellement la sélection des options
-        if (!etatSelect.value) {
-            etatSelect.value = document.querySelector("#Etat option").value; // Valeur par défaut
-        }
+            // Vérifier le contenu de formData dans la console
+            console.log("FormData content:", [...formData]);
 
-        // Créer un FormData à partir du formulaire
-        const formData = new FormData(this);
-
-        // Vérifier le contenu de formData dans la console
-        console.log("FormData content:", [...formData]);
-
-        fetch("/Home/UpdateIncident", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showMessage("Incident mis à jour avec succès !",'success')
-                    // Fermer le modal
-                    const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
-                    editModal.hide();
-                    showListInc();
-                } else {
-                    // Si une erreur de validation se produit
-                    showMessage('Erreur lors de la mise à jour de l\'incident' + data.message,'error')
-                    alert("Erreur lors de la mise à jour de l'incident : " + data.message);
-                    console.log("Erreurs de validation :", data.errors); // Afficher les erreurs dans la console
-                    data.errors.forEach((error, index) => {
-                        console.log(`Erreur ${index + 1}: ${error}`);
-                    });
-                }
+            fetch("/Home/UpdateIncident", {
+                method: "POST",
+                body: formData
             })
-            .catch(error => {
-                console.error("Erreur lors de la mise à jour de l'incident :", error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showMessage("Incident mis à jour avec succès !",'success')
+                        // Fermer le modal
+                        const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
+                        editModal.hide();
+                        showListInc();
+                    } else {
+                        // Si une erreur de validation se produit
+                        showMessage('Erreur lors de la mise à jour de l\'incident' + data.message,'error')
+                        console.log("Erreurs de validation :", data.errors); // Afficher les erreurs dans la console
+                        data.errors.forEach((error, index) => {
+                            console.log(`Erreur ${index + 1}: ${error}`);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur lors de la mise à jour de l'incident :", error);
+                });
+
     });
 
 

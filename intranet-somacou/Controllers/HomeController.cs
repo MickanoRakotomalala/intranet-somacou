@@ -160,8 +160,6 @@ namespace intranet_somacou.Controllers
                     var incident = context.Incidents.Find(incidentDto.Id);
                     if (incident != null)
                     {
-                        incident.UserName = incidentDto.UserName;
-                        incident.Phone = incidentDto.Phone;
                         incident.Type = incidentDto.Type;
                         incident.Details = incidentDto.Details;
                         incident.Etat = incidentDto.Etat;
