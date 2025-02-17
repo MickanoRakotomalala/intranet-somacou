@@ -331,7 +331,7 @@ document.getElementById("deleteIncidentForm").addEventListener("submit", functio
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                showMessage("Incident supprimé avec succès !", 'success');
+                showMessage("L'Incident a été supprimé avec succès !", 'success');
                 // Fermer le modal
                 const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deletemodal'));
                 deleteModal.hide();
@@ -438,7 +438,7 @@ function openEditModal(id,etat,details,type,observation) {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        showMessage("Incident mis à jour avec succès !",'success')
+                        showMessage("L'Incident est à jour avec succès !",'success')
                         // Fermer le modal
                         const editModal = bootstrap.Modal.getInstance(document.getElementById('EditIncident'));
                         editModal.hide();
@@ -550,7 +550,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     // Affichez un message de succès
-                    showMessage('Incident enregistré avec succès', 'success');
+                    showMessage('L\'Incident a été enregistré avec succès', 'success');
 
                     // Réinitialisez le formulaire
                     $('#incidentForm')[0].reset();
