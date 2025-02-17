@@ -471,7 +471,7 @@ function showMessage(message, type) {
 
     // Style de base pour le message
     messageDiv.style.position = 'fixed';
-    messageDiv.style.top = '80px'; // Position en haut de la page
+    messageDiv.style.top = '150px'; // Position en haut de la page
     messageDiv.style.left = '50%'; // Centré horizontalement
     messageDiv.style.transform = 'translateX(-50%)'; // Centrage précis
     messageDiv.style.width = 'auto'; // Largeur automatique
@@ -536,7 +536,7 @@ function showMessage(message, type) {
     // Supprimez le message après 5 secondes
     setTimeout(() => {
         messageDiv.remove();
-    }, 5000);
+    }, 4000);
 }
 
 $(document).ready(function () {
