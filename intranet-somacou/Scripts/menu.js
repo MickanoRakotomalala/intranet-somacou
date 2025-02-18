@@ -183,9 +183,11 @@ function FormatDate(dateString) {
 const sessionData = document.getElementById("sessionData");
 const userRole = sessionData.getAttribute("data-role");
 const userPoste = sessionData.getAttribute("data-poste");
+const userResponsible = sessionData.getAttribute("data-responsible");
 
 console.log("userRole:", userRole); // Vérifier la valeur de userRole
 console.log("userPoste:", userPoste); // Vérifier la valeur de userPoste
+console.log("userResponsible:", userResponsible);
 function showListInc(page = 1) {
     showSection({
         visibleId: "ListInc",
@@ -210,27 +212,39 @@ function showListInc(page = 1) {
                     let badgeColor = '';
                     switch (incident.Etat) {
                             case 'Nouveau':
-                                badgeColorEtat = 'bg-secondary';
+                                badgeColor = 'bg-secondary';
                                 break;
                             case 'En_cours':
-                                badgeColorEtat = 'bg-warning';
+                                badgeColor = 'bg-warning';
                                 break;
                             case 'Résolu':
-                                badgeColorEtat = 'bg-success';
+                                badgeColor = 'bg-success';
                                 break;
                             case 'Non_résolu':
-                                badgeColorEtat = 'bg-danger';
+                                badgeColor = 'bg-danger';
                                 break;
                             default:
-                                badgeColorEtat = 'bg-info';
+                                badgeColor = 'bg-info';
                                 break;
                     }
 
+                    let Responsible = incident.Responsible;
+                    console.log("Responsable :", Responsible);
+
+
                     let additionalColumnsEdit = '';
-                    if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk")) {
+                    if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && !incident.Responsible) {
                         additionalColumnsEdit = `
                             <td>
                                 <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </td>
+                        `;
+                    } else {
+                        additionalColumnsEdit = `
+                            <td>
+                                <button class="btn btn-outline-success" type="button">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </td>
@@ -248,7 +262,6 @@ function showListInc(page = 1) {
                         `;
                     }
 
-
                     row.innerHTML = `
                         <td>${incident.UserName}</td>
                         <td>${incident.Phone || ''}</td>
@@ -256,7 +269,7 @@ function showListInc(page = 1) {
                         <td>${incident.Details}</td>
                         <td>${FormatDate(incident.CreatedDate)}</td>
                         <td>
-                            <span class="badge rounded-pill text-white ${badgeColorEtat}">${incident.Etat}</span>
+                            <span class="badge rounded-pill text-white ${badgeColor}">${incident.Etat}</span>
                         </td >
                         <td>${incident.UpdateDate ? FormatDate(incident.UpdateDate) : ''}</td>
                         <td>${incident.Responsible || ''}</td>
@@ -471,7 +484,7 @@ function showMessage(message, type) {
 
     // Style de base pour le message
     messageDiv.style.position = 'fixed';
-    messageDiv.style.top = '150px'; // Position en haut de la page
+    messageDiv.style.top = '180px'; // Position en haut de la page
     messageDiv.style.left = '50%'; // Centré horizontalement
     messageDiv.style.transform = 'translateX(-50%)'; // Centrage précis
     messageDiv.style.width = 'auto'; // Largeur automatique
@@ -482,6 +495,8 @@ function showMessage(message, type) {
     messageDiv.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
     messageDiv.style.borderRadius = '5px'; // Coins arrondis
     messageDiv.style.animation = 'slideDown 0.5s ease-out';
+    messageDiv.style.transition = 'top 4s ease-out, opacity 0.5s ease-out';
+    messageDiv.style.opacity = '1';
 
     // Définissez la couleur de fond et l'icône en fonction du type de message
     const icon = document.createElement('i');
@@ -531,11 +546,15 @@ function showMessage(message, type) {
     // Démarrez l'animation de la barre de progression
     setTimeout(() => {
         progressBarFill.style.width = '100%';
-    }, 10);
+        messageDiv.style.top = '10px';
+    }, 200);
 
     // Supprimez le message après 5 secondes
     setTimeout(() => {
-        messageDiv.remove();
+        messageDiv.style.opacity = '0';
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 500);
     }, 4000);
 }
 
