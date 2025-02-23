@@ -128,7 +128,7 @@ namespace intranet_somacou.Controllers
             {
                 var sessionCookie = new HttpCookie("ASP.NET_SessionId")
                 {
-                    Expires = DateTime.Now.AddDays(-1), // Expire immédiatement
+                    Expires = DateTime.Now.AddDays(0), // Expire immédiatement
                     HttpOnly = true
                 };
                 Response.Cookies.Add(sessionCookie);

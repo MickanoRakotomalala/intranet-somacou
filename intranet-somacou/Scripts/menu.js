@@ -228,12 +228,12 @@ function showListInc(page = 1) {
                                 break;
                     }
 
-                    let Responsible = incident.Responsible;
-                    console.log("Responsable :", Responsible);
+                    let Etat = incident.Etat;
+                    console.log("Etat :", Etat);
 
 
                     let additionalColumnsEdit = '';
-                    if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && !incident.Responsible) {
+                    if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && !incident.Responsible && Etat === "Nouveau") {
                         additionalColumnsEdit = `
                             <td>
                                 <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
@@ -241,11 +241,51 @@ function showListInc(page = 1) {
                                 </button>
                             </td>
                         `;
-                    } else {
+                    } else if ((userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "Résolu") {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-success" type="button">
-                                    <i class="bi bi-pencil-square"></i>
+                                <button class="btn btn-success" type="button">
+                                    <i class="bi bi-check2-square"></i>
+                                </button>
+                            </td>
+                        `;
+                    } else if ((userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "En_cours") {
+                        additionalColumnsEdit = `
+                            <td>
+                                <button class="btn btn-outline-warning" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                    <i class="bi bi-hourglass-split"></i>
+                                </button>
+                            </td>
+                        `;
+                    } else if ((userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "Non_résolu") {
+                        additionalColumnsEdit = `
+                            <td>
+                                <button class="btn btn-danger" type="button">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </td>
+                        `;
+                    } else if ((userRole === "Admin") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "Résolu") {
+                        additionalColumnsEdit = `
+                            <td>
+                                <button class="btn btn-outline-success" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                    <i class="bi bi-check2-square"></i>
+                                </button>
+                            </td>
+                        `;
+                    } else if ((userRole === "Admin") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "En_cours") {
+                        additionalColumnsEdit = `
+                            <td>
+                                <button class="btn btn-outline-warning" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                    <i class="bi bi-hourglass-split"></i>
+                                </button>
+                            </td>
+                        `;
+                    } else if ((userRole === "Admin") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "Non_résolu") {
+                        additionalColumnsEdit = `
+                            <td>
+                                <button class="btn btn-outline-danger" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                    <i class="bi bi-x-circle"></i>
                                 </button>
                             </td>
                         `;
@@ -547,7 +587,7 @@ function showMessage(message, type) {
     setTimeout(() => {
         progressBarFill.style.width = '100%';
         messageDiv.style.top = '10px';
-    }, 200);
+    }, 50);
 
     // Supprimez le message après 5 secondes
     setTimeout(() => {
