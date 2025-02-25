@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace intranet_somacou.Controllers
 {
-    public class AboutController : Controller
+    public class DeviceController : Controller
     {
         // GET: About
-        public ActionResult Commercial()
+        public ActionResult Architecture()
         {
             if (Session["UserId"] == null)
             {
@@ -22,7 +22,7 @@ namespace intranet_somacou.Controllers
             return View();
         }
 
-        public ActionResult Magasin()
+        public ActionResult Matériel()
         {
             if (Session["UserId"] == null)
             {
@@ -35,7 +35,7 @@ namespace intranet_somacou.Controllers
             return View();
         }
 
-        public ActionResult Usine() 
+        public ActionResult Responsable() 
         {
             if (Session["UserId"] == null)
             {

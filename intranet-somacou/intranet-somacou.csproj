@@ -137,7 +137,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -290,9 +290,9 @@
     <Content Include="Views\Home\Rh.cshtml" />
     <Content Include="Views\Home\Dsi.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\About\Commercial.cshtml" />
-    <Content Include="Views\About\Magasin.cshtml" />
-    <Content Include="Views\About\Usine.cshtml" />
+    <Content Include="Views\Device\Architecture.cshtml" />
+    <Content Include="Views\Device\Matériel.cshtml" />
+    <Content Include="Views\Device\Responsable.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

@@ -587,7 +587,7 @@ function showMessage(message, type) {
     setTimeout(() => {
         progressBarFill.style.width = '100%';
         messageDiv.style.top = '10px';
-    }, 50);
+    }, 10);
 
     // Supprimez le message après 5 secondes
     setTimeout(() => {
