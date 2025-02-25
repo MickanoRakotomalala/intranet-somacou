@@ -524,7 +524,7 @@ function showMessage(message, type) {
 
     // Style de base pour le message
     messageDiv.style.position = 'fixed';
-    messageDiv.style.top = '180px'; // Position en haut de la page
+    messageDiv.style.top = '220px'; // Position en haut de la page
     messageDiv.style.left = '50%'; // Centré horizontalement
     messageDiv.style.transform = 'translateX(-50%)'; // Centrage précis
     messageDiv.style.width = 'auto'; // Largeur automatique
@@ -535,7 +535,7 @@ function showMessage(message, type) {
     messageDiv.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
     messageDiv.style.borderRadius = '5px'; // Coins arrondis
     messageDiv.style.animation = 'slideDown 0.5s ease-out';
-    messageDiv.style.transition = 'top 4s ease-out, opacity 0.5s ease-out';
+    messageDiv.style.transition = 'top 12s ease-out, opacity 0.5s ease-out';
     messageDiv.style.opacity = '1';
 
     // Définissez la couleur de fond et l'icône en fonction du type de message
@@ -570,7 +570,7 @@ function showMessage(message, type) {
     progressBarFill.style.width = '0%';
     progressBarFill.style.height = '100%';
     progressBarFill.style.backgroundColor = '#fff';
-    progressBarFill.style.transition = 'width 5s linear';
+    progressBarFill.style.transition = 'width 8s linear';
 
     //Ajoutez le remplissage à la barre de progression
     progressBar.appendChild(progressBarFill);
@@ -586,16 +586,16 @@ function showMessage(message, type) {
     // Démarrez l'animation de la barre de progression
     setTimeout(() => {
         progressBarFill.style.width = '100%';
-        messageDiv.style.top = '10px';
+        messageDiv.style.top = '20px';
     }, 10);
 
-    // Supprimez le message après 5 secondes
+    // Supprimez le message après 10 secondes
     setTimeout(() => {
         messageDiv.style.opacity = '0';
         setTimeout(() => {
             messageDiv.remove();
-        }, 500);
-    }, 4000);
+        }, 800);
+    }, 8000);
 }
 
 $(document).ready(function () {
