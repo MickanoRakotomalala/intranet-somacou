@@ -231,12 +231,14 @@ function showListInc(page = 1) {
                     let Etat = incident.Etat;
                     console.log("Etat :", Etat);
 
+                    //Variable pour encoder les apostrophes dans le champ observation
+                    const sanitizedObservation = incident.Observation ? incident.Observation.replace(/'/g, "\\'") : "";
 
                     let additionalColumnsEdit = '';
                     if ((userRole === "Admin" || userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && !incident.Responsible && Etat === "Nouveau") {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-secondary" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${sanitizedObservation}')">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                             </td>
@@ -252,7 +254,7 @@ function showListInc(page = 1) {
                     } else if ((userRole === "Chef") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "En_cours") {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-warning" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-warning" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${sanitizedObservation}')">
                                     <i class="bi bi-hourglass-split"></i>
                                 </button>
                             </td>
@@ -268,7 +270,7 @@ function showListInc(page = 1) {
                     } else if ((userRole === "Admin") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "Résolu") {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-success" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-success" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${sanitizedObservation}')">
                                     <i class="bi bi-check2-square"></i>
                                 </button>
                             </td>
@@ -276,7 +278,7 @@ function showListInc(page = 1) {
                     } else if ((userRole === "Admin") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "En_cours") {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-warning" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-warning" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${sanitizedObservation}')">
                                     <i class="bi bi-hourglass-split"></i>
                                 </button>
                             </td>
@@ -284,7 +286,7 @@ function showListInc(page = 1) {
                     } else if ((userRole === "Admin") && (userPoste === "Developer" || userPoste === "HelpDesk") && Etat === "Non_résolu") {
                         additionalColumnsEdit = `
                             <td>
-                                <button class="btn btn-outline-danger" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${incident.Observation || ''}')">
+                                <button class="btn btn-outline-danger" type="button" onclick="openEditModal(${incident.Id}, '${incident.Etat}','${incident.Details}','${incident.Type}','${sanitizedObservation}')">
                                     <i class="bi bi-x-circle"></i>
                                 </button>
                             </td>
