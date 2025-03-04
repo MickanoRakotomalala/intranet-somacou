@@ -217,10 +217,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\intranet-somacou.mdf" />
-    <Content Include="App_Data\intranet-somacou_log.ldf">
-      <DependentUpon>intranet-somacou.mdf</DependentUpon>
-    </Content>
     <Content Include="Assets\chicago.jpg" />
     <Content Include="Assets\DSI.png" />
     <Content Include="Assets\edit.png" />
