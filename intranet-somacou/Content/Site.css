@@ -488,7 +488,7 @@ footer .col-md-6 ul li a {
         font-size: 12px;
     }
 
-    .row .col-md-2 ul li i {
+    .row .col-md-2 ul li i{
         font-size: 13px;
     }
 
@@ -496,7 +496,7 @@ footer .col-md-6 ul li a {
         width: 28px;
     }
 
-    .row .col-md-9 table tbody td button i {
+    .row .col-md-9 table tbody td button i{
         display: flex;
         justify-content: center;
         font-size:12px;
