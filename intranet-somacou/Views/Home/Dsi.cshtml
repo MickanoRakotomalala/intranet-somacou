@@ -4,51 +4,53 @@
 }
 
 <div class="container-fluid">
-    <div class="container-fluid">
+    <div>
         <img src="~/Assets/DSI.PNG" alt="DSI" />
     </div>
     <div class="row">
-        <div class="col-md-2 mx-auto">
-            <div>
-                <h5 class="menuactive" id="menudsi" type="button" data-bs-toggle="collapse" data-bs-target="#dsi" aria-expanded="false" aria-controls="dsi"><i class="bi bi-box me-2"></i><span>DSI</span></h5>
-                <ul class="collapse" id="dsi">
-                    <li class="listactive" id="sidsi" onclick="showIdsi()"><i class="bi bi-textarea me-2"></i><a href="#idsi">Informations</a></li>
-                    <li id="srdsi" onclick="showRdsi()"><i class="bi bi-list-task me-2"></i><a href="#rdsi">Rôle</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 type="button" data-bs-toggle="collapse" data-bs-target="#soft_hard" aria-expanded="false" aria-controls="soft_hard"><i class="bi bi-pc-display-horizontal me-2"></i><span>Software / Hardware</span></h5>
-                <ul class="collapse" id="soft_hard">
-                    <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                    <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
-                </ul>
-            </div>
-            <div>
-                <h5 type="button" data-bs-toggle="collapse" data-bs-target="#security" aria-expanded="false" aria-controls="security"><i class="bi bi-shield-lock me-2"></i><span>Sécurité IT</span></h5>
-                <ul class="collapse" id="security">
-                    <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                    <li><i class="bi bi-gear me-2"></i>Résponsabilité</li>
-                </ul>
-            </div>
-            <div>
-                <h5 type="button" data-bs-toggle="collapse" data-bs-target="#dev" aria-expanded="false" aria-controls="dev"><i class="bi bi-code-square me-2"></i><span>Dev Applicatif</span></h5>
-                <ul class="collapse" id="dev">
-                    <li><i class="bi bi-file-text me-2"></i>Détails</li>
-                    <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
-                </ul>
-            </div>
-            <div>
+        <div class="col-xl-2 col-lg-12 mx-auto DsiMenu">
+            <div class="MainMenu">
+                <div class="Menu">
+                    <h5 class="menuactive" id="menudsi" type="button" data-bs-toggle="collapse" data-bs-target="#dsi" aria-expanded="false" aria-controls="dsi"><i class="bi bi-box me-2"></i><span>DSI</span></h5>
+                    <ul class="collapse" id="dsi">
+                        <li class="listactive" id="sidsi" onclick="showIdsi()"><i class="bi bi-textarea me-2"></i><a href="#idsi">Informations</a></li>
+                        <li id="srdsi" onclick="showRdsi()"><i class="bi bi-list-task me-2"></i><a href="#rdsi">Rôle</a></li>
+                    </ul>
+                </div>
+                <div class="Menu">
+                    <h5 type="button" data-bs-toggle="collapse" data-bs-target="#soft_hard" aria-expanded="false" aria-controls="soft_hard"><i class="bi bi-pc-display-horizontal me-2"></i><span>Software / Hardware</span></h5>
+                    <ul class="collapse" id="soft_hard">
+                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
+                        <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
+                    </ul>
+                </div>
+                <div class="Menu">
+                    <h5 type="button" data-bs-toggle="collapse" data-bs-target="#security" aria-expanded="false" aria-controls="security"><i class="bi bi-shield-lock me-2"></i><span>Sécurité IT</span></h5>
+                    <ul class="collapse" id="security">
+                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
+                        <li><i class="bi bi-gear me-2"></i>Résponsabilité</li>
+                    </ul>
+                </div>
+                <div class="Menu">
+                    <h5 type="button" data-bs-toggle="collapse" data-bs-target="#dev" aria-expanded="false" aria-controls="dev"><i class="bi bi-code-square me-2"></i><span>Dev Applicatif</span></h5>
+                    <ul class="collapse" id="dev">
+                        <li><i class="bi bi-file-text me-2"></i>Détails</li>
+                        <li><i class="bi bi-gear me-2"></i>Responsabilité</li>
+                    </ul>
+                </div>
+                <div class="Menu">
 
-                <h5 id="menuinc" type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev"><i class="bi bi-tools me-2"></i><span>Incident</span></h5>
-                <ul class="collapse" id="Incident">
-                    <li id="detailinc" onclick="showInc()"><i class="bi bi-plus-circle me-2"></i><a href="#addinc">Nouvel Incident</a></li>
-                    <li id="respinc" onclick="showListInc()"><i class="bi bi-gear me-2"></i><a href="#">Liste Incident</a></li>
-                </ul>
+                    <h5 id="menuinc" type="button" data-bs-toggle="collapse" data-bs-target="#Incident" aria-expanded="false" aria-controls="dev"><i class="bi bi-tools me-2"></i><span>Incident</span></h5>
+                    <ul class="collapse" id="Incident">
+                        <li id="detailinc" onclick="showInc()"><i class="bi bi-plus-circle me-2"></i><a href="#addinc">Nouvel Incident</a></li>
+                        <li id="respinc" onclick="showListInc()"><i class="bi bi-gear me-2"></i><a href="#">Liste Incident</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         @*DSI*@
-        <div class=" offset-1 col-md-9 mx-auto" id="idsi">
+        <div class=" offset-1 col-xl-9 col-lg-12 mx-auto" id="idsi">
             <h5><i class="bi bi-textarea me-2"></i>Département Système d'Information</h5>
             <p>
                 <h6>C'est quoi le DSI ?</h6>
@@ -60,7 +62,7 @@
                 </span>
             </p>
         </div>
-        <div class="offset-1 col-md-9 mx-auto" id="rdsi" hidden>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="rdsi" hidden>
             <h5><i class="bi bi-list-task me-2"></i> Rôle DSI</h5>
             <p>
                 <h6>Gestion des infrastructures technologiques</h6>
@@ -99,7 +101,7 @@
         </div>
 
         @*INCIDENT*@
-        <div class="offset-1 col-md-9 mx-auto" id="addinc" hidden>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="addinc" hidden>
             <div class="row offset-2 col-8 offset-2">
                 <h5><i class="bi bi-plus-circle me-2"></i>DEMANDE D'INTERVENTION :</h5>
                 <div class="container-fluid p-2">
@@ -143,7 +145,7 @@
                 </div>
             </div>
         </div>
-        <div class="offset-1 col-md-9 mx-auto" id="listInc" hidden>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="listInc" hidden>
             <h5><i class="bi bi-list-task me-2"></i>LISTE INCIDENT</h5>
             <div class="table-responsive-sm">
                 <table class="table table-responsive-sm" id="incidentTable">
