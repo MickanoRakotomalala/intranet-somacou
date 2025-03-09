@@ -480,16 +480,16 @@ footer .col-md-6 ul li a {
     }
 
     .row .col-xl-2 h5{
-        font-size: 14px;
+        font-size: 12px;
     }
-    .row .col-xl-2 ul li a {
+    .row .col-xl-2 ul li a{
         text-decoration: none;
         color: white;
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .row .col-xl-2 ul li i{
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .row .col-xl-9 table tbody td button {
@@ -507,14 +507,15 @@ footer .col-md-6 ul li a {
         font-size: 9px;
     }
 
-    .col-lg-12 .MainMenu{
-        display:flex;
-        justify-content:center;
-        background-color: #F16476;
-        border-radius: 20px;
+    .col-lg-12 .MainMenu {
+        margin-left:5%;
     }
 
-    .col-lg-12 .MainMenu .Menu{
+    .col-lg-12 .MainMenu .Menu {
+        float:left;
+        border-radius: 20px;
+        background-color: #F16476;
+        width:160px;
         padding: 10px;
         margin: 10px;
     }
@@ -555,6 +556,53 @@ footer .col-md-6 ul li a {
 
     .col-md-6 ul li {
         font-size: 18px;
+    }
+
+    /*menu DSI*/
+    .row .col-xl-2 h5 i{
+        font-size: 14px;
+    }
+
+    .row .col-xl-2 h5{
+        font-size: 8px;
+    }
+
+    .row .col-xl-2 ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 7px;
+    }
+
+    .row .col-xl-2 ul li i {
+        font-size: 9px;
+    }
+
+    .row .col-xl-9 table tbody td button {
+        width: 24px;
+    }
+
+    .row .col-xl-9 table tbody td button i {
+        display: flex;
+        justify-content: center;
+        font-size: 10px;
+    }
+
+    .row .col-xl-9 table tbody,
+    .row .col-xl-9 span {
+        font-size: 8px;
+    }
+
+/*    .col-lg-12 .MainMenu {
+        margin-left: 1%;
+    }*/
+
+    .col-lg-12 .MainMenu .Menu{
+        float: left;
+        border-radius: 20px;
+        background-color: #F16476;
+        width: 130px;
+        padding: 10px;
+        margin: 5px;
     }
 }
 
