@@ -210,7 +210,7 @@ footer .col-md-6 ul li a {
     color:lightslategrey;
 }
 
-/*MENU Rh - DSI*/
+/*MENU DSI - ARCHITECTURE*/
 .row .col-xl-2 {
     background-color: #F16476;
     box-shadow: 2px 2px 2px #E3D2D2;
@@ -431,6 +431,31 @@ footer .col-md-6 ul li a {
     margin-top: 10px;
 }
 
+/*ARCHITECTURE*/
+#networkd h5{
+    font-weight:900;
+}
+
+#networkd h6{
+    margin-top:20px;
+    font-weight:800;
+}
+#networkd ol li p,
+#networkd table thead tr th{
+    font-weight:700;
+}
+
+#networkd .table-network{
+    border: 2px solid Gray;
+    border-radius:10px;
+}
+
+#networkd .col-md-5,
+#networkd .col-md-6{
+    border: 2px solid #F16476;
+    border-radius:12px;
+}
+
 @keyframes slideDown {
     from {
         transform: translate(-50%, -100%);
@@ -619,6 +644,10 @@ footer .col-md-6 ul li a {
 
     .Developer p {
         font-size:12px;
+    }
+
+    #networkd .col-md-6 {
+        margin-bottom:20px;
     }
 }
 

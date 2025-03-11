@@ -1,81 +1,50 @@
-﻿//RH
-const DefinitionElement = document.getElementById("Def");
-const ResponsabilityElement = document.getElementById("Resp");
-const cEmployeur = document.getElementById("cEmployeur");
-const cSalary = document.getElementById("cSalary");
-const menuDescri = document.getElementById("menudescri");
-const menuCode = document.getElementById("menucode");
-const listDef = document.getElementById("listdef");
-const listResp = document.getElementById("listresp");
-const listEmployeur = document.getElementById("listEmployeur");
-const listSalary = document.getElementById("listSalary");
+﻿//Architecture
+//Sélection des éléments Architecture
+const elementsArchi = {
+    menuNetwork: document.getElementById("menunetwork"),
+    networkDetails: document.getElementById("networkd"),
+    networkImg: document.getElementById("networkimg"),
+    snetworkDetails: document.getElementById("snetworkd"),
+    snetworkImg: document.getElementById("snetworkimg")
+};
 
-function showDef() {
-    DefinitionElement.hidden = false;
-    listDef.classList.add("listactive");
-    menuDescri.classList.add("menuactive");
+// Fonction générique pour afficher une section
+function showSectionArchi({ visibleId, activeMenu, activeList, consoleMessage }) {
+    //Réinitialiser tous les éléments
+    elementsArchi.networkDetails.hidden = true;
+    elementsArchi.networkImg.hidden = true;
+    elementsArchi.menuNetwork.classList.remove("menuactive");
+    elementsArchi.snetworkDetails.classList.remove("listactive");
+    elementsArchi.snetworkImg.classList.remove("listactive");
 
-    ResponsabilityElement.hidden = true;
-    listResp.classList.remove("listactive");
-    cEmployeur.hidden = true;
-    listEmployeur.classList.remove("listactive");
-    cSalary.hidden = true;
-    listSalary.classList.remove("listactive");
+    //Afficher les éléments spécifiques
+    if (visibleId) elementsArchi[visibleId].hidden = false;
+    if (activeMenu) elementsArchi[activeMenu].classList.add("menuactive");
+    if (activeList) elementsArchi[activeList].classList.add("listactive");
 
-    menuCode.classList.remove("menuactive");
-    console.log('Def');
+    console.log(consoleMessage);
+};
+
+//Fonction spécifique pour les sectionArchi
+function shownetworkd() {
+    showSectionArchi({
+        visibleId: "networkDetails",
+        activeMenu: "menuNetwork",
+        activeList: "snetworkDetails",
+        consoleMessage: "Network Details"
+    });
 }
-
-function showResponsability() {
-    ResponsabilityElement.hidden = false;
-    listResp.classList.add("listactive");
-    menuDescri.classList.add("menuactive");
-
-    DefinitionElement.hidden = true;
-    listDef.classList.remove("listactive");
-    cEmployeur.hidden = true;
-    listEmployeur.classList.remove("listactive");
-    cSalary.hidden = true;
-    listSalary.classList.remove("listactive");
-
-    menuCode.classList.remove("menuactive");
-    console.log('Resp');
-}
-
-function showEmployeur() {
-    cEmployeur.hidden = false;
-    listEmployeur.classList.add("listactive");
-    menuCode.classList.add("menuactive");
-
-    DefinitionElement.hidden = true;
-    listDef.classList.remove("listactive");
-    ResponsabilityElement.hidden = true;
-    listResp.classList.remove("listactive");
-    cSalary.hidden = true;
-    listSalary.classList.remove("listactive");
-
-    menuDescri.classList.remove("menuactive");
-    console.log('Employeur');
-}
-
-function showSalary() {
-    cSalary.hidden = false;
-    listSalary.classList.add("listactive");
-    menuCode.classList.add("menuactive");
-
-    DefinitionElement.hidden = true;
-    listDef.classList.remove("listactive");
-    ResponsabilityElement.hidden = true;
-    listResp.classList.remove("listactive");
-    cEmployeur.hidden = true;
-    listEmployeur.classList.remove("listactive");
-
-    menuDescri.classList.remove("menuactive");
-    console.log('Salary');
+function shownetworkimg() {
+    showSectionArchi({
+        visibleId: "networkImg",
+        activeMenu: "menuNetwork",
+        activeList: "snetworkImg",
+        consoleMessage: "Architect Network Image"
+    })
 }
 
 // MENU DSI
-// Sélection des éléments
+// Sélection des éléments DSI
 const elements = {
     menuDsi: document.getElementById("menudsi"),
     Idsi: document.getElementById("idsi"),
