@@ -25,18 +25,6 @@ namespace intranet_somacou.Controllers
             return View();
         }
 
-        public ActionResult Rh()
-        {
-            if (Session["UserId"] == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else if (Session["UserId"] != null)
-            {
-                return View();
-            }
-            return View();
-        }
 
         public ActionResult Dsi()
         {

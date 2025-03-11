@@ -3,5 +3,164 @@
     ViewBag.Title = "Intranet";
 }
 
-<h2>ARCHITECTURE</h2>
+<div class="container-fluid">
+    <div>
+        <img src="~/Assets/DSI.PNG" alt="DSI" />
+    </div>
+    <div class="row">
+        <div class="col-xl-2 col-lg-12 mx-auto DsiMenu">
+            <div class="MainMenu">
+                <div class="Menu">
+                    <h5 class="menuactive" id="menudsi" type="button" data-bs-toggle="collapse" data-bs-target="#dsi" aria-expanded="false" aria-controls="dsi"><i class="bi bi-router me-2"></i><span>Réseaux</span></h5>
+                    <ul class="collapse" id="dsi">
+                        <li class="listactive" id="sidsi" onclick="showIdsi()"><i class="bi bi-textarea me-2"></i><a href="#idsi">Détails</a></li>
+                        <li id="srdsi" onclick="showRdsi()"><i class="bi bi-image me-2"></i><a href="#rdsi">Image</a></li>
+                    </ul>
+                </div>
+                <div class="Menu">
+                    <h5 type="button" data-bs-toggle="collapse" data-bs-target="#soft_hard" aria-expanded="false" aria-controls="soft_hard"><i class="bi bi-camera me-2"></i><span>Caméras</span></h5>
+                    <ul class="collapse" id="soft_hard">
+                        <li><i class="bi bi-textarea me-2"></i><a href="#">Détails</a></li>
+                        <li><i class="bi bi-image me-2"></i><a href="#">Image</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        @*DSI*@
+        <div class=" offset-1 col-xl-9 col-lg-12 mx-auto" id="idsi">
+            <h5><i class="bi bi-textarea me-2"></i>Département Système d'Information</h5>
+            <p>
+                <h6>C'est quoi le DSI ?</h6>
+                <span>
+                    Le département Système d'Information (SI) est une entité au sein d'une organisation qui est responsable de la gestion,
+                    de l'optimisation et de la sécurité des technologies de l'information. Son rôle est essentiel pour assurer le bon
+                    fonctionnement des opérations informatiques, la gestion des données et la communication entre les différents services d'une
+                    entreprise.
+                </span>
+            </p>
+        </div>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="rdsi" hidden>
+            <h5><i class="bi bi-list-task me-2"></i> Rôle DSI</h5>
+            <p>
+                <h6>Gestion des infrastructures technologiques</h6>
+                <span>Mise en place, gestion et maintenance des serveurs, des réseaux, des bases de données et autres infrastructures IT de l'entreprise.</span>
+            </p>
+
+            <p>
+                <h6>Développement et maintenance des logiciels :</h6>
+                <span>Création ou personnalisation de logiciels et d'applications métiers pour répondre aux besoins spécifiques de l'entreprise.</span>
+            </p>
+
+            <p>
+                <h6>Sécurité des systèmes d'information :</h6>
+                <span>Protection des données et des ressources informatiques contre les cyberattaques, les pannes et les erreurs humaines en mettant en place des solutions de sécurité (pare-feu, antivirus, sauvegardes, etc.).</span>
+            </p>
+
+            <p>
+                <h6>Support aux utilisateurs :</h6>
+                <span>Assistance technique pour résoudre les problèmes informatiques des employés, ainsi que la gestion des demandes et des incidents.</span>
+            </p>
+
+            <p>
+                <h6>Gestion des données et des systèmes d'information :</h6>
+                <span>Veiller à la qualité, à la cohérence et à l'intégrité des données utilisées par l'entreprise. Cela inclut également la gestion des bases de données et des systèmes de gestion de contenu.</span>
+            </p>
+
+            <p>
+                <h6>Gestion de projets technologiques :</h6>
+                <span>Planification et exécution de projets liés à la transformation numérique, l'implémentation de nouveaux systèmes ou la mise à jour des systèmes existants.</span>
+            </p>
+
+            <p>
+                <h6>Veille technologique :</h6>
+                <span>Suivi des évolutions technologiques et des tendances pour anticiper les besoins futurs de l'entreprise en matière de systèmes d'information.</span>
+            </p>
+        </div>
+
+        @*INCIDENT*@
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="addinc" hidden>
+            <div class="row offset-2 col-8 offset-2">
+                <h5><i class="bi bi-plus-circle me-2"></i>DEMANDE D'INTERVENTION :</h5>
+                <div class="container-fluid p-2">
+                    <form id="incidentForm" action="Dsi#addinc" method="post">
+                        @*<input type="hidden" name="Id" id="Id" />*@
+                        <input type="hidden" name="UserName" id="UserName" value="@Session["FullName"].ToString()" class="form-control" />
+                        <div class="row mb-2">
+                            <label class="offset-sm-2 col-sm-2 col-form-label">Type :</label>
+                            <div class="col-sm-8">
+                                <select name="Type" id="Type" class="form-control">
+                                    <option value="Matériel">Panne matériel</option>
+                                    <option value="Logiciel">Panne logiciel</option>
+                                    <option value="Réseaux">Panne réseaux</option>
+                                    <option value="Périphérique">Panne périphérique</option>
+                                    <option value="Performance">Panne performance</option>
+                                    <option value="Sauvegarde">Panne sauvegarde</option>
+                                    <option value="Autre">Autre Panne</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="offset-2 col-sm-2 col-form-label">Détails :</label>
+                            <div class="col-sm-8">
+                                <Textarea name="Details" id="Details" class="form-control"></Textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-2" hidden>
+                            <label class="col-sm-4 col-form-label">Statut</label>
+                            <div class="col-sm-8">
+                                <select name="Etat" id="Etat" class="form-control">
+                                    <option value="Nouveau">Nouveau</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-4 offset-sm-4 col-sm-4 offset-sm-4">
+                            <button type="submit" class="btn btn-outline-warning offset-sm-4 col-sm-8">Soumettre</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="listInc" hidden>
+            <h5><i class="bi bi-list-task me-2"></i>LISTE INCIDENT</h5>
+            <div class="table-responsive-sm">
+                <table class="table table-responsive-sm" id="incidentTable">
+                    <thead>
+                        <tr>
+                            <th>Utilisateur</th>
+                            <th>Contact</th>
+                            <th>Type</th>
+                            <th>Détails</th>
+                            <th>Création</th>
+                            <th>Statut</th>
+                            <th>Réalisation</th>
+                            <th>Responsable</th>
+                            <th>Observation</th>
+                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef")
+                                && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
+                            {
+                                <th></th>
+                            }
+                            @if (Session["Role"].ToString() == "Admin")
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Les données seront injectées ici via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation" class="container paginationIncident">
+                <ul class="pagination">
+                    @*Les données seront ajoutées ici dynamiquement par AJAX de Javascript*@
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
 
