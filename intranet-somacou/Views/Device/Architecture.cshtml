@@ -18,10 +18,10 @@
                     </ul>
                 </div>
                 <div class="Menu">
-                    <h5 type="button" data-bs-toggle="collapse" data-bs-target="#soft_hard" aria-expanded="false" aria-controls="soft_hard"><i class="bi bi-camera me-2"></i><span>Caméras</span></h5>
-                    <ul class="collapse" id="soft_hard">
-                        <li><i class="bi bi-textarea me-2"></i><a href="#">Détails</a></li>
-                        <li><i class="bi bi-image me-2"></i><a href="#">Image</a></li>
+                    <h5 id="menucamera" type="button" data-bs-toggle="collapse" data-bs-target="#camera" aria-expanded="false" aria-controls="camera"><i class="bi bi-camera me-2"></i><span>Caméras</span></h5>
+                    <ul class="collapse" id="camera">
+                        <li id="scamerad" onclick="showcamerad()"><i class="bi bi-textarea me-2"></i><a href="#">Détails</a></li>
+                        <li id="scameraimg" onclick="showcameraimg()"><i class="bi bi-image me-2"></i><a href="#">Image</a></li>
                     </ul>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                             <p>Gestion centralisée des utilisateurs :</p>
                             <ul>
                                 <li>
-                                    Grâce à des solutions comme Active Directory, 
-                                    on peut gérer les comptes utilisateurs, les droits d'accès, 
+                                    Grâce à des solutions comme Active Directory,
+                                    on peut gérer les comptes utilisateurs, les droits d'accès,
                                     les stratégies de sécurité, etc.
                                 </li>
                             </ul>
@@ -162,87 +162,120 @@
             </p>
         </div>
 
-        @*INCIDENT*@
-        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="addinc" hidden>
-            <div class="row offset-2 col-8 offset-2">
-                <h5><i class="bi bi-plus-circle me-2"></i>DEMANDE D'INTERVENTION :</h5>
-                <div class="container-fluid p-2">
-                    <form id="incidentForm" action="Dsi#addinc" method="post">
-                        @*<input type="hidden" name="Id" id="Id" />*@
-                        <input type="hidden" name="UserName" id="UserName" value="@Session["FullName"].ToString()" class="form-control" />
-                        <div class="row mb-2">
-                            <label class="offset-sm-2 col-sm-2 col-form-label">Type :</label>
-                            <div class="col-sm-8">
-                                <select name="Type" id="Type" class="form-control">
-                                    <option value="Matériel">Panne matériel</option>
-                                    <option value="Logiciel">Panne logiciel</option>
-                                    <option value="Réseaux">Panne réseaux</option>
-                                    <option value="Périphérique">Panne périphérique</option>
-                                    <option value="Performance">Panne performance</option>
-                                    <option value="Sauvegarde">Panne sauvegarde</option>
-                                    <option value="Autre">Autre Panne</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-2">
-                            <label class="offset-2 col-sm-2 col-form-label">Détails :</label>
-                            <div class="col-sm-8">
-                                <Textarea name="Details" id="Details" class="form-control"></Textarea>
-                            </div>
-                        </div>
-                        <div class="row mb-2" hidden>
-                            <label class="col-sm-4 col-form-label">Statut</label>
-                            <div class="col-sm-8">
-                                <select name="Etat" id="Etat" class="form-control">
-                                    <option value="Nouveau">Nouveau</option>
-                                </select>
-                            </div>
-                        </div>
+        <div class=" offset-1 col-xl-9 col-lg-12 mx-auto" id="camerad" hidden>
+            <h5><i class="bi bi-textarea me-2"></i>Réseaux Informatique</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="bi bi-question-circle me-2"></i>Pourquoi utiliser des caméras de surveillance en entreprise ?</h6>
+                    <ol>
+                        <li>
+                            <p>Sécurité des biens et des personnes :</p>
+                            <ul>
+                                <li>Prévention des vols, intrusions, vandalismes.</li>
+                                <li>Surveillance des accès sensibles (entrepôts, serveurs, coffres…).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Contrôle des accès :</p>
+                            <ul>
+                                <li>Vérification des entrées/sorties du personnel et des visiteurs.</li>
+                                <li>Enregistrement des mouvements sur le site.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Surveillance du personnel (avec cadre légal) :</p>
+                            <ul>
+                                <li>Suivi du respect des consignes de sécurité (ex. : port de casque, gestes barrières).</li>
+                                <li>Vérification des comportements dans certaines zones critiques.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Aide en cas d'incident :</p>
+                            <ul>
+                                <li>Enregistrement de preuves en cas de litiges ou d’accidents de travail.</li>
+                                <li>Support aux enquêtes internes ou aux forces de l’ordre.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Prévention des risques professionnels :</p>
+                            <ul>
+                                <li>Identification des comportements dangereux ou des dysfonctionnements.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="offset-md-1 col-md-5">
+                    <h6><i class="bi bi-list-check me-2"></i>Types de caméras utilisées en entreprise :</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Type de caméra</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Caméra IP (réseau)</td>
+                                    <td>Se connecte au réseau informatique, accessible à distance.</td>
+                                </tr>
+                                <tr>
+                                    <td>Caméra analogique (CCTV)</td>
+                                    <td>Plus classique, connectée via câblage coaxial à un enregistreur DVR.</td>
+                                </tr>
+                                <tr>
+                                    <td>Caméra PTZ (Pan-Tilt-Zoom)</td>
+                                    <td>Motorisée, permet de pivoter, incliner et zoomer à distance.</td>
+                                </tr>
+                                <tr>
+                                    <td>Caméra infrarouge / vision nocturne</td>
+                                    <td>Pour filmer en basse lumière ou de nuit.</td>
+                                </tr>
+                                <tr>
+                                    <td>Caméra dôme ou bullet</td>
+                                    <td>Esthétique discrète ou visible selon les besoins.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                    <h6><i class="bi bi-floppy me-2"></i>Systèmes d’enregistrement</h6>
+                    <div>
+                        <ul>
+                            <li>DVR (Digital Video Recorder) : pour caméras analogiques.</li>
+                            <li>NVR (Network Video Recorder) : pour caméras IP.</li>
+                            <li>Stockage local (disques durs) ou stockage cloud sécurisé.</li>
+                        </ul>
+                    </div>
 
-                        <div class="row mb-4 offset-sm-4 col-sm-4 offset-sm-4">
-                            <button type="submit" class="btn btn-outline-warning offset-sm-4 col-sm-8">Soumettre</button>
-                        </div>
-                    </form>
+                    <h6><i class="bi bi-shield-plus me-2"></i>Avantages d’une vidéosurveillance bien utilisée</h6>
+                    <div>
+                        <ul>
+                            <li>Sentiment de sécurité accru</li>
+                            <li>Dissuasion des comportements malveillants</li>
+                            <li>Meilleure réactivité face aux incidents</li>
+                            <li>Traçabilité des événements</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="listInc" hidden>
-            <h5><i class="bi bi-list-task me-2"></i>LISTE INCIDENT</h5>
-            <div class="table-responsive-sm">
-                <table class="table table-responsive-sm" id="incidentTable">
-                    <thead>
-                        <tr>
-                            <th>Utilisateur</th>
-                            <th>Contact</th>
-                            <th>Type</th>
-                            <th>Détails</th>
-                            <th>Création</th>
-                            <th>Statut</th>
-                            <th>Réalisation</th>
-                            <th>Responsable</th>
-                            <th>Observation</th>
-                            @if ((Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "Chef")
-                                && (Session["Poste"].ToString() == "Developer" || Session["Poste"].ToString() == "HelpDesk"))
-                            {
-                                <th></th>
-                            }
-                            @if (Session["Role"].ToString() == "Admin")
-                            {
-                                <th></th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Les données seront injectées ici via JavaScript -->
-                    </tbody>
-                </table>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="cameraimg" hidden>
+            <h5><i class="bi bi-image me-2"></i> ARCHITECTURE RÉSEAUX SOMACOU</h5>
+            <div>
+                <img src="~/Assets/Network_Architect_SOMACOU.PNG" alt="Architect Network" />
             </div>
-            <nav aria-label="Page navigation" class="container paginationIncident">
-                <ul class="pagination">
-                    @*Les données seront ajoutées ici dynamiquement par AJAX de Javascript*@
+            <p>
+                <h6>Description : </h6>
+                <ul>
+                    <li>Source connexion internet : Fibre optique YAS Madagascar</li>
+                    <li>Matériel : Router Mikrotik(Yas)</li>
+                    <li>Configuration Router DHCP</li>
+                    <li>Type d'architecture réseaux : Cascade</li>
+                    <li>Nombres de Switch utilisé (18)</li>
+                    <li>Nombres de Poste (25) et Serveur (2)</li>
                 </ul>
-            </nav>
+            </p>
         </div>
     </div>
 </div>

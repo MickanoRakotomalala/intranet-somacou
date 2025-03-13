@@ -5,7 +5,12 @@ const elementsArchi = {
     networkDetails: document.getElementById("networkd"),
     networkImg: document.getElementById("networkimg"),
     snetworkDetails: document.getElementById("snetworkd"),
-    snetworkImg: document.getElementById("snetworkimg")
+    snetworkImg: document.getElementById("snetworkimg"),
+    menuCamera: document.getElementById("menucamera"),
+    cameraDetails: document.getElementById("camerad"),
+    cameraImg: document.getElementById("cameraimg"),
+    scameraDetails: document.getElementById("scamerad"),
+    scameraImg: document.getElementById("scameraimg")
 };
 
 // Fonction générique pour afficher une section
@@ -13,9 +18,14 @@ function showSectionArchi({ visibleId, activeMenu, activeList, consoleMessage })
     //Réinitialiser tous les éléments
     elementsArchi.networkDetails.hidden = true;
     elementsArchi.networkImg.hidden = true;
+    elementsArchi.cameraDetails.hidden = true;
+    elementsArchi.cameraImg.hidden = true;
     elementsArchi.menuNetwork.classList.remove("menuactive");
     elementsArchi.snetworkDetails.classList.remove("listactive");
     elementsArchi.snetworkImg.classList.remove("listactive");
+    elementsArchi.menuCamera.classList.remove("menuactive");
+    elementsArchi.scameraDetails.classList.remove("listactive");
+    elementsArchi.scameraImg.classList.remove("listactive");
 
     //Afficher les éléments spécifiques
     if (visibleId) elementsArchi[visibleId].hidden = false;
@@ -40,6 +50,22 @@ function shownetworkimg() {
         activeMenu: "menuNetwork",
         activeList: "snetworkImg",
         consoleMessage: "Architect Network Image"
+    })
+}
+function showcamerad() {
+    showSectionArchi({
+        visibleId: "cameraDetails",
+        activeMenu: "menuCamera",
+        activeList: "scameraDetails",
+        consoleMessage: "Camera Details"
+    })
+}
+function showcameraimg() {
+    showSectionArchi({
+        visibleId: "cameraImg",
+        activeMenu: "menuCamera",
+        activeList: "scameraImg",
+        consoleMessage: "Image Camera"
     })
 }
 
