@@ -217,6 +217,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Architecture_Camera.png" />
     <Content Include="Assets\chicago.jpg" />
     <Content Include="Assets\DSI.png" />
     <Content Include="Assets\edit.png" />

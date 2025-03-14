@@ -432,26 +432,33 @@ footer .col-md-6 ul li a {
 }
 
 /*ARCHITECTURE*/
-#networkd h5{
+#networkd h5,
+#camerad h5{
     font-weight:900;
 }
 
-#networkd h6{
+#networkd h6,
+#camerad h6{
     margin-top:20px;
     font-weight:800;
 }
 #networkd ol li p,
-#networkd table thead tr th{
+#networkd table thead tr th,
+#camerad ol li p,
+#camerad table thead tr th{
     font-weight:700;
 }
 
-#networkd .table-network{
+#networkd .table-network,
+#camerad .table-camera{
     border: 2px solid Gray;
     border-radius:10px;
 }
 
 #networkd .col-md-5,
-#networkd .col-md-6{
+#networkd .col-md-6,
+#camerad .col-md-5,
+#camerad .col-md-6 {
     border: 2px solid #F16476;
     border-radius:12px;
 }
