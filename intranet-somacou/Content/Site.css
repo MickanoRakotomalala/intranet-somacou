@@ -90,40 +90,40 @@ footer {
 }
 
  footer .col-md-6{
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
-footer .col-md-6 label{
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:16px;
-}
-
-footer .col-md-6 ul,
-footer .col-md-6 label{
-    display: flex;
-    justify-content: center;
-}
-footer .col-md-6 ul li {
+footer .social-network ul li {
     list-style-type:none;
     font-size:28px;
 }
 
-footer .col-md-6 ul li a {
+footer .social-network ul li a{
     text-decoration:none;
     color:white;
 }
 
-.Developer {
+footer .social-network ul,
+footer .social-network .network-title {
+    display: flex;
+    justify-content: center;
+}
+
+footer .social-network .network-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+footer .Developer {
     display:flex;
     justify-content:center;
 }
 
-.col-8 p{
+footer .col-8 p{
     font-size:18px;
 }
 
-.col-4 img {
+footer .col-4 img {
     width: 100px;
     height: 140px;
 }
@@ -479,6 +479,7 @@ footer .col-md-6 ul li a {
     animation: slideDown 0.5s ease-out;
 }
 
+
 /*Responsive*/
 @media(max-width:1199px){
     /*navbar*/
@@ -560,6 +561,15 @@ footer .col-md-6 ul li a {
         color: white;
         padding: 10px;
     }
+
+    .table-user table thead tr th{
+        font-size:14px;
+    }
+
+    .table-user table tbody tr td,
+    .table-page p{
+        font-size:12px;
+    }
 }
 
 @media(max-width:992px){
@@ -573,21 +583,25 @@ footer .col-md-6 ul li a {
         font-style: oblique;
     }
 
-    .col-4 img{
+    /*footer*/
+    footer .col-4 img{
         width:60px;
-        height:80px;
+        height:70px;
     }
 
-    .col-8 p {
-        font-size: 10px;
+    footer .col-8 p {
+        font-size: 8px;
     }
 
-    .col-md-6 label {
-        font-size: 20px;
+    footer .col-md-6 .network-title {
+        font-size: 12px;
     }
 
-    .col-md-6 ul li {
-        font-size: 18px;
+    footer .col-md-6 ul li{
+        font-size: 11px;
+    }
+    footer .Developer p {
+        font-size: 12px;
     }
 
     /*menu DSI*/
@@ -624,10 +638,6 @@ footer .col-md-6 ul li a {
         font-size: 8px;
     }
 
-/*    .col-lg-12 .MainMenu {
-        margin-left: 1%;
-    }*/
-
     .col-lg-12 .MainMenu .Menu{
         float: left;
         border-radius: 20px;
@@ -635,6 +645,19 @@ footer .col-md-6 ul li a {
         width: 130px;
         padding: 10px;
         margin: 5px;
+    }
+
+    .table-user table thead tr th {
+        font-size: 12px;
+    }
+
+    .table-user table tbody tr td,
+    .table-page p{
+        font-size: 10px;
+    }
+
+    .User h2{
+        font-size:14px;
     }
 }
 
@@ -649,12 +672,23 @@ footer .col-md-6 ul li a {
         font-style: oblique;
     }
 
-    .Developer p {
-        font-size:12px;
+    /*footer*/
+    footer .Developer p{
+        font-size:10px;
     }
 
-    #networkd .col-md-6 {
+    #networkd .col-md-6,
+    #camerad .col-md-6{
         margin-bottom:20px;
+    }
+
+    .table-user table thead tr th {
+        font-size: 9px;
+    }
+
+    .table-user table tbody tr td,
+    .table-page p {
+        font-size: 7px;
     }
 }
 
@@ -686,5 +720,15 @@ footer .col-md-6 ul li a {
     .info .service p i,
     .info .actuality p i{
         font-size: 8px;
+    }
+
+    /*footer*/
+    footer .col-8 p{
+        font-size: 6px;
+    }
+
+    footer .col-4 img {
+        width: 50px;
+        height: 70px;
     }
 }
