@@ -144,70 +144,57 @@ footer .col-4 img {
     font-style:oblique;
 }
 
-.info {
+.info{
     background-color: #F9F6F6;
     border: 1px solid #B7B3B3;
     border-radius: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-.info .info-g, .dashboard, .quality, .security, .service, .actuality {
+.info .info-g, .quality, .security, .service {
     padding: 10px;
     display: inline-block;
     text-align: center;
 }
 
-.info .info-g p span,
-.info .dashboard p span,
-.info .quality p span,
-.info .security p span,
-.info .service p span,
-.info .actuality p span{
+.info .info-g span,
+.info .quality span,
+.info .security span,
+.info .service span {
     font-weight: 700;
     color: #8D8888;
-    font-size:14px;
-    margin-top:20px;
+    font-size:16px;
 }
 
-.info .info-g p i, 
-.info .dashboard p i,
-.info .quality p i,
-.info .security p i,
-.info .service p i,
-.info .actuality p i {
-    font-weight: 600;
+.info .info-g i, 
+.info .quality i,
+.info .security i,
+.info .service i {
+    font-weight: 700;
     color: #8D8888;
-    font-size: 22px;
+    font-size: 20px;
 }
 
-.info .info-g, .dashboard, .quality, .security, .service {
+.info .info-g, .quality, .security, .service {
+    border-left: 1px solid #B7B3B3;
     border-right: 1px solid #B7B3B3;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px;
 }
 
-.info .info-g p i{
+.info .info-g i {
     color:blueviolet;
 } 
 
-.info .dashboard p i{
-    color:dodgerblue;
-}
-
-.info .quality p i{
+.info .quality i{
     color:forestgreen;
 }
 
-.info .security p i{
+.info .security i{
     color:red;
 }
 
-.info .service p i{
+.info .service i{
     color:darkslategray;
-}
-
-.info .actuality p i{
-    color:lightslategrey;
 }
 
 /*MENU DSI - ARCHITECTURE*/
@@ -375,7 +362,7 @@ footer .col-4 img {
     border-radius: 10px;
 }
 
-.container .Profile .col-sm-3{
+.container .Profile .col-3{
     font-weight:700;
     font-size:18px;
 }
@@ -489,22 +476,22 @@ footer .col-4 img {
     }
 
     /*index*/
-    .info .info-g p span,
-    .info .dashboard p span,
-    .info .quality p span,
-    .info .security p span,
-    .info .service p span,
-    .info .actuality p span {
+    .info .info-g span,
+    .info .quality span,
+    .info .security span,
+    .info .service span {
         font-size: 8px;
     }
 
-    .info .info-g p i,
-    .info .dashboard p i,
-    .info .quality p i,
-    .info .security p i,
-    .info .service p i,
-    .info .actuality p i {
+    .info .info-g i,
+    .info .quality i,
+    .info .security i,
+    .info .service i{
         font-size: 10px;
+    }
+
+    .slide .carousel-inner .carousel-item p {
+        font-size:16px;
     }
 
     /*menu DSI*/
@@ -570,16 +557,29 @@ footer .col-4 img {
     .table-page p{
         font-size:12px;
     }
+
+    /*Profile*/
+    .container .Profile .col-3 {
+        font-size:16px;
+    }
+
+    .container .Profile .col-9{
+        font-size:14px;
+    }
+
+    .container h2{
+        font-size:18px;
+    }
 }
 
 @media(max-width:992px){
-    .carousel-inner .carousel-item p {
+    .slide .carousel-inner .carousel-item p{
         position: absolute;
         left: 40%;
         top: 45%;
         font-weight: 600;
         color: #F15858;
-        font-size: 20px;
+        font-size: 14px;
         font-style: oblique;
     }
 
@@ -659,16 +659,29 @@ footer .col-4 img {
     .User h2{
         font-size:14px;
     }
+
+    /*Profile*/
+    .container .Profile .col-3{
+        font-size: 14px;
+    }
+
+    .container .Profile .col-9 {
+        font-size: 12px;
+    }
+
+    .container h2 {
+        font-size: 16px;
+    }
 }
 
 @media (max-width:768px){
-    .carousel-inner .carousel-item p {
+    .slide .carousel-inner .carousel-item p {
         position: absolute;
         left:40%;
         top: 45%;
         font-weight: 600;
         color: #F15858;
-        font-size: 16px;
+        font-size: 12px;
         font-style: oblique;
     }
 
@@ -690,10 +703,23 @@ footer .col-4 img {
     .table-page p {
         font-size: 7px;
     }
+
+    /*Profile*/
+    .container .Profile .col-3 {
+        font-size: 13px;
+    }
+
+    .container .Profile .col-9 {
+        font-size: 11px;
+    }
+
+    .container h2 {
+        font-size: 15px;
+    }
 }
 
 @media (max-width:576px){
-    .carousel-inner .carousel-item p {
+    .slide .carousel-inner .carousel-item p{
         position: absolute;
         left: 40%;
         top: 45%;
@@ -704,22 +730,18 @@ footer .col-4 img {
     }
 
     /*index*/
-    .info .info-g p span,
-    .info .dashboard p span,
-    .info .quality p span,
-    .info .security p span,
-    .info .service p span,
-    .info .actuality p span{
+    .info .info-g span,
+    .info .quality span,
+    .info .security span,
+    .info .service span{
         font-size: 6px;
     }
 
-    .info .info-g p i,
-    .info .dashboard p i,
-    .info .quality p i,
-    .info .security p i,
-    .info .service p i,
-    .info .actuality p i{
-        font-size: 8px;
+    .info .info-g i,
+    .info .quality i,
+    .info .security i,
+    .info .service i{
+        font-size: 12px;
     }
 
     /*footer*/
@@ -730,5 +752,18 @@ footer .col-4 img {
     footer .col-4 img {
         width: 50px;
         height: 70px;
+    }
+
+    /*Profile*/
+    .container .Profile .col-3 {
+        font-size: 10px;
+    }
+
+    .container .Profile .col-9 {
+        font-size: 8px;
+    }
+
+    .container h2 {
+        font-size: 12px;
     }
 }

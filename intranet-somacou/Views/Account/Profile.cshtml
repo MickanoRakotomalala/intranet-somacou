@@ -4,7 +4,7 @@
 }
 
 <div class="container">
-    <div class="col-md-6 mx-auto p-4 Profile">
+    <div class="col-lg-6 col-md-8 mx-auto p-4 Profile">
         @if (TempData["ErrorMessage"] != null)
         {
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -32,43 +32,43 @@
         <hr />
 
         <div class="row mb-2">
-            <div class="col-sm-3">Nom :</div>
-            <div class="col-sm-9" name="Name">@Model.Name</div>
+            <div class="col-3">Nom :</div>
+            <div class="col-9" name="Name">@Model.Name</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Matricule :</div>
-            <div class="col-sm-9" name="Matricule">@Model.Matricule</div>
+            <div class="col-3">Matricule :</div>
+            <div class="col-9" name="Matricule">@Model.Matricule</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Email :</div>
-            <div class="col-sm-9" name="Email">@Model.Email</div>
+            <div class="col-3">Email :</div>
+            <div class="col-9" name="Email">@Model.Email</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Phone :</div>
-            <div class="col-sm-9" name="Phone">@Model.Phone</div>
+            <div class="col-3">Phone :</div>
+            <div class="col-9" name="Phone">@Model.Phone</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Adresse :</div>
-            <div class="col-sm-9" name="Address">@Model.Address</div>
+            <div class="col-3">Adresse :</div>
+            <div class="col-9" name="Address">@Model.Address</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Poste :</div>
-            <div class="col-sm-9" name="Poste">@Model.Poste</div>
+            <div class="col-3">Poste :</div>
+            <div class="col-9" name="Poste">@Model.Poste</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Rôle :</div>
-            <div class="col-sm-9" name="Role">@Model.Role</div>
+            <div class="col-3">Rôle :</div>
+            <div class="col-9" name="Role">@Model.Role</div>
         </div>
         <div class="row mb-2">
-            <div class="col-sm-3">Date :</div>
-            <div class="col-sm-9" name="CreatedAt">@Model.CreatedAt</div>
+            <div class="col-3">Date :</div>
+            <div class="col-9" name="CreatedAt">@Model.CreatedAt</div>
         </div>
         <hr />
         <div>
-            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditProfileModal">
+            <button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#EditProfileModal">
                 Editer Profil
             </button>
-            <a class="btn btn-outline-warning" href="/Account/Password/@Model.Id">
+            <a class="btn btn-outline-warning btn-sm" href="/Account/Password/@Model.Id">
                 Editer Mot de passe
             </a>
         </div>
