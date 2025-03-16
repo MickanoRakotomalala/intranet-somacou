@@ -385,6 +385,20 @@ footer .col-4 img {
     font-size:12px;
 }
 
+/*Profil*/
+.ProfilUpdate{
+    display:flex;
+    justify-content:center;
+}
+
+.ProfilUpdate .modal-content {
+    background-color: #F16476;
+}
+
+.ProfilUpdate .modal-content .modal-body form .col-4 {
+    font-weight:700;
+}
+
 /*DSI*/
 .col-xl-9 h5 {
     display: flex;
@@ -570,6 +584,19 @@ footer .col-4 img {
     .container h2{
         font-size:18px;
     }
+
+    .ProfilUpdate .modal-content {
+        width:380px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-4{
+        font-size:14px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-8 input, 
+    .ProfilUpdate .modal-content .modal-body form .col-8 select{
+        font-size:12px;
+    }
 }
 
 @media(max-width:992px){
@@ -672,6 +699,19 @@ footer .col-4 img {
     .container h2 {
         font-size: 16px;
     }
+
+    .ProfilUpdate .modal-content {
+        width: 320px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-4 {
+        font-size: 13px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-8 input,
+    .ProfilUpdate .modal-content .modal-body form .col-8 select {
+        font-size: 10px;
+    }
 }
 
 @media (max-width:768px){
@@ -715,6 +755,28 @@ footer .col-4 img {
 
     .container h2 {
         font-size: 15px;
+    }
+
+    .ProfilUpdate .modal-content {
+        width: 290px;
+    }
+
+    .ProfilUpdate .modal-content .modal-header h2,
+    .ProfilUpdate .modal-content .modal-header button {
+        font-size:13px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-4 {
+        font-size: 12px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-4 button{
+        font-size: 12px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-8 input,
+    .ProfilUpdate .modal-content .modal-body form .col-8 select {
+        font-size: 8.5px;
     }
 }
 
@@ -765,5 +827,36 @@ footer .col-4 img {
 
     .container h2 {
         font-size: 12px;
+    }
+
+    .ProfilUpdate .modal-content {
+        width: 260px;
+    }
+
+    .ProfilUpdate .modal-content .modal-header h2,
+    .ProfilUpdate .modal-content .modal-header button {
+        font-size: 11px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body .btn-save {
+        display:flex;
+        justify-content:center;
+    }
+
+    .ProfilUpdate .modal-content .modal-body button{
+        width:100px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-4 {
+        font-size: 10px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-4 button {
+        font-size: 10px;
+    }
+
+    .ProfilUpdate .modal-content .modal-body form .col-8 input,
+    .ProfilUpdate .modal-content .modal-body form .col-8 select {
+        font-size: 8px;
     }
 }

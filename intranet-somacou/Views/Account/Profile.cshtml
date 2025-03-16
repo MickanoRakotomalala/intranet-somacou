@@ -79,7 +79,7 @@
 <!-- Modal -->
 <div class="modal fade" id="EditProfileModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog ProfilUpdate">
-        <div class="modal-content text-white" style="background-color:#F16476;">
+        <div class="modal-content text-white">
             <div class="modal-header">
                 <h2 class="modal-title fs-5">Editer mon Profil</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -88,43 +88,43 @@
                 <form method="post">
                     <input type="hidden" name="Id" value="@Model.Id" />
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Nom :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Nom :</label>
+                        <div class="col-8">
                             <input type="text" name="Name" id="Name" placeholder="Nom" class="form-control" value="@Model.Name" />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.Name)</span>
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Matricule :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Matricule :</label>
+                        <div class="col-8">
                             <input type="text" name="Matricule" id="Matricule" placeholder="Matricule" class="form-control" value="@Model.Matricule" />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.Matricule)</span>
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Email :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Email :</label>
+                        <div class="col-8">
                             <input type="text" name="Email" id="Email" placeholder="Email" class="form-control" value="@Model.Email" />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.Email)</span>
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Téléphone :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Téléphone :</label>
+                        <div class="col-8">
                             <input type="text" name="Phone" id="Phone" placeholder="Phone" class="form-control" value="@Model.Phone" />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.Phone)</span>
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Adresse :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Adresse :</label>
+                        <div class="col-8">
                             <input type="text" name="Address" id="Address" placeholder="Adresse" class="form-control" value="@Model.Address" />
                             <span class="text-white">@Html.ValidationMessageFor(m => m.Address)</span>
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Poste :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Poste :</label>
+                        <div class="col-8">
                             <select name="Poste" class="form-control" id="Poste">
                                 @{ foreach (var poste in ViewBag.Poste)
                                     {
@@ -138,8 +138,8 @@
                     <input type="hidden" name="Role" id="Role" class="form-control" value="@Model.Role" />
                     <input type="hidden" name="CreatedAt" id="CreatedAt" class="form-control" value="@Model.CreatedAt" />
                     <input type="hidden" name="Password" id="Password" class="form-control" value="@Model.Password" />
-                    <div class="row mb-4 offset-sm-6 col-sm-4">
-                        <button type="submit" class="btn btn-outline-secondary">Sauvegarder</button>
+                    <div class="row mb-4 offset-6 col-4 btn-save">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">Sauvegarder</button>
                     </div>
                 </form>
             </div>
