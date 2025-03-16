@@ -370,10 +370,15 @@ footer .col-4 img {
     color:white;
 }
 
+/*Password*/
 .PasswordUpdate {
     padding:20px;
     background-color: #F16476;
     border-radius:16px;
+}
+
+.PasswordUpdate form .col-4{
+    font-weight:700;
 }
 
 .PasswordUpdate h3{
@@ -597,6 +602,25 @@ footer .col-4 img {
     .ProfilUpdate .modal-content .modal-body form .col-8 select{
         font-size:12px;
     }
+
+    /*Password*/
+    .PasswordUpdate h3{
+        font-size:21px;
+    }
+
+    .PasswordUpdate form .col-4{
+        font-size:12px;
+    }
+
+    .PasswordUpdate form .col-8 input,
+    .PasswordUpdate form .col-8 span{
+        font-size:12px;
+    }
+
+    .PasswordUpdate form .col-3,
+    .PasswordUpdate form .col-2{
+        font-size:13px;
+    }
 }
 
 @media(max-width:992px){
@@ -709,6 +733,7 @@ footer .col-4 img {
     }
 
     .ProfilUpdate .modal-content .modal-body form .col-8 input,
+    .ProfilUpdate .modal-content .modal-body form .col-8 span,
     .ProfilUpdate .modal-content .modal-body form .col-8 select {
         font-size: 10px;
     }
@@ -775,8 +800,28 @@ footer .col-4 img {
     }
 
     .ProfilUpdate .modal-content .modal-body form .col-8 input,
+    .ProfilUpdate .modal-content .modal-body form .col-8 span,
     .ProfilUpdate .modal-content .modal-body form .col-8 select {
         font-size: 8.5px;
+    }
+
+    /*Password*/
+    .PasswordUpdate h3 {
+        font-size: 16px;
+    }
+
+    .PasswordUpdate form .col-4 {
+        font-size: 11px;
+    }
+
+    .PasswordUpdate form .col-8 input,
+    .PasswordUpdate form .col-8 span {
+        font-size: 11px;
+    }
+
+    .PasswordUpdate form .col-3,
+    .PasswordUpdate form .col-2 {
+        font-size: 11px;
     }
 }
 
@@ -847,7 +892,7 @@ footer .col-4 img {
         width:100px;
     }
 
-    .ProfilUpdate .modal-content .modal-body form .col-4 {
+    .ProfilUpdate .modal-content .modal-body form .col-4{
         font-size: 10px;
     }
 
@@ -856,7 +901,27 @@ footer .col-4 img {
     }
 
     .ProfilUpdate .modal-content .modal-body form .col-8 input,
+    .ProfilUpdate .modal-content .modal-body form .col-8 span,
     .ProfilUpdate .modal-content .modal-body form .col-8 select {
         font-size: 8px;
+    }
+
+    /*Password*/
+    .PasswordUpdate h3 {
+        font-size: 15px;
+    }
+
+    .PasswordUpdate form .col-4 {
+        font-size: 10px;
+    }
+
+    .PasswordUpdate form .col-8 input,
+    .PasswordUpdate form .col-8 span {
+        font-size: 10px;
+    }
+
+    .PasswordUpdate form .col-3,
+    .PasswordUpdate form .col-2 {
+        font-size: 10px;
     }
 }
