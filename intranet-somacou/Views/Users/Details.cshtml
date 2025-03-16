@@ -3,8 +3,8 @@
     ViewBag.Title = "Details";
 }
 
-<div class="row UsersDetails">
-    <div class="col-lg-6 mx-auto rounded border p-4">
+<div class="container-fluid row UsersDetails">
+    <div class="col-lg-6 col-md-8 mx-auto rounded border p-4">
         <h2 class="text-center mb-3">Détails Utilisateurs</h2>
         <hr />
 
@@ -26,33 +26,33 @@
         <input type="hidden" name="Id" value="1">
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Nom :</div>
-            <div class="col-sm-8" name="Name" id="Name">@Model.Name</div>
+            <div class="col-4" style="font-weight:bold">Nom :</div>
+            <div class="col-8" name="Name" id="Name">@Model.Name</div>
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Email :</div>
-            <div class="col-sm-8" name="Email" id="Email">@Model.Email</div>
+            <div class="col-4" style="font-weight:bold">Email :</div>
+            <div class="col-8" name="Email" id="Email">@Model.Email</div>
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Téléphone :</div>
-            <div class="col-sm-8" name="Phone" id="Phone">@Model.Phone</div>
+            <div class="col-4" style="font-weight:bold">Téléphone :</div>
+            <div class="col-8" name="Phone" id="Phone">@Model.Phone</div>
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Adresse :</div>
-            <div class="col-sm-8" name="Address" id="Address">@Model.Address</div>
+            <div class="col-4" style="font-weight:bold">Adresse :</div>
+            <div class="col-8" name="Address" id="Address">@Model.Address</div>
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Poste :</div>
-            <div class="col-sm-8" name="Poste" id="Poste">@Model.Poste</div>
+            <div class="col-4" style="font-weight:bold">Poste :</div>
+            <div class="col-8" name="Poste" id="Poste">@Model.Poste</div>
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Rôle :</div>
-            <div class="col-sm-8" name="Role" id="Role">
+            <div class="col-4" style="font-weight:bold">Rôle :</div>
+            <div class="col-8" name="Role" id="Role">
                 @{
                     var roles = Model.Role;
                     var rolesStr = string.Join(",", roles);
@@ -82,16 +82,16 @@
         </div>
 
         <div class="row mb-2">
-            <div class="col-sm-4" style="font-weight:bold">Date :</div>
-            <div class="col-sm-8">@Model.CreatedAt</div>
+            <div class="col-4" style="font-weight:bold">Date :</div>
+            <div class="col-8">@Model.CreatedAt</div>
         </div>
 
         <hr />
 
         <div>
-            <a class="btn btn-primary" href="/Users/Index">Retour</a>
+            <a class="btn btn-primary btn-sm" href="/Users/Index">Retour</a>
 
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal">
+            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletemodal">
                 Supprimer
             </button>
         </div>
