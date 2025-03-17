@@ -109,8 +109,8 @@
                         @*<input type="hidden" name="Id" id="Id" />*@
                         <input type="hidden" name="UserName" id="UserName" value="@Session["FullName"].ToString()" class="form-control" />
                         <div class="row mb-2">
-                            <label class="offset-sm-2 col-sm-2 col-form-label">Type :</label>
-                            <div class="col-sm-8">
+                            <label class="offset-1 col-3 col-form-label">Type :</label>
+                            <div class="col-8">
                                 <select name="Type" id="Type" class="form-control">
                                     <option value="Matériel">Panne matériel</option>
                                     <option value="Logiciel">Panne logiciel</option>
@@ -123,14 +123,14 @@
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <label class="offset-2 col-sm-2 col-form-label">Détails :</label>
-                            <div class="col-sm-8">
+                            <label class="offset-1 col-3 col-form-label">Détails :</label>
+                            <div class="col-8">
                                 <Textarea name="Details" id="Details" class="form-control"></Textarea>
                             </div>
                         </div>
                         <div class="row mb-2" hidden>
-                            <label class="col-sm-4 col-form-label">Statut</label>
-                            <div class="col-sm-8">
+                            <label class="col-4 col-form-label">Statut</label>
+                            <div class="col-8">
                                 <select name="Etat" id="Etat" class="form-control">
                                     <option value="Nouveau">Nouveau</option>
                                 </select>
@@ -138,8 +138,8 @@
                         </div>
 
 
-                        <div class="row mb-4 offset-sm-4 col-sm-4 offset-sm-4">
-                            <button type="submit" class="btn btn-outline-warning offset-sm-4 col-sm-8">Soumettre</button>
+                        <div class="row mb-4 offset-4 col-8 btn-send">
+                            <button type="submit" class="btn btn-outline-warning btn-sm">Soumettre</button>
                         </div>
                     </form>
                 </div>
