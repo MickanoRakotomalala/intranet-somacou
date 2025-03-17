@@ -412,10 +412,25 @@ footer .col-4 img {
     text-align: center;
 }
 
-.col-xl-9 table thead tr th {
-    font-size: 20px;
+        /*table incident*/
+.row .col-xl-9 table thead tr th {
+    font-size: 16px;
     color: #AFA9A9;
-} 
+}
+.row .col-xl-9 table tbody td button {
+    width: 29px;
+}
+
+.row .col-xl-9 table tbody td button i {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.row .col-xl-9 table tbody,
+.row .col-xl-9 span {
+    font-size: 10px;
+}
 
 .error-message {
     position: fixed;
@@ -435,6 +450,33 @@ footer .col-4 img {
 
 .paginationIncident {
     margin-top: 10px;
+}
+
+/*INCIDENT*/
+.IncidentUpdate .modal-content {
+    background-color: #F16476;
+}
+.IncidentUpdate .modal-content .modal-header h5{
+    font-size:18px;
+}
+
+.IncidentUpdate .modal-content .modal-header button{
+    font-size:12px;
+}
+
+.IncidentUpdate .modal-content .modal-body form .col-4{
+    font-size:16px;
+    font-weight:700;
+}
+
+.IncidentUpdate .modal-content .modal-body form .col-8 textarea,
+.IncidentUpdate .modal-content .modal-body form .col-8 select{
+    font-size:13px;
+}
+
+.IncidentUpdate .modal-content .modal-body form .btn-incident-save {
+    display:flex;
+    justify-content:center;
 }
 
 /*ARCHITECTURE*/
@@ -509,7 +551,7 @@ footer .col-4 img {
         font-size: 10px;
     }
 
-    .slide .carousel-inner .carousel-item p {
+    .slide .carousel-inner .carousel-item p{
         font-size:16px;
     }
 
@@ -531,13 +573,14 @@ footer .col-4 img {
         font-size: 12px;
     }
 
-    .row .col-xl-9 table tbody td button {
+    .row .col-xl-9 table thead tr th {
+        font-size: 15px;
+    }
+    .row .col-xl-9 table tbody td button{
         width: 28px;
     }
 
     .row .col-xl-9 table tbody td button i{
-        display: flex;
-        justify-content: center;
         font-size:12px;
     }
 
@@ -634,6 +677,24 @@ footer .col-4 img {
     .UsersDetails .col-8 {
         font-size:16px;
     }
+
+    /*INCIDENT*/
+    .IncidentUpdate .modal-content .modal-header h5 {
+        font-size: 16px;
+    }
+
+    .IncidentUpdate .modal-content .modal-header button {
+        font-size: 12px;
+    }
+
+    .IncidentUpdate .modal-content .modal-body form .col-4 {
+        font-size: 14px;
+    }
+
+    .IncidentUpdate .modal-content .modal-body form .col-8 textarea,
+    .IncidentUpdate .modal-content .modal-body form .col-8 select {
+        font-size: 12px;
+    }
 }
 
 @media(max-width:992px){
@@ -674,32 +735,33 @@ footer .col-4 img {
     }
 
     .row .col-xl-2 h5{
-        font-size: 8px;
+        font-size: 12px;
     }
 
     .row .col-xl-2 ul li a {
         text-decoration: none;
         color: white;
-        font-size: 7px;
+        font-size: 8px;
     }
 
     .row .col-xl-2 ul li i {
         font-size: 9px;
     }
 
+    .row .col-xl-9 table thead tr th {
+        font-size: 11px;
+    }
+
     .row .col-xl-9 table tbody td button {
-        width: 24px;
+        width: 23px;
     }
 
     .row .col-xl-9 table tbody td button i {
-        display: flex;
-        justify-content: center;
-        font-size: 10px;
+        font-size: 9px;
     }
 
-    .row .col-xl-9 table tbody,
-    .row .col-xl-9 span {
-        font-size: 8px;
+    .row .col-xl-9 table tbody{
+        font-size: 8.5px;
     }
 
     .col-lg-12 .MainMenu .Menu{
@@ -862,6 +924,41 @@ footer .col-4 img {
     .UsersDetails .col-8{
         font-size: 12px;
     }
+
+    /*menu DSI*/
+    .row .col-xl-2 h5 i {
+        font-size: 12px;
+    }
+
+    .row .col-xl-2 h5 {
+        font-size: 11px;
+    }
+
+    .row .col-xl-2 ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 8px;
+    }
+
+    .row .col-xl-2 ul li i {
+        font-size: 9px;
+    }
+
+    .row .col-xl-9 table thead tr th {
+        font-size: 7px;
+    }
+
+    .row .col-xl-9 table tbody td button {
+        width: 13px;
+    }
+
+    .row .col-xl-9 table tbody td button i {
+        font-size: 7px;
+    }
+
+    .row .col-xl-9 table tbody{
+        font-size: 5.5px;
+    }
 }
 
 @media (max-width:576px){
@@ -975,5 +1072,40 @@ footer .col-4 img {
 
     .UsersDetails .col-8 {
         font-size: 10px;
+    }
+
+    /*menu DSI*/
+    .row .col-xl-2 h5 i {
+        font-size: 12px;
+    }
+
+    .row .col-xl-2 h5 {
+        font-size: 11px;
+    }
+
+    .row .col-xl-2 ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 8px;
+    }
+
+    .row .col-xl-2 ul li i {
+        font-size: 9px;
+    }
+
+    .row .col-xl-9 table thead tr th {
+        font-size: 2.5px;
+    }
+
+    .row .col-xl-9 table tbody td button {
+        width: 3px;
+    }
+
+    .row .col-xl-9 table tbody td button i {
+        font-size: 5px;
+    }
+
+    .row .col-xl-9 table tbody{
+        font-size: 2.5px;
     }
 }

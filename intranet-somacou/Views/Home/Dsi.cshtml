@@ -188,8 +188,8 @@
 
 @* Modal pour éditer un incident *@
 <div class="modal" id="EditIncident" tabindex="-1">
-    <div class="modal-dialog ProfilUpdate">
-        <div class="modal-content text-white" style="background-color:#F16476;">
+    <div class="modal-dialog IncidentUpdate">
+        <div class="modal-content text-white">
             <div class="modal-header">
                 <h5 class="modal-title">PRENDRE L'INCIDENT</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -201,20 +201,20 @@
                     <input type="hidden" name="Details" id="incidentDetails" />
 
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Statut :</label>
-                        <div class="col-sm-8" id="Form_Etat">
+                        <label class="col-4 col-form-label">Statut :</label>
+                        <div class="col-8" id="Form_Etat">
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Observation :</label>
-                        <div class="col-sm-8">
+                        <label class="col-4 col-form-label">Observation :</label>
+                        <div class="col-8">
                             <textarea class="form-control" name="Observation" id="incidentObservation"></textarea>
                             <span id="Error" class="text-white d-none"></span>
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="offset-sm-8 col-sm-4">
-                            <button type="submit" class="btn btn-outline-secondary">Sauvegarder</button>
+                        <div class="offset-4 col-8 btn-incident-save">
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">Sauvegarder</button>
                         </div>
                     </div>
                 </form>
