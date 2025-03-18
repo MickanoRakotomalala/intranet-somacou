@@ -537,7 +537,7 @@ function showMessage(message, type) {
 
     // Définissez la couleur de fond et l'icône en fonction du type de message
     const icon = document.createElement('i');
-    icon.style.fontSize = '1.0rem'; // Taille de l'icône
+    icon.style.fontSize = '16px'; // Taille de l'icône
     icon.className = 'bi me-2'; // Classe de base pour Bootstrap Icons
 
     if (type === 'error') {

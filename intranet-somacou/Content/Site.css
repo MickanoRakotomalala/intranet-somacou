@@ -1127,7 +1127,7 @@ footer .col-4 img {
         font-size: 12px;
     }
 
-    .UsersDetails .col-8 {
+    .UsersDetails .col-8{
         font-size: 10px;
     }
 
@@ -1183,5 +1183,10 @@ footer .col-4 img {
     #addinc form .col-8 select,
     #addinc form .col-8 textarea {
         font-size: 7px;
+    }
+    
+    .message span,
+    .message .bi{
+        font-size:9px;
     }
 }
