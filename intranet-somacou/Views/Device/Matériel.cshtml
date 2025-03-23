@@ -3,5 +3,158 @@
     ViewBag.Title = "Intranet";
 }
 
-<h2>Matériel</h2>
+<div class="container-fluid">
+    <div>
+        <img src="~/Assets/DSI.PNG" alt="DSI" />
+    </div>
+    <div class="row">
+        <div class="col-xl-2 col-lg-12 mx-auto DsiMenu">
+            <div class="MainMenu">
+                <div class="Menu">
+                    <h5 class="menuactive" id="menunetwork" type="button" data-bs-toggle="collapse" data-bs-target="#network" aria-expanded="false" aria-controls="dsi"><i class="bi bi-pc-display-horizontal me-2"></i><span>Matériel</span></h5>
+                    <ul class="collapse" id="network">
+                        <li class="listactive" id="snetworkd" onclick="shownetworkd()"><i class="bi bi-textarea me-2"></i><a href="#networkd">Description</a></li>
+                        <li id="" onclick=""><i class="bi bi-plus-circle me-2"></i><a href="#">Nouveau</a></li>
+                        <li id="snetworkimg" onclick="shownetworkimg()"><i class="bi bi-view-list me-2"></i><a href="#networkimg">Liste</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        @*DSI*@
+        <div class=" offset-1 col-xl-9 col-lg-12 mx-auto" id="networkd">
+            <h5><i class="bi bi-textarea me-2"></i>Réseaux Informatique</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6><i class="bi bi-question-circle me-2"></i>Pourquoi utiliser un réseau dans une entreprise ?</h6>
+                    <ol>
+                        <li>
+                            <p>Partage des ressources :</p>
+                            <ul>
+                                <li>Imprimantes, scanners, disques durs, serveurs, etc.</li>
+                                <li>Évite d’acheter du matériel pour chaque poste.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Facilite la communication :</p>
+                            <ul>
+                                <li>Messagerie interne, e-mails, visioconférences.</li>
+                                <li>Collaboration en temps réel (ex. : Microsoft Teams, Slack).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Partage de fichiers et de données :</p>
+                            <ul>
+                                <li>Accès centralisé aux fichiers via un serveur ou un NAS.</li>
+                                <li>Gestion des autorisations (accès par service, rôle, etc.).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Sécurité et sauvegarde :</p>
+                            <ul>
+                                <li>Centralisation des données sur des serveurs sécurisés.</li>
+                                <li>Sauvegardes automatiques.</li>
+                                <li>Protection contre les intrusions (pare-feu, antivirus, etc.).</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Accès à Internet partagé :</p>
+                            <ul>
+                                <li>Tous les postes accèdent à Internet via une seule connexion contrôlée.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Gestion centralisée des utilisateurs :</p>
+                            <ul>
+                                <li>
+                                    Grâce à des solutions comme Active Directory,
+                                    on peut gérer les comptes utilisateurs, les droits d'accès,
+                                    les stratégies de sécurité, etc.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Productivité accrue :</p>
+                            <ul>
+                                <li>Moins de déplacements pour échanger des documents.</li>
+                                <li>Meilleur suivi des activités et des performances.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="offset-md-1 col-md-5">
+                    <h6><i class="bi bi-list-check me-2"></i>Types de réseaux utilisés dans une entreprise :</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Type de Réseau</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LAN (Local Area Network)</td>
+                                    <td>Réseau local, utilisé à l’intérieur d’un même bâtiment.</td>
+                                </tr>
+                                <tr>
+                                    <td>WAN (Wide Area Network)</td>
+                                    <td>Réseau étendu (ex. : relier plusieurs sites géographiques).</td>
+                                </tr>
+                                <tr>
+                                    <td>VPN (Virtual Private Network)</td>
+                                    <td>Connexion sécurisée entre l’entreprise et des utilisateurs à distance.</td>
+                                </tr>
+                                <tr>
+                                    <td>WLAN (Wirelesse LAN)</td>
+                                    <td>Réseau sans fil (Wi-Fi dans les bureaux).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h6><i class="bi bi-tools me-2"></i>Éléments clés d’un réseau d’entreprise</h6>
+                    <div>
+                        <ul>
+                            <li>Serveurs (fichiers, bases de données, messagerie, web, etc.)</li>
+                            <li>Switchs et routeurs</li>
+                            <li>Pare-feu et systèmes de sécurité</li>
+                            <li>Câblage (Ethernet, fibre optique, etc.)</li>
+                            <li>Points d’accès Wi-Fi</li>
+                            <li>Postes clients (PC, laptops, smartphones, etc.)</li>
+                        </ul>
+                    </div>
+
+                    <h6><i class="bi bi-shield-lock me-2"></i>Sécurité dans un réseau d’entreprise :</h6>
+                    <div>
+                        <ul>
+                            <li>Authentification des utilisateurs</li>
+                            <li>Segmentation réseau (VLAN)</li>
+                            <li>Sauvegardes régulières</li>
+                            <li>Surveillance du trafic réseau</li>
+                            <li>Mises à jour régulières des systèmes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="networkimg" hidden>
+            <h5><i class="bi bi-image me-2"></i> ARCHITECTURE RÉSEAUX SOMACOU</h5>
+            <div>
+                <img src="~/Assets/Network_Architect_SOMACOU.PNG" alt="Architect Network" />
+            </div>
+            <p>
+                <h6>Description : </h6>
+                <ul>
+                    <li>Source connexion internet : Fibre optique YAS Madagascar</li>
+                    <li>Matériel : Router Mikrotik(Yas)</li>
+                    <li>Configuration Router : Protocole DHCP</li>
+                    <li>Type d'architecture réseaux : Cascade</li>
+                    <li>Nombres de Switch utilisé (18)</li>
+                    <li>Nombres de Poste (25) et Serveur (2)</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</div>
 
