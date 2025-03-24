@@ -11,134 +11,224 @@
         <div class="col-xl-2 col-lg-12 mx-auto DsiMenu">
             <div class="MainMenu">
                 <div class="Menu">
-                    <h5 class="menuactive" id="menunetwork" type="button" data-bs-toggle="collapse" data-bs-target="#network" aria-expanded="false" aria-controls="dsi"><i class="bi bi-pc-display-horizontal me-2"></i><span>Matériel</span></h5>
-                    <ul class="collapse" id="network">
-                        <li class="listactive" id="snetworkd" onclick="shownetworkd()"><i class="bi bi-textarea me-2"></i><a href="#networkd">Description</a></li>
-                        <li id="" onclick=""><i class="bi bi-plus-circle me-2"></i><a href="#">Nouveau</a></li>
-                        <li id="snetworkimg" onclick="shownetworkimg()"><i class="bi bi-view-list me-2"></i><a href="#networkimg">Liste</a></li>
+                    <h5 class="menuactive" id="menumateriel" type="button" data-bs-toggle="collapse" data-bs-target="#materiel" aria-expanded="false" aria-controls="dsi"><i class="bi bi-pc-display-horizontal me-2"></i><span>Matériel</span></h5>
+                    <ul class="collapse" id="materiel">
+                        <li class="listactive" id="smaterield" onclick="showMaterielD()"><i class="bi bi-textarea me-2"></i><a href="#materield">Description</a></li>
+                        <li id="snewmateriel" onclick="showNewMateriel()"><i class="bi bi-plus-circle me-2"></i><a href="#newmateriel">Nouveau</a></li>
+                        <li id="slistmateriel" onclick="showListMateriel()"><i class="bi bi-view-list me-2"></i><a href="#listmateriel">Liste</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
         @*DSI*@
-        <div class=" offset-1 col-xl-9 col-lg-12 mx-auto" id="networkd">
-            <h5><i class="bi bi-textarea me-2"></i>Réseaux Informatique</h5>
+        <div class=" offset-1 col-xl-9 col-lg-12 mx-auto" id="materield">
+            <h5><i class="bi bi-textarea me-2"></i>Matériels Informatiques</h5>
             <div class="row">
                 <div class="col-md-6">
-                    <h6><i class="bi bi-question-circle me-2"></i>Pourquoi utiliser un réseau dans une entreprise ?</h6>
-                    <ol>
-                        <li>
-                            <p>Partage des ressources :</p>
-                            <ul>
-                                <li>Imprimantes, scanners, disques durs, serveurs, etc.</li>
-                                <li>Évite d’acheter du matériel pour chaque poste.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p>Facilite la communication :</p>
-                            <ul>
-                                <li>Messagerie interne, e-mails, visioconférences.</li>
-                                <li>Collaboration en temps réel (ex. : Microsoft Teams, Slack).</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p>Partage de fichiers et de données :</p>
-                            <ul>
-                                <li>Accès centralisé aux fichiers via un serveur ou un NAS.</li>
-                                <li>Gestion des autorisations (accès par service, rôle, etc.).</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p>Sécurité et sauvegarde :</p>
-                            <ul>
-                                <li>Centralisation des données sur des serveurs sécurisés.</li>
-                                <li>Sauvegardes automatiques.</li>
-                                <li>Protection contre les intrusions (pare-feu, antivirus, etc.).</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p>Accès à Internet partagé :</p>
-                            <ul>
-                                <li>Tous les postes accèdent à Internet via une seule connexion contrôlée.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p>Gestion centralisée des utilisateurs :</p>
-                            <ul>
-                                <li>
-                                    Grâce à des solutions comme Active Directory,
-                                    on peut gérer les comptes utilisateurs, les droits d'accès,
-                                    les stratégies de sécurité, etc.
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p>Productivité accrue :</p>
-                            <ul>
-                                <li>Moins de déplacements pour échanger des documents.</li>
-                                <li>Meilleur suivi des activités et des performances.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-                <div class="offset-md-1 col-md-5">
-                    <h6><i class="bi bi-list-check me-2"></i>Types de réseaux utilisés dans une entreprise :</h6>
+                    <h6><i class="bi bi-pc-display me-2"></i>Postes de travail</h6>
                     <div class="table-network">
                         <table class="table table-responsive-md">
                             <thead>
                                 <tr>
-                                    <th>Type de Réseau</th>
+                                    <th>Matériel</th>
                                     <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>LAN (Local Area Network)</td>
-                                    <td>Réseau local, utilisé à l’intérieur d’un même bâtiment.</td>
+                                    <td>Ordinateurs de bureau (PC) :</td>
+                                    <td>Utilisés par les employés pour leurs tâches quotidiennes (bureautique, email, applications métiers).</td>
                                 </tr>
                                 <tr>
-                                    <td>WAN (Wide Area Network)</td>
-                                    <td>Réseau étendu (ex. : relier plusieurs sites géographiques).</td>
+                                    <td>Ordinateurs portables :</td>
+                                    <td>Pour les utilisateurs nomades ou en télétravail. Plus mobiles mais parfois moins puissants que les PC fixes.</td>
                                 </tr>
                                 <tr>
-                                    <td>VPN (Virtual Private Network)</td>
-                                    <td>Connexion sécurisée entre l’entreprise et des utilisateurs à distance.</td>
+                                    <td>Stations de travail (Workstations)</td>
+                                    <td>Ordinateurs très puissants, utilisés pour des traitements lourds (graphisme, modélisation 3D, développement logiciel, etc.).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h6><i class="bi bi-display me-2"></i>Périphériques</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Matériel</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Écrans/Moniteurs :</td>
+                                    <td>Un ou plusieurs écrans sont connectés à chaque ordinateur selon les besoins.</td>
                                 </tr>
                                 <tr>
-                                    <td>WLAN (Wirelesse LAN)</td>
-                                    <td>Réseau sans fil (Wi-Fi dans les bureaux).</td>
+                                    <td>Imprimantes et photocopieurs :</td>
+                                    <td>Partagés ou individuels, utilisés pour l’impression de documents internes ou externes.</td>
+                                </tr>
+                                <tr>
+                                    <td>Scanners :</td>
+                                    <td>Pour la numérisation de documents physiques.</td>
+                                </tr>
+                                <tr>
+                                    <td>Claviers et souris :</td>
+                                    <td>Accessoires de saisie standards.</td>
+                                </tr>
+                                <tr>
+                                    <td>Casques, webcams, micros :</td>
+                                    <td>Utilisés pour la communication (visioconférences, appels Teams, etc.).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h6><i class="bi bi-router me-2"></i>Équipements réseau</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Matériel</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Routeur :</td>
+                                    <td>Permet d’interconnecter le réseau local (LAN) avec Internet.</td>
+                                </tr>
+                                <tr>
+                                    <td>Switchs :</td>
+                                    <td>Distribuent la connexion réseau entre les différents équipements.</td>
+                                </tr>
+                                <tr>
+                                    <td>Points d’accès Wi-Fi :</td>
+                                    <td>Permettent une connexion sans fil aux ordinateurs portables, smartphones ou tablettes.</td>
+                                </tr>
+                                <tr>
+                                    <td>Câblage réseau (Ethernet) :</td>
+                                    <td>Pour les connexions filaires.</td>
+                                </tr>
+                                <tr>
+                                    <td>Firewall matériel :</td>
+                                    <td>Protège le réseau contre les intrusions extérieures.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="offset-md-1 col-md-5">
+                    <h6><i class="bi bi-server me-2"></i>Serveurs</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Matériel</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Serveurs de fichiers :</td>
+                                    <td>Stockage et partage des documents entre utilisateurs.</td>
+                                </tr>
+                                <tr>
+                                    <td>Serveurs d’applications :</td>
+                                    <td>Hébergent les logiciels métier (ERP, CRM, etc.).</td>
+                                </tr>
+                                <tr>
+                                    <td>Serveurs de messagerie :</td>
+                                    <td>Gèrent les emails professionnels (ex. Exchange Server).</td>
+                                </tr>
+                                <tr>
+                                    <td>Serveurs de base de données :</td>
+                                    <td>Contiennent les données structurées (SQL Server, MySQL…).</td>
+                                </tr>
+                                <tr>
+                                    <td>Serveurs de virtualisation :</td>
+                                    <td>Hébergent plusieurs machines virtuelles sur un seul serveur physique (VMware, Hyper-V).</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <h6><i class="bi bi-tools me-2"></i>Éléments clés d’un réseau d’entreprise</h6>
-                    <div>
-                        <ul>
-                            <li>Serveurs (fichiers, bases de données, messagerie, web, etc.)</li>
-                            <li>Switchs et routeurs</li>
-                            <li>Pare-feu et systèmes de sécurité</li>
-                            <li>Câblage (Ethernet, fibre optique, etc.)</li>
-                            <li>Points d’accès Wi-Fi</li>
-                            <li>Postes clients (PC, laptops, smartphones, etc.)</li>
-                        </ul>
+                    <h6><i class="bi bi-tools me-2"></i>Matériels de sécurité et sauvegarde</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Matériel</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Onduleurs (UPS) :</td>
+                                    <td>Assurent une alimentation de secours en cas de coupure électrique.</td>
+                                </tr>
+                                <tr>
+                                    <td>Systèmes de sauvegarde (NAS, bandes magnétiques, disques durs externes) :</td>
+                                    <td>Pour éviter la perte de données.</td>
+                                </tr>
+                                <tr>
+                                    <td>Caméras de vidéosurveillance IP :</td>
+                                    <td>Sécurisent les locaux.</td>
+                                </tr>
+                                <tr>
+                                    <td>Contrôles d’accès (badge, biométrie) :</td>
+                                    <td>Sécurisent l’accès aux salles informatiques.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <h6><i class="bi bi-shield-lock me-2"></i>Sécurité dans un réseau d’entreprise :</h6>
-                    <div>
-                        <ul>
-                            <li>Authentification des utilisateurs</li>
-                            <li>Segmentation réseau (VLAN)</li>
-                            <li>Sauvegardes régulières</li>
-                            <li>Surveillance du trafic réseau</li>
-                            <li>Mises à jour régulières des systèmes</li>
-                        </ul>
+                    <h6><i class="bi bi-motherboard me-2"></i>Autres équipements spécifiques</h6>
+                    <div class="table-network">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>Matériel</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tablettes professionnelles :</td>
+                                    <td>Pour la mobilité (commerciaux, techniciens).</td>
+                                </tr>
+                                <tr>
+                                    <td>Smartphones d’entreprise :</td>
+                                    <td>Pour la communication mobile.</td>
+                                </tr>
+                                <tr>
+                                    <td>Tableaux interactifs / vidéoprojecteurs :</td>
+                                    <td>Utilisés en salles de réunion ou de formation.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="networkimg" hidden>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="newmateriel" hidden>
+            <h5><i class="bi bi-image me-2"></i> ARCHITECTURE RÉSEAUX SOMACOU</h5>
+            <div>
+                <img src="~/Assets/Network_Architect_SOMACOU.PNG" alt="Architect Network" />
+            </div>
+            <p>
+                <h6>Description : </h6>
+                <ul>
+                    <li>Source connexion internet : Fibre optique YAS Madagascar</li>
+                    <li>Matériel : Router Mikrotik(Yas)</li>
+                    <li>Configuration Router : Protocole DHCP</li>
+                    <li>Type d'architecture réseaux : Cascade</li>
+                    <li>Nombres de Switch utilisé (18)</li>
+                    <li>Nombres de Poste (25) et Serveur (2)</li>
+                </ul>
+            </p>
+        </div>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="listmateriel" hidden>
             <h5><i class="bi bi-image me-2"></i> ARCHITECTURE RÉSEAUX SOMACOU</h5>
             <div>
                 <img src="~/Assets/Network_Architect_SOMACOU.PNG" alt="Architect Network" />

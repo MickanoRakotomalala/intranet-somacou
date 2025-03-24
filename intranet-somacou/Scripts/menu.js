@@ -1,4 +1,62 @@
-﻿//Architecture
+﻿//Matériel
+const elementsMat = {
+    menuMateriel: document.getElementById("menumateriel"),
+    materielDescri: document.getElementById("materield"),
+    smaterielDescri: document.getElementById("smaterield"),
+    newMateriel: document.getElementById("newmateriel"),
+    snewMateriel: document.getElementById("snewmateriel"),
+    listMateriel: document.getElementById("listmateriel"),
+    slistMateriel: document.getElementById("slistmateriel")
+};
+
+//Fonction générique pour afficher une section
+function showSectionMateriel({ visibleId, activeMenu, activeList, consoleMessage }) {
+    //Réinitiliser tous les éléments
+    elementsMat.materielDescri.hidden = true;
+    elementsMat.newMateriel.hidden = true;
+    elementsMat.listMateriel.hidden = true;
+    elementsMat.smaterielDescri.classList.remove("listactive");
+    elementsMat.snewMateriel.classList.remove("listactive");
+    elementsMat.slistMateriel.classList.remove("listactive");
+    elementsMat.menuMateriel.classList.remove("menuactive");
+
+    //Afficher les éléments spécifiques
+    if (visibleId) elementsMat[visibleId].hidden = false;
+    if (activeMenu) elementsMat[activeMenu].classList.add("menuactive");
+    if (activeList) elementsMat[activeList].classList.add("listactive");
+
+    console.log(consoleMessage);
+};
+
+function showMaterielD() {
+    showSectionMateriel({
+        visibleId: "materielDescri",
+        activeMenu: "menuMateriel",
+        activeList: "smaterielDescri",
+        consoleMessage: "Description Materiel"
+    });
+}
+
+function showNewMateriel() {
+    showSectionMateriel({
+        visibleId: "newMateriel",
+        activeMenu: "menuMateriel",
+        activeList: "snewMateriel",
+        consoleMessage: "Nouveau Materiel"
+    });
+}
+
+function showListMateriel() {
+    showSectionMateriel({
+        visibleId: "listMateriel",
+        activeMenu: "menuMateriel",
+        activeList: "slistMateriel",
+        consoleMessage: "Liste Materiel"
+    });
+}
+
+
+//Architecture
 //Sélection des éléments Architecture
 const elementsArchi = {
     menuNetwork: document.getElementById("menunetwork"),
@@ -11,6 +69,7 @@ const elementsArchi = {
     cameraImg: document.getElementById("cameraimg"),
     scameraDetails: document.getElementById("scamerad"),
     scameraImg: document.getElementById("scameraimg")
+
 };
 
 // Fonction générique pour afficher une section
