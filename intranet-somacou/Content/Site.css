@@ -525,6 +525,20 @@ footer .col-4 img {
     border-radius:12px;
 }
 
+/*Materiel*/
+#materield .col-md-5,
+#materield .col-md-6{
+    border: 2px solid #F16476;
+    border-radius: 12px;
+}
+
+#materield .table-network {
+    border: 2px solid Gray;
+    border-radius: 10px;
+    margin-bottom:16px;
+}
+
+
 @keyframes slideDown {
     from {
         transform: translate(-50%, -100%);
