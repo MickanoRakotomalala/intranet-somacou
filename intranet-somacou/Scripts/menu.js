@@ -1,8 +1,11 @@
 ﻿//Matériel
 const elementsMat = {
+    menuMaterield: document.getElementById("menumaterield"),
     menuMateriel: document.getElementById("menumateriel"),
     materielDescri: document.getElementById("materield"),
     smaterielDescri: document.getElementById("smaterield"),
+    materielImg: document.getElementById("materielimg"),
+    smaterielImg: document.getElementById("smaterielimg"),
     newMateriel: document.getElementById("newmateriel"),
     snewMateriel: document.getElementById("snewmateriel"),
     listMateriel: document.getElementById("listmateriel"),
@@ -15,10 +18,13 @@ function showSectionMateriel({ visibleId, activeMenu, activeList, consoleMessage
     elementsMat.materielDescri.hidden = true;
     elementsMat.newMateriel.hidden = true;
     elementsMat.listMateriel.hidden = true;
+    elementsMat.materielImg.hidden = true;
+    elementsMat.smaterielImg.classList.remove("listactive");
+    elementsMat.menuMateriel.classList.remove("menuactive");
     elementsMat.smaterielDescri.classList.remove("listactive");
     elementsMat.snewMateriel.classList.remove("listactive");
     elementsMat.slistMateriel.classList.remove("listactive");
-    elementsMat.menuMateriel.classList.remove("menuactive");
+    elementsMat.menuMaterield.classList.remove("menuactive");
 
     //Afficher les éléments spécifiques
     if (visibleId) elementsMat[visibleId].hidden = false;
@@ -31,9 +37,17 @@ function showSectionMateriel({ visibleId, activeMenu, activeList, consoleMessage
 function showMaterielD() {
     showSectionMateriel({
         visibleId: "materielDescri",
-        activeMenu: "menuMateriel",
+        activeMenu: "menuMaterield",
         activeList: "smaterielDescri",
         consoleMessage: "Description Materiel"
+    });
+}
+function showMaterielImg() {
+    showSectionMateriel({
+        visibleId: "materielImg",
+        activeMenu: "menuMaterield",
+        activeList: "smaterielImg",
+        consoleMessage : "Photos Matériels"
     });
 }
 

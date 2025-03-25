@@ -11,9 +11,13 @@
         <div class="col-xl-2 col-lg-12 mx-auto DsiMenu">
             <div class="MainMenu">
                 <div class="Menu">
-                    <h5 class="menuactive" id="menumateriel" type="button" data-bs-toggle="collapse" data-bs-target="#materiel" aria-expanded="false" aria-controls="dsi"><i class="bi bi-pc-display-horizontal me-2"></i><span>Matériel</span></h5>
-                    <ul class="collapse" id="materiel">
+                    <h5 class="menuactive" id="menumaterield" type="button" data-bs-toggle="collapse" data-bs-target="#materielD" aria-expanded="false" aria-controls="dsi"><i class="bi bi-card-text me-2"></i><span>Détails</span></h5>
+                    <ul class="collapse" id="materielD">
                         <li class="listactive" id="smaterield" onclick="showMaterielD()"><i class="bi bi-textarea me-2"></i><a href="#materield">Description</a></li>
+                        <li id="smaterielimg" onclick="showMaterielImg()"><i class="bi bi-image me-2"></i><a href="#materielimg">Image</a></li>
+                    </ul>
+                    <h5 id="menumateriel" type="button" data-bs-toggle="collapse" data-bs-target="#materiel" aria-expanded="false" aria-controls="dsi"><i class="bi bi-pc-display-horizontal me-2"></i><span>Matériel</span></h5>
+                    <ul class="collapse" id="materiel">
                         <li id="snewmateriel" onclick="showNewMateriel()"><i class="bi bi-plus-circle me-2"></i><a href="#newmateriel">Nouveau</a></li>
                         <li id="slistmateriel" onclick="showListMateriel()"><i class="bi bi-view-list me-2"></i><a href="#listmateriel">Liste</a></li>
                     </ul>
@@ -210,6 +214,23 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="materielimg" hidden>
+            <h5><i class="bi bi-image me-2"></i>PHOTOS DES MATERIELS INFORMATIQUES </h5>
+            <div>
+                <img src="~/Assets/Network_Architect_SOMACOU.PNG" alt="Architect Network" />
+            </div>
+            <p>
+                <h6>Description : </h6>
+                <ul>
+                    <li>Source connexion internet : Fibre optique YAS Madagascar</li>
+                    <li>Matériel : Router Mikrotik(Yas)</li>
+                    <li>Configuration Router : Protocole DHCP</li>
+                    <li>Type d'architecture réseaux : Cascade</li>
+                    <li>Nombres de Switch utilisé (18)</li>
+                    <li>Nombres de Poste (25) et Serveur (2)</li>
+                </ul>
+            </p>
         </div>
         <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="newmateriel" hidden>
             <h5><i class="bi bi-image me-2"></i> ARCHITECTURE RÉSEAUX SOMACOU</h5>
