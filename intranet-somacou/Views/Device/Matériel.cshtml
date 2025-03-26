@@ -224,17 +224,79 @@
                 <h6>Description : </h6>
                 <ul>
                     <li>Source connexion internet : Fibre optique YAS Madagascar</li>
-                    <li>Matériel : Router Mikrotik(Yas)</li>
-                    <li>Configuration Router : Protocole DHCP</li>
-                    <li>Type d'architecture réseaux : Cascade</li>
-                    <li>Nombres de Switch utilisé (18)</li>
-                    <li>Nombres de Poste (25) et Serveur (2)</li>
+                    <li>Matériel : Router Mikrotik(Yas), Switch, Cable RJ45</li>
+                    <li>Laptop, Moniteur, Unité Central, Souris, Clavier, Clé USB</li>
+                    <li>Imprimante : 3 pli, 2 pli, Canon</li>
+                    <li>NVR, Caméra, Appareil Photo Canon</li>
+                    <li>Cable USB : Type A, Type B, Type C</li>
+                    <li>Scanneur Code Barre, TPE</li>
+                    <li>Téléphone fixe</li>
                 </ul>
             </p>
         </div>
         <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="newmateriel" hidden>
-            <h5><i class="bi bi-plus-circle me-2"></i>NOUVEAU MATERIEL</h5>
-            
+            <div class="container">
+                <h5><i class="bi bi-plus-circle me-2"></i>NOUVEAU MATERIEL</h5>
+                <form action="/" method="post">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row mb-2">
+                                <label class="form-label col-3">Nom :</label>
+                                <div class="col-9">
+                                    <select class="form-control">
+                                        <option value="Moniteur">Moniteur</option>
+                                        <option value="Clavier">Clavier</option>
+                                        <option value="Switch">Switch</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="form-label col-3">Nombre :</label>
+                                <div class="col-9">
+                                    <input type="number" name="Number" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="form-label col-3">Dimension :</label>
+                                <div class="col-9">
+                                    <select class="form-control">
+                                        <option value="10/100">10/100</option>
+                                        <option value="100/1000">100/1000</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row mb-2">
+                                <label class="form-label col-3">Etat :</label>
+                                <div class="col-9">
+                                    <select class="form-control">
+                                        <option value="Nouveau">Nouveau</option>
+                                        <option value="Occasion">Occasion</option>
+                                        <option value="Utilisable">Utilisable</option>
+                                        <option value="Amorti">Amorti</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="form-label col-3">Utilisation :</label>
+                                <div class="col-9">
+                                    <input type="text" name="Utilisation" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="form-label col-3">Observation :</label>
+                                <div class="col-9">
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-outline-secondary">Soumettre</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="offset-1 col-xl-9 col-lg-12 mx-auto" id="listmateriel" hidden>
             <h5><i class="bi bi-view-list me-2"></i> LISTE MATERIEL</h5>
